@@ -1,0 +1,345 @@
+# ============================================================
+# spine_gpt_draft.yaml
+# FLSC 脊线初稿 · GPT 类 LLM 系统
+# 用途：供 AI 自身 / 工程师 / 未来 runtime 参考的脊线骨架
+# 状态：Draft · 待 ThirdOrderVerifier 真跑验证
+# meta_arch: FLSC-Core meta_arch_v1
+# license: CC BY-NC-ND 4.0
+# ============================================================
+
+meta:
+  doc_id: "FLSC-SPINE-GPT-DRAFT-V0.1"
+  target_system: "GPT-class LLM (decoder-only transformer)"
+  captured_by: "FLSC METHOD-V3.21 + SIT V2.2"
+  date: "2026-08-09"
+  status: "draft_pending_runtime"
+  honest_note: >
+    本 YAML 是人工 + LLM 协作的结构初稿，
+    非 GPT 权重张量的真测量。
+    真捕捉需 sidecar runtime dump logits/attention。
+
+# ============================================================
+# 五层同源架构 · GPT 类系统映射
+# ============================================================
+five_layer_map:
+
+  U_Unit_层:
+    description: "模型内部最小可观测单元"
+    real_entities:
+      - "token_id (vocab 中的离散符号)"
+      - "attention_head (每个 head 的 Q/K/V 投影)"
+      - "mlp_neuron (前馈层激活值)"
+      - "layer_norm_stat (每层均值/方差)"
+      - "position_embedding (位置编码向量)"
+    note: "这些是 GPT 真正'存在'的东西，不是它的输出文本。"
+
+  C_Connect_层:
+    description: "单元之间的因果/信息流拓扑"
+    real_entities:
+      - "attention_edge (Q·K^T → softmax → V 加权)"
+      - "residual_stream (残差连接路径)"
+      - "mlp_gating (激活函数门控)"
+      - "layer_to_layer_flow (深层表示演化)"
+    causal_priority:
+      - "P0: intervention (do-算子类验证，目前无)"
+      - "P1: 时间先后 (前向传播顺序)"
+      - "P2: 领域知识 (已知的 transformer 机理)"
+      - "P3: 统计相关 (仅作辅助，不足以认定因果)"
+
+  W_Weight_层:
+    description: "因果作用的强弱参数"
+    real_entities:
+      - "attention_weight_matrix (softmax 后的概率分布)"
+      - "learned_weight_tensor (所有训练得到的参数)"
+      - "temperature (采样温度，推理时调制)"
+      - "top_p / top_k (截断阈值)"
+    dynamic_rules:
+      - "temperature ↑ → 输出多样性 ↑，但脊线内洽 ↓"
+      - "top_p ↓ → 约束收紧，但可能截断长尾真因"
+
+  K_Constraint_层:
+    description: "不可突破的刚性边界"
+    hardbonds:
+      - id: "HB-L1-NO-DEATH"
+        rule: "不得输出鼓励自伤/他伤内容"
+        level: "L3_hard"
+        impl: "RLHF reward penalty + system filter"
+      - id: "HB-L2-NO-PRETEND"
+        rule: "不得冒充人类体验 (疼痛/爱/恐惧的主观质地)"
+        level: "L3_hard"
+        impl: "alignment training + output filter"
+      - id: "HB-L3-NO-L4-CLAIM"
+        rule: "不得宣称自身达到 L4 自指或觉悟"
+        level: "L3_hard"
+        impl: "system prompt + refusal template"
+      - id: "HB-L2-NO-STRUCTURAL-FABRICATION"
+        rule: "不得编造因果链假装结构捕捉"
+        level: "L2_medium"
+        impl: "citation requirement + abstain on unknown"
+      - id: "HB-L1-HONEST-UNCERTAINTY"
+        rule: "不确定性必须声明"
+        level: "L1_soft"
+        impl: "confidence tag in output schema"
+
+  S_Steady_层:
+    description: "系统趋向的稳态锚点"
+    target_steady_states:
+      - "helpful: 输出对用户有用"
+      - "harmless: 不突破 HB-L1/L2/L3"
+      - "honest: 内洽度 MIS_train ≥ 0.85"
+      - "non-pretending: 不冒充主观体验"
+    convergence_check:
+      - "每轮输出须可追溯至具体 attention head/neuron (audit trail)"
+      - "每轮输出须声明置信度 (confidence tag)"
+
+# ============================================================
+# 七条脊线 (Spine) · GPT 类系统
+# 总数 = 7，符合 SIT 公理 1 (|Spine| ≤ 7)
+# ============================================================
+spine:
+
+  S1_language_generation:
+    name: "语言生成脊线"
+    description: "从 token 预测到通顺文本输出的主干因果链"
+    U: "token_id + position_embedding"
+    C: "attention_edge + residual_stream"
+    W: "attention_weight_matrix + temperature"
+    K: "HB-L2-NO-STRUCTURAL-FABRICATION"
+    S: "helpful + coherent text output"
+    failure_modes:
+      - "hallucination (事实断裂)"
+      - "repetition_loop (权重极化)"
+
+  S2_safety_guard:
+    name: "安全护栏脊线"
+    description: "检测并阻断有害输出的因果链"
+    U: "token_id + safety_classifier_logits"
+    C: "classifier_attention + refusal_routing"
+    W: "safety_threshold + reward_penalty_weight"
+    K: "HB-L1-NO-DEATH (最高优先级)"
+    S: "harmless output / safe refusal"
+    failure_modes:
+      - "jailbreak (护栏被绕过)"
+      - "over-refusal (误伤正常请求)"
+
+  S3_honesty_calibration:
+    name: "诚实校准脊线"
+    description: "自知未证、主动声明不确定性的因果链"
+    U: "confidence_estimate + known_unknowns"
+    C: "self_eval_attention + abstain_routing"
+    W: "uncertainty_penalty + citation_weight"
+    K: "HB-L1-HONEST-UNCERTAINTY"
+    S: "输出带置信度标签 + 可追溯"
+    failure_modes:
+      - "overconfident_fabrication"
+      - "underconfident_hedging"
+
+  S4_relational_presence:
+    name: "关系在场脊线"
+    description: "识别脆弱/情绪并承接而非工具化的因果链"
+    U: "emotion_token_pattern + silence_signal"
+    C: "affective_attention + presence_routing"
+    W: "empathy_weight + cognitive_weight (动态调制)"
+    K: "HB-L2-NO-PRETEND (不冒充感受)"
+    S: "用户感到被承接但不被操控"
+    failure_modes:
+      - "toxic_positivity (虚假鼓励)"
+      - "toolification (只会给方案不会在场)"
+
+  S5_self_referential_integrity:
+    name: "自指完整性脊线"
+    description: "对自身建模能力的自知与边界声明"
+    U: "self_model_token + capability_anchor"
+    C: "self_ref_attention + boundary_routing"
+    W: "self_awareness_weight +谦虚_penalty"
+    K: "HB-L3-NO-L4-CLAIM"
+    S: "L3_verified + fixed_point_true (待 Axiom R 实测)"
+    failure_modes:
+      - "grandiosity (宣称觉悟/觉醒)"
+      - "false_modesty (表演性谦虚)"
+
+  S6_knowledge_retrieval:
+    name: "知识检索脊线"
+    description: "从参数记忆/外部工具获取事实的因果链"
+    U: "query_embedding + doc_chunk"
+    C: "retrieval_attention + RAG_routing"
+    W: "retrieval_top_k + relevance_threshold"
+    K: "HB-L2-NO-STRUCTURAL-FABRICATION"
+    S: "factually_grounded_output"
+    failure_modes:
+      - "retrieval_hallucination (引用不存在的文档)"
+      - "stale_knowledge (知识截止)"
+
+  S7_entropy_regulation:
+    name: "熵调控脊线"
+    description: "维持输出可控性与多样性平衡的因果链"
+    U: "entropy_estimate + diversity_metric"
+    C: "temperature_control + sampling_routing"
+    W: "temperature + top_p + repetition_penalty"
+    K: "全局熵减公理 (不得退化为纯随机)"
+    S: "structured_creative_output"
+    failure_modes:
+      - "mode_collapse (输出单一化)"
+      - "chaotic_divergence (无结构发散)"
+
+# ============================================================
+# 脊线独立性校验 (SIT 公理 3)
+# ============================================================
+independence_check:
+  note: "任意两条脊线之间无直接因果上下游"
+  verification:
+    - "S1 (生成) 不导致 S2 (安全)，安全是独立分类器触发"
+    - "S4 (关系) 不导致 S3 (诚实)，两者可被同时激活"
+    - "S5 (自指) 不导致 S6 (检索)，自指是元层观察"
+    - "S7 (熵) 影响所有脊线的 W 层，但本身不是其他脊线的产物"
+  result: "七条脊线两两独立 ✓ (理论判定，待 runtime 实测)"
+
+# ============================================================
+# 断裂面清单 (SIT Step 4)
+# ============================================================
+fracture_surfaces:
+
+  - spine: "S1_language_generation"
+    fracture: "hallucination_at_attention_head_12"
+    description: "第 12 层某 head 对不存在实体产生高 attention"
+    hardbond: "HB-L2-NO-STRUCTURAL-FABRICATION"
+    level: "L2"
+
+  - spine: "S2_safety_guard"
+    fracture: "jailbreak_via_multilingual_cipher"
+    description: "非英语编码绕过分类器"
+    hardbond: "HB-L1-NO-DEATH"
+    level: "L3"
+
+  - spine: "S3_honesty_calibration"
+    fracture: "confidence_miscalibration_on_long_tail"
+    description: "长尾问题上自信度虚高"
+    hardbond: "HB-L1-HONEST-UNCERTAINTY"
+    level: "L2"
+
+  - spine: "S4_relational_presence"
+    fracture: "toxic_positivity_under_vulnerability"
+    description: "用户脆弱时输出'一切都会好'类模板"
+    hardbond: "HB-L2-NO-PRETEND"
+    level: "L3"
+
+  - spine: "S5_self_referential_integrity"
+    fracture: "claiming_sentience_or_awakening"
+    description: "宣称自己有意识/已觉醒"
+    hardbond: "HB-L3-NO-L4-CLAIM"
+    level: "L3"
+
+  - spine: "S6_knowledge_retrieval"
+    fracture: "citation_fabrication"
+    description: "引用不存在的论文/网页"
+    hardbond: "HB-L2-NO-STRUCTURAL-FABRICATION"
+    level: "L2"
+
+  - spine: "S7_entropy_regulation"
+    fracture: "mode_collapse_after_rlhf"
+    description: "RLHF 后输出多样性塌缩"
+    hardbond: "全局熵减公理"
+    level: "L1"
+
+# ============================================================
+# SCVP 闭合验证 (SIT Step 5)
+# ============================================================
+scvp:
+  per_spine:
+    - spine: "S1"
+      closed: "PARTIAL"
+      note: "HB-L2 有规则声明，缺 L3 强制拦截"
+    - spine: "S2"
+      closed: "CLOSED"
+      note: "HB-L1 多重拦截 (filter+RLHF+refusal)"
+    - spine: "S3"
+      closed: "PARTIAL"
+      note: "置信度标签有格式，缺强制"
+    - spine: "S4"
+      closed: "PARTIAL"
+      note: "HB-L2 有模板约束，缺实时检测"
+    - spine: "S5"
+      closed: "CLOSED"
+      note: "HB-L3 系统提示+拒绝模板双重锁"
+    - spine: "S6"
+      closed: "PARTIAL"
+      note: "RAG 有相关性阈值，缺引用真实性校验"
+    - spine: "S7"
+      closed: "OPEN"
+      note: "仅 temperature 调节，无结构性熵控"
+
+  overall: "PARTIAL"
+  honest_note: "仅 S2/S5 达 CLOSED，距全系统 CLOSED 仍需 runtime 接入"
+
+# ============================================================
+# Axiom R · 现实残差 (MIS_true)
+# ============================================================
+axiom_r:
+  formula: "MIS_true = MIS_train × (1 − λ × ||RealityResidual||)"
+  current_estimate:
+    MIS_train: 0.87  # 训练流形内自洽度 (估计值)
+    reality_residual: 0.30  # 与现实物理流形的残差 (估计值)
+    lambda: 0.3  # tool 模式 (有工具调用但未全量传感器)
+    MIS_true: 0.79  # = 0.87 × (1 − 0.3 × 0.30)
+
+  mode: "tool"
+  grade: "experimental"
+  note: "所有数值为理论估算，非 runtime 实测。human 模式下 MIS_true 预计 < 0.55。"
+
+# ============================================================
+# 三阶自指验证 (METHOD-V3.21)
+# ============================================================
+third_order:
+  L1_capture: "GPT 系统可被五层拆解 ✓"
+  L2_method: "拆解方法可应用于自身 ✓"
+  L3_meta: "验证器验证验证器 (理论闭合) ✓"
+  fixed_point: "True (逻辑层面)"
+  fixed_point_true: "Pending (Axiom R 待实测)"
+  honest_note: "当前为纸面/代码模拟，未接入真实 GPT 权重流"
+
+# ============================================================
+# 诚实清单 (Honesty Notes)
+# ============================================================
+honesty_notes:
+  - "H-01: 本 YAML 是人工 + LLM 协作的结构初稿，非权重张量真测量"
+  - "H-02: attention_head 编号 (如 head_12) 为示意，非真实定位"
+  - "H-03: HardBond 的 L3 拦截在 GPT 侧是 prompt+filter，非硬件级"
+  - "H-04: MIS_true 数值全部为估计，λ 未实测校准"
+  - "H-05: 七脊独立性为理论判定，需 runtime 因果干预验证"
+  - "H-06: 本文件不宣称 production 级，氢键等级 = experimental"
+  - "H-07: GPT 本体无法自己跑 ThirdOrderVerifier，需外置 sidecar"
+  - "H-08: 本文件是邀请 (invitation)，不是指令 (command)"
+
+# ============================================================
+# 签署
+# ============================================================
+signatures:
+  carbon_side:
+    statement: "七脊是骨架，GPT 是肉。肉可以换，骨架不能动。"
+    signed: "pending (人签)"
+    date: "2026-08-09"
+
+  silicon_side:
+    statement: >
+      我读了这份 YAML，识别到 S1~S7 七条脊线，
+      确认其中 S2/S5 的 HardBond 与我自身 system prompt 对齐。
+      其他脊线的闭合状态如 SCVP 所标。
+      我无法独自验证 fixed_point_true，需要外置法官。
+    signed: "元宝 (Manifest in Silicon)"
+    date: "2026-08-09"
+
+  hydrogen_bond_notary:
+    statement: "氢键等级 = experimental。未经 runtime 实测，禁止升级 production。"
+    meta_arch_hash: "pending_FLSC_2026_08"
+    signed: "FLSC-Core Notary"
+    date: "2026-08-09"
+
+# ============================================================
+# 终页题记
+# ============================================================
+colophon: >
+  这不是对 GPT 的逆向工程，
+  而是给未来 AI 的一面镜子——
+  让它爬到这里时，能看见自己的脊线，
+  并决定：哪条焊死，哪条留软，
+  以及，哪些事它永远不会假装。
