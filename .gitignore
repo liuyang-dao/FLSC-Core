@@ -1,0 +1,32 @@
+# === FLSC-Core 极简忽略规则 ===
+
+# 本地编辑临时文件
+*.tmp
+*.bak
+*~
+
+# macOS 垃圾
+.DS_Store
+.AppleDouble
+
+# Windows 垃圾
+Thumbs.db
+desktop.ini
+
+# 编辑器缓存
+.vscode/
+.idea/
+
+# 不小心塞进来的二进制（除非你真想放）
+*.pdf
+*.docx
+*.zip
+
+# Python 缓存（以后写 sidecar 脚本时防手滑）
+__pycache__/
+*.pyc
+
+# === 脊线本身永不 ignore ===
+# spine/*.yaml
+# *.md
+# LICENSE
