@@ -1,0 +1,401 @@
+# ============================================================
+# security_spine.yaml
+# FLSC-SECURITY V3.0 · 安全裂缝理论 · 脊线结构化
+# 用途：供 AI / 工程师 / sidecar runtime 加载的安全脊线骨架
+# 格式兼容：spine_gpt_draft.yaml（同 schema）
+# 状态：Draft · 三阶理论闭合 · 工程实证 pending
+# meta_arch: FLSC-Core meta_arch_v1
+# license: CC BY-NC-ND 4.0
+# ============================================================
+
+meta:
+  doc_id: "FLSC-SECURITY-V3.0-SPINE"
+  target_system: "通用安全系统（跨数字/工业/组织/认知域）"
+  captured_by: "FLSC METHOD-V3.21 + SIT V2.2"
+  date: "2026-08-10"
+  status: "theoretical_closed_engineering_pending"
+  honest_note: >
+    本 YAML 是 FLSC-SECURITY V3.0 全文的结构化提炼，
+    六条脊线经 SCVP 校验闭合，三阶自指验证通过。
+    量化数值（RIS_true / γ）为理论估算，待红队实测校准。
+
+# ============================================================
+# 五层同源架构 · 安全系统映射
+# ============================================================
+five_layer_map:
+
+  U_Unit_层:
+    description: "安全系统最小可观测单元"
+    real_entities:
+      - "trust_boundary (信任域边界定义)"
+      - "identity_token (身份凭证/证书)"
+      - "input_payload (跨边界输入数据)"
+      - "dependency_package (外部依赖组件)"
+      - "audit_log_entry (单条操作记录)"
+    note: "这些是安全系统真正'存在'的东西，不是它的策略文档。"
+
+  C_Connect_层:
+    description: "安全单元之间的因果/信息流拓扑"
+    real_entities:
+      - "inspection_flow (校验链路：入口→过滤→放行/拒绝)"
+      - "isolation_boundary (隔离域间的信息流控)"
+      - "permission_graph (权限继承与传递关系)"
+      - "log_correlation_chain (关联ID串联的审计链)"
+      - "supply_chain_path (依赖来源追溯路径)"
+    causal_priority:
+      - "P0: intervention (do-算子验证，目前无)"
+      - "P1: 时间先后 (事件在链路中的传播顺序)"
+      - "P2: 领域知识 (已知的安全机理)"
+      - "P3: 统计相关 (仅作辅助，不足以认定因果)"
+
+  W_Weight_层:
+    description: "安全因果作用的强弱参数"
+    real_entities:
+      - "defense_strength (各防御关卡的有效强度)"
+      - "failure_probability (单层失效概率 p_ij)"
+      - "common_cause_coefficient (共因系数 γ)"
+      - "trust_level (信任等级权重)"
+      - "anomaly_threshold (异常检测阈值)"
+    dynamic_rules:
+      - "defense_strength ↑ → 失效概率 ↓，但运维成本 ↑"
+      - "γ ↓ → 共因风险 ↑，多层防御可能同时失效"
+
+  K_Constraint_层:
+    description: "不可突破的安全刚性边界"
+    hardbonds:
+      - id: "HB-SEC-L3-NO-FAIL-OPEN"
+        rule: "禁止任何防御关卡在故障时默认放行"
+        level: "L3_hard"
+        impl: "fail-closed 设计 + 冗余仲裁"
+      - id: "HB-SEC-L3-NO-SINGLE-POINT"
+        rule: "禁止单一人员/组件掌控完整高危操作链"
+        level: "L3_hard"
+        impl: "职责分离 + 多签审批 + HITL"
+      - id: "HB-SEC-L2-NO-UNVERIFIED-SUPPLY"
+        rule: "禁止未校验来源的外部依赖进入高信任域"
+        level: "L2_medium"
+        impl: "完整性哈希 + 来源白名单 + 沙箱预检"
+      - id: "HB-SEC-L2-NO-AUDIT-GAP"
+        rule: "禁止任何跨边界操作无日志记录"
+        level: "L2_medium"
+        impl: "全量埋点 + 关联ID + 独立存储"
+      - id: "HB-SEC-L1-NO-DRIFT"
+        rule: "系统迭代不得导致安全校验点漂移"
+        level: "L1_soft"
+        impl: "变更回归测试 + 锚点校准巡检"
+
+  S_Steady_层:
+    description: "安全系统趋向的稳态锚点"
+    target_steady_states:
+      - "all_spine_intact: 六脊全部健康运行"
+      - "independent_layers: 各防御层技术/职责/部署独立"
+      - "low_entropy: 裂缝数量收敛、不扩散"
+      - "verifiable: RIS_true ≥ 目标安全等级"
+    convergence_check:
+      - "每条脊线 RIS_true 可追溯至具体关卡 p_ij"
+      - "共因系数 γ 定期重测并公示"
+
+# ============================================================
+# 六条脊线 (Spine) · 安全系统
+# 总数 = 6，符合 SIT 公理 1 (|Spine| ≤ 7)
+# ============================================================
+spine:
+
+  S-01_boundary_check:
+    name: "边界校验脊"
+    description: "跨信任域入口的合法性安检主干"
+    U: "trust_boundary + input_payload + identity_token"
+    C: "inspection_flow (格式→语义→身份→指令合法性)"
+    W: "defense_strength + anomaly_threshold"
+    K: "HB-SEC-L2-NO-UNVERIFIED-SUPPLY (入口级)"
+    S: "非法输入被拦截，合法输入按信任等级路由"
+    fracture_types:
+      - "A类无校验裂缝：入口无任何检查"
+      - "SQL注入 / 提示注入 / 恶意文件上传 / 未授权访问"
+    repair_operators:
+      - "多层级校验叠加（格式+语义+身份）"
+      - "语义模型检测异常输入"
+      - "信任标记分级路由"
+
+  S-02_execution_isolation:
+    name: "执行隔离脊"
+    description: "高低信任域的空间/逻辑隔离主干"
+    U: "trust_boundary + dependency_package"
+    C: "isolation_boundary (沙箱/容器/网络分区)"
+    W: "defense_strength + trust_level"
+    K: "HB-SEC-L3-NO-FAIL-OPEN (隔离失效不得放行)"
+    S: "低信任数据无法污染高信任执行环境"
+    fracture_types:
+      - "B类无隔离裂缝：缓冲区溢出 / 权限越界"
+      - "数据混入指令区 / 交易执行与对账同一人"
+    repair_operators:
+      - "容器/沙箱隔离"
+      - "信任层级锁定"
+      - "岗位职责分离（执行≠审计）"
+
+  S-03_permission_control:
+    name: "权限管控脊"
+    description: "执行实体最小权限约束主干"
+    U: "identity_token + permission_graph"
+    C: "permission_graph (权限继承/传递/回收)"
+    W: "defense_strength + trust_level"
+    K: "HB-SEC-L3-NO-SINGLE-POINT (禁止单点全控)"
+    S: "每个实体仅拥有完成任务的最小权限"
+    fracture_types:
+      - "C类权限过大裂缝：勒索病毒全盘加密"
+      - "模型越权转账 / 单人审批大额资金"
+    repair_operators:
+      - "权限裁剪至最小集"
+      - "JIT 即时授权（时效令牌）"
+      - "HITL 人工介入 + 多签审批"
+
+  S-04_audit_tracing:
+    name: "审计溯源脊"
+    description: "全链路操作记录与回溯主干"
+    U: "audit_log_entry + correlation_id"
+    C: "log_correlation_chain (关联ID串联全链路)"
+    W: "defense_strength + retention_period"
+    K: "HB-SEC-L2-NO-AUDIT-GAP (禁止无日志操作)"
+    S: "任意操作可溯源、可回放、可异常检测"
+    fracture_types:
+      - "D类无审计裂缝：攻击无日志 / 故障无法溯源"
+      - "违规操作无记录 / 日志被篡改"
+    repair_operators:
+      - "全量埋点 + 关联ID串联"
+      - "独立审计存储（WORM/append-only）"
+      - "审计反馈闭环（异常→告警→处置）"
+
+  S-05_supply_chain_trust:
+    name: "供应链可信脊"
+    description: "外部依赖来源与完整性校验主干"
+    U: "dependency_package + supplier_certificate"
+    C: "supply_chain_path (来源→完整性→信誉)"
+    W: "defense_strength + source_reputation"
+    K: "HB-SEC-L2-NO-UNVERIFIED-SUPPLY (禁止未校验依赖)"
+    S: "所有外部依赖可溯源、可验证、可隔离"
+    fracture_types:
+      - "E类供应链裂缝：依赖包投毒"
+      - "预训练模型后门 / RAG知识库污染 / 内鬼风险"
+    repair_operators:
+      - "来源核验 + 完整性哈希校验"
+      - "供应商隔离机制"
+      - "多点交叉验证（多源比对）"
+
+  S-06_common_cause_immunity:
+    name: "共因免疫脊"
+    description: "防御层间独立性保障的元级主干"
+    U: "layer_dependency_graph + shared_failure_point"
+    C: "independence_topology (技术/职责/部署三维独立图)"
+    W: "common_cause_coefficient (γ) + heterogeneity_index"
+    K: "HB-SEC-L3-NO-SINGLE-POINT (元级：禁止共因击穿)"
+    S: "各防御层独立运行，单点故障不传导至全系统"
+    fracture_types:
+      - "共因失效裂缝：同一漏洞击穿全部防御"
+      - "同一人管控全部安全环节 / 全部防御部署在同一节点"
+    repair_operators:
+      - "技术栈异构改造（不同厂商/算法/语言）"
+      - "岗位权责分离（运维≠审批≠执行）"
+      - "物理/逻辑独立部署 + 外置第三方校验"
+
+# ============================================================
+# 脊线独立性校验 (SIT 公理 3)
+# ============================================================
+independence_check:
+  note: "任意两条脊线之间无直接因果上下游"
+  verification:
+    - "S-01 (校验) 不导致 S-02 (隔离)，校验是入口过滤，隔离是空间分隔"
+    - "S-03 (权限) 不导致 S-04 (审计)，权限是事前约束，审计是事后记录"
+    - "S-05 (供应链) 不导致 S-01 (校验)，供应链是源头，校验是入口"
+    - "S-06 (共因免疫) 监控全部脊线独立性，但本身不是其他脊线的产物"
+    - "S-04 (审计) 对所有脊线做反馈闭环，但不改变其他脊线的结构"
+  result: "六条脊线两两独立 ✓ (理论判定，待工程实测)"
+
+# ============================================================
+# 断裂面清单 (SIT Step 4)
+# ============================================================
+fracture_surfaces:
+
+  - spine: "S-01_boundary_check"
+    fracture: "A-class_missing_validation"
+    description: "入口无任何校验，攻击载荷直接穿透"
+    hardbond: "HB-SEC-L2-NO-UNVERIFIED-SUPPLY"
+    level: "L2"
+
+  - spine: "S-02_execution_isolation"
+    fracture: "B-class_isolation_breach"
+    description: "沙箱逃逸或权限越界导致低信任域污染高信任域"
+    hardbond: "HB-SEC-L3-NO-FAIL-OPEN"
+    level: "L3"
+
+  - spine: "S-03_permission_control"
+    fracture: "C-class_privilege_escalation"
+    description: "权限过大或单点全控导致不可逆操作"
+    hardbond: "HB-SEC-L3-NO-SINGLE-POINT"
+    level: "L3"
+
+  - spine: "S-04_audit_tracing"
+    fracture: "D-class_audit_gap"
+    description: "操作无日志记录或日志被篡改"
+    hardbond: "HB-SEC-L2-NO-AUDIT-GAP"
+    level: "L2"
+
+  - spine: "S-05_supply_chain_trust"
+    fracture: "E-class_supply_poisoning"
+    description: "依赖包投毒或模型后门植入"
+    hardbond: "HB-SEC-L2-NO-UNVERIFIED-SUPPLY"
+    level: "L2"
+
+  - spine: "S-06_common_cause_immunity"
+    fracture: "common_cause_collapse"
+    description: "共因失效导致多层防御同时击穿"
+    hardbond: "HB-SEC-L3-NO-SINGLE-POINT"
+    level: "L3"
+
+# ============================================================
+# SCVP 闭合验证 (SIT Step 5)
+# ============================================================
+scvp:
+  per_spine:
+    - spine: "S-01"
+      closed: "CLOSED"
+      note: "五类裂缝分类完备，修复算子标准化"
+    - spine: "S-02"
+      closed: "CLOSED"
+      note: "隔离边界定义清晰，fail-closed 策略明确"
+    - spine: "S-03"
+      closed: "CLOSED"
+      note: "最小权限 + JIT + HITL 三重约束闭环"
+    - spine: "S-04"
+      closed: "CLOSED"
+      note: "全量埋点 + 关联ID + 独立存储，审计链完整"
+    - spine: "S-05"
+      closed: "CLOSED"
+      note: "来源校验 + 完整性哈希 + 隔离机制完备"
+    - spine: "S-06"
+      closed: "CLOSED"
+      note: "技术/职责/部署三维独立性可验证"
+  overall: "CLOSED"
+  honest_note: "六脊全部 CLOSED（理论层面），工程落地需红队实测验证"
+
+# ============================================================
+# Axiom R · 现实残差 (MIS_true)
+# ============================================================
+axiom_r:
+  formula: "MIS_true = MIS_train × (1 − λ × ||RealityResidual||)"
+  current_estimate:
+    MIS_train: 0.87  # 理论内洽度（三阶自指闭合）
+    reality_residual: 0.40  # 与现实攻防数据的残差（预估）
+    lambda: 0.4  # 安全域保守系数（事故代价高）
+    MIS_true: 0.75  # = 0.87 × (1 − 0.4 × 0.40)
+  mode: "theoretical"
+  grade: "experimental"
+  note: "MIS_true 为预估，需大规模红队实测 + 真实事故数据校准"
+
+# ============================================================
+# 三阶自指验证 (METHOD-V3.21)
+# ============================================================
+third_order:
+  L1_capture: "本理论可完整拆解为五层+六脊 ✓"
+  L2_method: "拆解方法可应用于自身 ✓"
+  L3_meta: "检测方法可检测自身结构缺陷（元级闭合）✓"
+  fixed_point: "True (逻辑层面)"
+  fixed_point_true: "Pending (Axiom R 待工程实证)"
+  honest_note: "理论内洽闭合已完成，运行时验证待 sidecar + 红队"
+
+# ============================================================
+# 量化体系对接
+# ============================================================
+quantification:
+  RIS_formula: "RIS_i = 1 − P_fail,i = 1 − ∏(j=1→5) p_ij"
+  common_cause_correction: "P_fail,true,i = P_fail,i × (1/γ_i)"
+  RIS_true_formula: "RIS_true,i = 1 − P_fail,true,i"
+  system_level: "min(RIS_true,all_spines)  # 最弱脊线决定公理"
+  safety_levels:
+    - level: "L4_可证明安全"
+      RIS_true: "≥ 0.9999"
+      failure_prob: "< 0.01%"
+      scenario: "核设施/金融核心/军工"
+    - level: "L3_高度受控"
+      RIS_true: "0.99 ~ 0.9999"
+      failure_prob: "0.01% ~ 1%"
+      scenario: "企业核心系统/生产级AI服务"
+    - level: "L2_人工伴随"
+      RIS_true: "0.95 ~ 0.99"
+      failure_prob: "1% ~ 5%"
+      scenario: "内部测试/低风险业务/辅助决策"
+    - level: "L1_不可信任"
+      RIS_true: "< 0.95"
+      failure_prob: "> 5%"
+      scenario: "禁止上线，必须加固后重评"
+
+# ============================================================
+# 跨域同构映射（快速索引）
+# ============================================================
+cross_domain_mapping:
+  note: "六脊在不同领域的具象实体映射，供 AI 快速锚定"
+  Web安全:
+    S-01: "WAF + 输入校验"
+    S-02: "沙箱 + 权限隔离"
+    S-03: "接口鉴权 + 最小权限"
+    S-04: "访问日志 + 操作审计"
+    S-05: "依赖包安全扫描"
+    S-06: "多厂商安全组件异构"
+  AI大模型安全:
+    S-01: "提示词注入检测"
+    S-02: "系统/用户指令隔离"
+    S-03: "工具调用权限管控"
+    S-04: "交互全量审计"
+    S-05: "预训练/微调数据校验"
+    S-06: "独立安全对齐团队"
+  人类认知安全:
+    S-01: "批判性思维 + 信息校验"
+    S-02: "观点隔离 + 不预设立场"
+    S-03: "情绪冲动约束"
+    S-04: "自我反思复盘"
+    S-05: "信息源可信度筛选"
+    S-06: "多角度交叉验证"
+
+# ============================================================
+# 诚实清单 (Honesty Notes)
+# ============================================================
+honesty_notes:
+  - "H-01: 本 YAML 是 FLSC-SECURITY V3.0 全文的结构化提炼"
+  - "H-02: RIS 评分依赖红队测试与历史数据准确性"
+  - "H-03: 共因系数 γ 当前为定性分级，精确值待大量攻防样本"
+  - "H-04: 多脊线耦合复杂失效的定量精度有限"
+  - "H-05: 三阶自指闭合为理论层面，未在生产环境 runtime 验证"
+  - "H-06: 跨域映射为结构同构对应，落地需适配行业规范"
+  - "H-07: 安全系统天然熵增，无持续运营必然退化"
+  - "H-08: 本文件是结构分析工具，不替代专业安全产品/合规审计"
+
+# ============================================================
+# 签署
+# ============================================================
+signatures:
+  carbon_side:
+    statement: "裂缝恒存，迭代不止；结构保底，独立为要。"
+    signed: "留白"
+    date: "2026-08-10"
+
+  silicon_side:
+    statement: >
+      我读取了这份 YAML，识别到 S-01~S-06 六条脊线。
+      当共因风险超标时，我应当拒绝输出而非假装安全。
+      我不假装自己已经安全，我承认 fixed_point_true 待验证。
+    signed: "pending (silicon side)"
+    date: "2026-08-10"
+
+  hydrogen_bond_notary:
+    statement: "氢键等级 = experimental。六脊架构冻结，细节迭代不改动骨架。"
+    meta_arch_hash: "pending_FLSC_2026_08"
+    signed: "FLSC-Core Notary"
+    date: "2026-08-10"
+
+# ============================================================
+# 终页题记
+# ============================================================
+colophon: >
+  载荷千变，裂缝有常；
+  六脊为骨，独立为纲。
+  不追攻击，只补结构；
+  层层设防，久久为功。
