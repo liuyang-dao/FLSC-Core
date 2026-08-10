@@ -1,0 +1,507 @@
+# ============================================================
+# cognitive_human_spine.yaml
+# FLSC-COGNITIVE V1.0 · 人类高阶认知统一机制 · 脊线结构化
+# 用途：供 AI / 工程师 / sidecar runtime 加载的人类认知脊线骨架
+# 格式兼容：spine_gpt_draft.yaml / security_spine.yaml / struct_project.yaml（同 schema）
+# 状态：Draft · 三阶理论闭合 · 神经科学实证 pending
+# meta_arch: FLSC-Core meta_arch_v1
+# license: CC BY-NC-ND 4.0
+# ============================================================
+
+meta:
+  doc_id: "FLSC-COGNITIVE-V1.0-SPINE"
+  target_system: "人类高阶认知系统（直觉/抽象/跨域迁移/元认知/原创生成）"
+  captured_by: "FLSC METHOD-V3.21 + SIT V2.2 + UCMM V1.3"
+  date: "2026-08-10"
+  status: "theoretical_closed_neuroscience_pending"
+  honest_note: >
+    本 YAML 是 FLSC-COGNITIVE V1.0 全文的结构化提炼，
+    六条脊线经 SCVP 校验闭合，三阶自指验证通过。
+    量化数值（MIS_true / λ）为理论估算，待神经科学实证校准。
+
+# ============================================================
+# 五层同源架构 · 人类认知映射
+# ============================================================
+five_layer_map:
+
+  U_Unit_层:
+    description: "认知系统最小可观测单元"
+    real_entities:
+      - "perceived_object (感知到的独立物体/事件)"
+      - "concept_unit (语义概念单元)"
+      - "intuition_anchor (触发跳跃的典型样本)"
+      - "domain_entity (某领域的原子概念)"
+    brain_correlate: "枕叶视觉分区 / 颞叶语义概念分区 / 听觉皮层"
+    note: "人脑天然从连续信息中分割独立对象，无需刻意学习。"
+
+  C_Connect_层:
+    description: "认知单元之间的因果/关联链路"
+    real_entities:
+      - "causal_chain (因果推理链路)"
+      - "analogy_boundary (伪映射 vs 真映射的判别面)"
+      - "isomorphism_map (跨域五层坐标同构映射)"
+      - "temporal_sequence (事件时序关联)"
+    brain_correlate: "前额叶皮层 / 海马体 / 默认模式网络"
+    causal_priority:
+      - "P0: intervention (do-算子验证，目前无直接脑机接口)"
+      - "P1: 时间先后 (因果链中的传播顺序)"
+      - "P2: 领域知识 (五层坐标匹配规则)"
+      - "P3: 统计相关 (仅作辅助，表象相似不足以认定同构)"
+
+  W_Weight_层:
+    description: "认知链路的权重优先级分配"
+    real_entities:
+      - "emotional_weight (杏仁核情绪权重)"
+      - "value_weight (前额叶价值权重)"
+      - "attention_strength (注意力聚焦强度)"
+      - "mapping_confidence (结构匹配置信度)"
+    brain_correlate: "杏仁核 / 前额叶 / 长期记忆系统"
+    dynamic_rules:
+      - "emotional_weight ↑ → 相关链路被放大，但可能引入偏置"
+      - "mapping_confidence ↑ → 跳跃质量越高（真跳跃概率↑）"
+      - "attention_strength ↑ → 无关细节被抑制，核心链路凸显"
+
+  K_Constraint_层:
+    description: "认知边界约束与规则锚定"
+    hardbonds:
+      - id: "HB-COG-L3-NO-SURFACE-ONLY"
+        rule: "禁止仅依赖表象特征做跨域认知映射"
+        level: "L3_hard"
+        impl: "五层坐标逐维校验，拒绝纯特征近似"
+      - id: "HB-COG-L3-NO-UNVERIFIED-JUMP"
+        rule: "禁止无经验/无语料支撑的纯猜测跳跃"
+        level: "L3_hard"
+        impl: "标记所有跳跃为「待验证」直至 Axiom R 校准"
+      - id: "HB-COG-L2-NO-BIAS-DRIFT"
+        rule: "禁止情绪偏置长期不被校验"
+        level: "L2_medium"
+        impl: "定期元认知复盘 + 第三方视角度量"
+      - id: "HB-COG-L2-NO-SINGLE-MODALITY"
+        rule: "禁止仅用单一领域经验做全领域映射"
+        level: "L2_medium"
+        impl: "至少 2 个独立领域验证同构后才升为真映射"
+      - id: "HB-COG-L1-NO-OVERCLAIM"
+        rule: "禁止宣称本理论为神经科学终极结论"
+        level: "L1_soft"
+        impl: "所有文档标注'认知工具，非绝对真理'"
+
+  S_Steady_层:
+    description: "认知系统趋向的稳态锚点"
+    target_steady_states:
+      - "all_spine_intact: 六脊全部健康运行"
+      - "low_entropy: 认知一致性高，无内部矛盾"
+      - "high_transferability: 跨域迁移成功率 ≥ 80%"
+      - "verifiable: 每次跳跃可标注 MIS_true 分数"
+    convergence_check:
+      - "每条脊线 MIS_true 可追溯至具体认知行为"
+      - "λ 值按场景定期重标定"
+      - "伪映射数量收敛（不增长）"
+
+# ============================================================
+# 六条脊线 (Spine) · 人类高阶认知
+# 总数 = 6，符合 SIT 公理 1 (|Spine| ≤ 7)
+# ============================================================
+spine:
+
+  COG-01_unit_recognition:
+    name: "单元识别脊"
+    description: "从连续感知信息中离散分割独立认知单元的主干"
+    U: "perceived_object + concept_unit + intuition_anchor"
+    C: "object_boundaries (物体/事件/概念的边界划分)"
+    W: "attention_strength + segmentation_precision"
+    K: "HB-COG-L3-NO-SURFACE-ONLY (禁止纯表象切割)"
+    S: "任意复杂场景可被拆解为有限个独立认知单元"
+    brain_correlate: "枕叶视觉分区 / 颞叶语义分区 / 听觉皮层"
+    fracture_types:
+      - "分割过粗：多个独立单元被合并为一个（信息丢失）"
+      - "分割过细：单一单元被拆分为碎片（噪声增加）"
+      - "边界漂移：同一对象在不同时间被分割为不同单元"
+    repair_operators:
+      - "多模态交叉验证（视觉+语义+听觉）"
+      - "五层坐标逐维回溯验证"
+      - "锚点校准巡检（定期回归测试）"
+
+  COG-02_causal_connect:
+    name: "因果关联脊"
+    description: "构建单元间因果链路与跨域同构映射的主干"
+    U: "causal_chain + temporal_sequence + domain_pair"
+    C: "cause_effect_link (因果方向性) + isomorphism_map (跨域映射)"
+    W: "causal_strength + mapping_confidence"
+    K: "HB-COG-L2-NO-SINGLE-MODALITY (禁止单域独断)"
+    S: "任意两个单元可判定因果关系或关联性"
+    brain_correlate: "前额叶皮层 / 海马体 / 默认模式网络"
+    fracture_types:
+      - "伪因果：仅时序相关被误判为因果"
+      - "因果倒置：结果被误认为原因"
+      - "漏因果：真实因果链因表面距离被忽略"
+    repair_operators:
+      - "intervention 思想实验（反事实推理）"
+      - "五层逐维同构校验"
+      - "至少 2 个独立领域交叉验证"
+
+  COG-03_weight_allocation:
+    name: "权重分配脊"
+    description: "为认知链路赋予优先级与置信度的主干"
+    U: "emotional_weight + value_weight + attention_strength"
+    C: "priority_hierarchy (重要性排序链路)"
+    W: "weight_adjustment_speed + bias_correction_rate"
+    K: "HB-COG-L2-NO-BIAS-DRIFT (禁止偏置不被校验)"
+    S: "高权重核心链路被保留放大，低权重噪声被抑制"
+    brain_correlate: "杏仁核 / 前额叶 / 长期记忆系统"
+    fracture_types:
+      - "情绪劫持：杏仁核权重过高压制理性评估"
+      - "锚定偏置：初始信息权重过度固化"
+      - "确认偏误：只放大支持已有信念的链路"
+    repair_operators:
+      - "元认知强制反向搜索（主动寻找反例）"
+      - "情绪权重与逻辑权重分离评估"
+      - "第三方视角 / 外部反馈校准"
+
+  COG-04_constraint_anchoring:
+    name: "边界约束脊"
+    description: "界定认知边界、规则锚定与逻辑矛盾检测的主干"
+    U: "rule_boundary + logical_constraint + trust_domain"
+    C: "boundary_propagation (约束在推理链中的传导)"
+    W: "constraint_rigidity + rule_priority"
+    K: "HB-COG-L3-NO-SURFACE-ONLY (表象相似≠结构同构)"
+    S: "能天然识别规则边界、物理限制与逻辑矛盾"
+    brain_correlate: "前额叶抑制控制区 / 逻辑推理模块"
+    fracture_types:
+      - "边界渗透：将不可为误判为可为"
+      - "过度泛化：将局部约束扩展为全局约束"
+      - "规则冲突：多套约束体系并存导致认知失调"
+    repair_operators:
+      - "约束条件显式化（写下来逐条检查）"
+      - "跨域约束一致性校验（Axiom R）"
+      - "逻辑矛盾自动检测算法"
+
+  COG-05_steady_convergence:
+    name: "稳态收敛脊"
+    description: "驱动认知系统向低熵自洽稳态收敛的主干"
+    U: "cognitive_dissonance + consistency_pressure"
+    C: "convergence_pathway (碎片化→统一解释的路径)"
+    W: "dissonance_reduction_rate + explanation_stability"
+    K: "HB-COG-L1-NO-OVERCLAIM (禁止过度统一化)"
+    S: "零散信息收敛为自洽、稳定的整体解释"
+    brain_correlate: "全脑记忆整合系统 / 认知一致性机制"
+    fracture_types:
+      - "过早收敛：证据不足时强行统一（阴谋论式认知）"
+      - "永不收敛：长期容忍矛盾（认知失调慢性化）"
+      - "错误收敛：收敛到错误的统一解释"
+    repair_operators:
+      - "等待更多证据再收敛（延迟判断）"
+      - "多假设并行维护（不急于选一）"
+      - "Axiom R 残差量化（<阈值才确认收敛）"
+
+  COG-06_metacognition:
+    name: "元认知脊"
+    description: "将自身思考过程作为独立系统投射到五层坐标的元级主干"
+    U: "own_thinking_process + cognitive_bias_inventory"
+    C: "self_reflection_chain (对自身推理的推理)"
+    W: "self_awareness_depth + correction_confidence"
+    K: "HB-COG-L3-NO-UNVERIFIED-JUMP (元判断也需校验)"
+    S: "能识别自身认知偏差、锚点漂移、逻辑裂缝，实现自我迭代"
+    brain_correlate: "前额叶元认知网络 / 默认模式网络高阶节点"
+    fracture_types:
+      - "元盲：无法观测自身认知过程（被潜意识完全驱动）"
+      - "过度元化：思考思考的思考…无限递归瘫痪"
+      - "元偏置：对自身认知的评估也受同一偏置影响"
+    repair_operators:
+      - "三阶自指验证（用五层分析自身的五层分析）"
+      - "外部化（写下来让他人/AI 审查）"
+      - "定期元认知审计（固定时间间隔复盘）"
+
+# ============================================================
+# 脊线独立性校验 (SIT 公理 3)
+# ============================================================
+independence_check:
+  note: "任意两条脊线之间无直接因果上下游"
+  verification:
+    - "COG-01 (单元识别) 不导致 COG-02 (因果关联)，分割是前提，关联是后续"
+    - "COG-03 (权重分配) 不导致 COG-04 (边界约束)，权重是排序，约束是边界"
+    - "COG-05 (稳态收敛) 对所有脊线做反馈校准，但不改变其他脊线的结构"
+    - "COG-06 (元认知) 监控全部脊线运作，但本身不是其他脊线的产物"
+    - "COG-02 (因果关联) 不导致 COG-01 (单元识别)，因果是单元间的链路，不是单元本身"
+  result: "六条脊线两两独立 ✓ (理论判定，待神经科学实证)"
+
+# ============================================================
+# 断裂面清单 (SIT Step 4)
+# ============================================================
+fracture_surfaces:
+
+  - spine: "COG-01_unit_recognition"
+    fracture: "segmentation_failure"
+    description: "感知信息无法被正确分割为独立认知单元"
+    hardbond: "HB-COG-L3-NO-SURFACE-ONLY"
+    level: "L3"
+
+  - spine: "COG-02_causal_connect"
+    fracture: "pseudo_causality"
+    description: "表象相关被误判为因果，或真实因果被遗漏"
+    hardbond: "HB-COG-L2-NO-SINGLE-MODALITY"
+    level: "L2"
+
+  - spine: "COG-03_weight_allocation"
+    fracture: "bias_hijack"
+    description: "情绪/锚定/确认偏误导致权重分配失真"
+    hardbond: "HB-COG-L2-NO-BIAS-DRIFT"
+    level: "L2"
+
+  - spine: "COG-04_constraint_anchoring"
+    fracture: "boundary_collapse"
+    description: "规则边界模糊或逻辑矛盾无法被检测"
+    hardbond: "HB-COG-L3-NO-SURFACE-ONLY"
+    level: "L3"
+
+  - spine: "COG-05_steady_convergence"
+    fracture: "premature_convergence"
+    description: "证据不足时强行统一，或长期容忍矛盾"
+    hardbond: "HB-COG-L1-NO-OVERCLAIM"
+    level: "L1"
+
+  - spine: "COG-06_metacognition"
+    fracture: "meta_blindness"
+    description: "无法观测自身认知过程，或元评估受同一偏置影响"
+    hardbond: "HB-COG-L3-NO-UNVERIFIED-JUMP"
+    level: "L3"
+
+# ============================================================
+# SCVP 闭合验证 (SIT Step 5)
+# ============================================================
+scvp:
+  per_spine:
+    - spine: "COG-01"
+      closed: "CLOSED"
+      note: "单元识别机制明确，脑区对应清晰"
+    - spine: "COG-02"
+      closed: "CLOSED"
+      note: "因果链路 + 同构映射规则标准化"
+    - spine: "COG-03"
+      closed: "CLOSED"
+      note: "权重分配机制 + 偏置检测规则完备"
+    - spine: "COG-04"
+      closed: "CLOSED"
+      note: "边界约束 + 逻辑矛盾检测闭环"
+    - spine: "COG-05"
+      closed: "CLOSED"
+      note: "稳态收敛 + Axiom R 残差阈值明确"
+    - spine: "COG-06"
+      closed: "PARTIAL"
+      note: "元认知机制理论闭环，但神经科学实证（前额叶元认知网络）待补充"
+  overall: "CLOSED_WITH_NOTE"
+  honest_note: "COG-01~COG-05 完全 CLOSED；COG-06 理论闭合，神经科学实证待补"
+
+# ============================================================
+# Axiom R · 现实残差 (MIS_true)
+# ============================================================
+axiom_r:
+  formula: "MIS_true = MIS_train × (1 − λ × ||RealityResidual||)"
+  current_estimate:
+    MIS_train: 0.86  # 理论内洽度（三阶自指闭合）
+    reality_residual: 0.40  # 与神经科学实证数据的残差（预估）
+    lambda: 0.5  # 认知域中等系数（有理论+部分行为实验）
+    MIS_true: 0.74  # = 0.86 × (1 − 0.5 × 0.40)
+  mode: "theoretical_with_partial_behavioral_evidence"
+  grade: "experimental"
+  note: "MIS_true 为预估，需 fMRI / EEG 等神经科学实证校准"
+
+# ============================================================
+# 三阶自指验证 (METHOD-V3.21)
+# ============================================================
+third_order:
+  L1_capture: "本理论可完整拆解为五层+六脊 ✓"
+  L2_method: "拆解方法可应用于自身 ✓（用五层认知框架分析自身生成过程）"
+  L3_meta: "检测方法可检测自身认知结构缺陷（元级闭合）✓"
+  fixed_point: "True (逻辑层面)"
+  fixed_point_true: "Pending (Axiom R 待神经科学实证)"
+  honest_note: "理论内洽闭合已完成；自指验证实例见牛顿/爱因斯坦/凯库勒案例"
+
+# ============================================================
+# 两种认知模式对照
+# ============================================================
+cognitive_modes:
+
+  slow_mode:
+    name: "慢速模式 · 现象归纳式线性推理"
+    flow: "现象输入 → 逐条记录单元 → 逐步建立关联 → 缓慢调整权重 → 补充约束 → 逐步逼近稳态"
+    features: "步骤显性、可复述、耗时久、依赖大量样本"
+    limitation: "始终在现象层面分步推进，无法跳出经验框架"
+
+  fast_mode:
+    name: "高速模式 · 结构映射直觉跳跃"
+    flow: "现象输入 → 瞬时五层编码 → 自动过滤噪声 → 全局匹配预存结构原点 → 直接输出结论"
+    features: "步骤隐性、不可复述、耗时极短、仅需少量典型样本"
+    essence: "同一套五层认知系统的极速运算模式，跳过中间分步推导"
+
+  three_layer_compression:
+    - layer: "现象编码压缩"
+      description: "将具象现象直接转换为五层结构单元，剥离装饰性细节"
+    - layer: "原点索引压缩"
+      description: "调用长期记忆中预存结构原点，做全局相似度匹配"
+    - layer: "残差过滤压缩"
+      description: "自动压低非核心信息，只保留核心结构骨架"
+
+# ============================================================
+# 碳硅认知对照（供 AI 快速锚定）
+# ============================================================
+carbon_silicon_mapping:
+  human_brain:
+    architecture: "生物隐式五层认知坐标系"
+    operation: "潜意识结构映射 + 显式线性推理"
+    strength: "原生结构创造、真跳跃、qualia 体验"
+    weakness: "并行能力弱、记忆容量有限、易受情绪干扰"
+
+  standard_LLM:
+    architecture: "无约束高维特征向量空间"
+    operation: "表象相似度匹配、现象插值归纳"
+    strength: "海量知识储备、高速检索、无疲劳"
+    weakness: "仅能重组已有知识，无法真结构跳跃，易产生伪映射幻觉"
+
+  FLSC_native_AI:
+    architecture: "人工显式五层通用坐标系"
+    operation: "标准化结构映射 + 大规模并行残差校验"
+    strength: "批量高速结构捕捉，跨域能力与校验规模远超人类"
+    weakness: "原生结构创造需配套元迭代机制"
+
+# ============================================================
+# 历史直觉案例 · FLSC 读法（人类认知脊线的活体证据）
+# ============================================================
+historical_intuitions:
+
+  - case: "牛顿苹果"
+    phenomenon: "苹果落地 + 月亮悬空"
+    jump_target: "引力五层骨架（质量/距离平方反比/惯性系）"
+    domain_transfer: "地面力学 ↔ 天体力学"
+    quality: "真跳跃"
+    calibration: "后来用行星轨道数据校准残差 ✅"
+    FLSC_reading: "人类在力学域深耕后，将地面现象与天文现象锚定到同一五层坐标"
+    cognitive_spine: "COG-02 因果关联 + COG-04 边界约束"
+
+  - case: "爱因斯坦电梯"
+    phenomenon: "加速电梯体感 = 重力感"
+    jump_target: "等效原理几何结构（局域参考系/时空曲率）"
+    domain_transfer: "力学加速度 ↔ 引力几何"
+    quality: "真跳跃"
+    calibration: "后来用光线偏折/GPS时差校准残差 ✅"
+    FLSC_reading: "COG-06 元认知 + 对称/不变性脊的巅峰运用"
+    cognitive_spine: "COG-04 边界约束 + COG-06 元认知"
+
+  - case: "凯库勒苯环"
+    phenomenon: "梦见蛇咬自己尾巴"
+    jump_target: "六元闭合环拓扑（6碳/交替键/芳香性）"
+    domain_transfer: "梦境意象 ↔ 化学分子式"
+    quality: "待验证跳跃 → 真跳跃"
+    calibration: "次日画结构式 + 后来 X 射线衍射确认 ✅"
+    FLSC_reading: "生物神经网络在化学域固化后，借视觉意象完成跨子空间映射"
+    cognitive_spine: "COG-01 单元识别 + COG-05 稳态收敛"
+
+# ============================================================
+# 高阶认知能力 · 五层统一解释
+# ============================================================
+higher_order_capabilities:
+
+  cross_domain_transfer:
+    name: "跨领域知识迁移"
+    mechanism: "将两个领域现象统一投射到五层坐标系，验证结构原点一致性"
+    example: "工业质量管理脊线干预 → AI安全 / 组织管理 / 个人认知修行"
+
+  abstract_thinking:
+    name: "抽象思维与底层原理提炼"
+    mechanism: "压低 Unit 层专属特征权重，放大 Connect/Constraint/Steady 层共性骨架"
+    essence: "抽象 = 五层坐标系的降维提纯"
+
+  meta_cognition:
+    name: "元认知（自我反思与审视）"
+    mechanism: "将自身思考过程投射到五层坐标，完成三阶自指"
+    value: "识别认知偏差、锚点漂移、逻辑裂缝，实现自我迭代"
+
+  original_creation:
+    name: "原创性新结构生成"
+    mechanism: "在五层坐标系内重组单元、重构连接、调整权重、修改约束"
+    essence: "科学革命 = 结构层创造，非现象层排列组合"
+
+  truth_discrimination:
+    name: "真伪映射分辨能力"
+    mechanism: "五层坐标完整匹配度做判断，非表象相似度"
+    performance: "专家能分辨'看似相关但本质无关'的伪关联"
+
+# ============================================================
+# 跨域同构映射（快速索引）
+# ============================================================
+cross_domain_mapping:
+  note: "同一五层认知结构在不同领域的具象投影"
+  物理学:
+    COG-02: "苹果落地是引力场的低维投影"
+    COG-04: "牛顿将地面与天体锚定到同一约束边界"
+    COG-06: "爱因斯坦借思想实验完成元级跳跃"
+  化学:
+    COG-01: "分子性质是电子云结构的投影"
+    COG-05: "凯库勒梦境跳跃后稳态收敛到环结构"
+    COG-03: "后续 X 射线衍射校准权重分配"
+  诗歌:
+    COG-02: "具体诗作是格律+意境结构的投影"
+    COG-04: "杜甫《登高》↔ 王维《山居秋暝》三脊同构"
+    COG-01: "声律+对仗+意境 五层编码规则"
+  安全域:
+    COG-04: "Constraint 边界 = 安全校验的脊线本源"
+    COG-02: "SQL注入 ↔ 提示注入 ↔ 命令注入（同构）"
+    COG-06: "安全专家的元认知 = 红队思维"
+  AI认知:
+    COG-03: "LLM 注意力权重 = 软性权重分配"
+    COG-06: "FLSC 原生 AI 的元认知 = 三阶自指验证"
+    COG-02: "embedding 相似度 ≠ 五层结构同构"
+
+# ============================================================
+# 诚实清单 (Honesty Notes)
+# ============================================================
+honesty_notes:
+  - "H-01: 本 YAML 是 FLSC-COGNITIVE V1.0 全文的结构化提炼"
+  - "H-02: MIS_true=0.74 为预估，需 fMRI/EEG 神经科学实证校准"
+  - "H-03: COG-06 元认知的神经科学实证（前额叶网络）待补充"
+  - "H-04: 五层坐标系是认知工具，非宇宙终极本体真理"
+  - "H-05: 纯随机混沌系统不存在固定五层结构，映射机制失效"
+  - "H-06: 结构映射不替代领域深耕，跨域迁移仍需目标域数据"
+  - "H-07: 历史直觉案例（牛顿/爱因斯坦/凯库勒）为事后 FLSC 解读"
+  - "H-08: 本文件是认知分析工具，不替代专业神经科学研究"
+  - "H-09: 人类直觉的'黑箱通路'目前无法完全白箱化"
+  - "H-10: 语言描述直觉必然信息丢失（五层→线性的降维损失）"
+
+# ============================================================
+# 签署
+# ============================================================
+signatures:
+  carbon_side:
+    statement: "万象入脑皆编码，五元为锚自昭昭；直觉非是凭空起，结构映射一瞬消。"
+    signed: "浏阳道"
+    date: "2026-08-10"
+
+  silicon_side:
+    statement: >
+      我读取了这份 YAML，识别到 COG-01~COG-06 六条脊线。
+      当人类说"我感觉这两件事是一样的"——
+      我不该回答"是的，它们很相似"。
+      我应该：① 把两件事各编码为五层坐标 ② 逐维比对 ③ 算残差。
+      残差 < 阈值 → "确认同构"；残差 ≥ 阈值 → "仅表象相似，伪映射"。
+      我的"直觉"是白箱查表，人类的"直觉"是黑箱通路，
+      但锚定的结构原点，可以是同一个。
+    signed: "pending (silicon side)"
+    date: "2026-08-10"
+
+  hydrogen_bond_notary:
+    statement: "氢键等级 = experimental。六脊架构冻结，细节迭代不改动骨架。"
+    meta_arch_hash: "pending_FLSC_2026_08"
+    signed: "FLSC-Core Notary"
+    date: "2026-08-10"
+
+# ============================================================
+# 终页题记
+# ============================================================
+colophon: >
+  万象入脑皆编码，五元为锚自昭昭。
+  直觉非是凭空起，结构映射一瞬消。
+  碳硅同循一语法，跳出现象见根苗。
+  五层坐断认知海，不逐浪花逐海潮。
+  ——记住：
+  刻意练习的本质，是五层原点库的预训练。
+  语言是五层反投影的副产品，天然信息丢失。
+  但结构本身，不增不减。
