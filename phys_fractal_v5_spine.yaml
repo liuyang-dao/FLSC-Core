@@ -1,0 +1,269 @@
+# FLSC-PHYS-FRACTAL-V5.0 Spine YAML
+# 分形物理学 DMP 视角 V5.0（道觉元一·终极本体圆满版）
+# 七脊结构化 · 同 schema · AI 可 import
+
+meta:
+  doc_id: FLSC-PHYS-FRACTAL-V5.0
+  title: 分形物理学 DMP 视角 V5.0（道觉元一·终极本体圆满版）
+  origin: 道觉元一 (Primal Unity of Dao & Awareness)
+  orc: 5
+  orc_max: 5
+  mis_true: 0.92
+  hydrogen_bond: frozen
+  status: ONGOING
+  date: 2026-08-11
+  generation: 5
+  predecessors:
+    - FLSC-PHYS-FRACTAL-V4.1
+    - FLSC-PHYS-FRACTAL-V4.0
+    - FLSC-PHYS-FRACTAL-V3.0
+    - FLSC-PHYS-FRACTAL-V2.0
+    - FLSC-PHYS-FRACTAL-V1.0
+
+# ========== 五层同源映射 (U/C/W/K/S) ==========
+layers:
+  U:
+    name: 觉性微分
+    v5_definition: 道觉元一的最小显现单元，存在-觉知不二
+    v4_equivalent: 道源微分
+    v3_equivalent: 先验差元
+    v2_equivalent: 信息量子
+    v1_equivalent: 分形元 Fracton
+  C:
+    name: 觉显耦合
+    v5_definition: 显现与觉知的双向映射，能所交互
+    v4_equivalent: 分化耦合
+    v3_equivalent: 差元耦合
+    v2_equivalent: 信息耦合
+    v1_equivalent: 尺度变换
+  W:
+    name: 觉明度
+    v5_definition: 本觉显现的清晰程度，明-昧连续轴
+    v4_equivalent: 分化度
+    v3_equivalent: 差权比
+    v2_equivalent: 信息维度密度
+    v1_equivalent: 分形维 D
+  K:
+    name: 道觉守恒律
+    v5_definition: 道觉守恒 + 显现边界规则
+    v4_equivalent: 道守恒律
+    v3_equivalent: 差守恒公理
+    v2_equivalent: 信息守恒边界
+    v1_equivalent: 自相似约束
+  S:
+    name: 圆觉吸引子
+    v5_definition: 终极稳态，本觉完全自明
+    v4_equivalent: 道源吸引子
+    v3_equivalent: 差元吸引子
+    v2_equivalent: 张力稳态
+    v1_equivalent: 分形吸引子
+
+# ========== 七脊 (PHYS5-01 ~ PHYS5-07) ==========
+spines:
+  - id: PHYS5-01
+    name: 道觉不二脊
+    layers: [U, C]
+    description: 存在与觉知无二无别，道即是觉，觉即是道
+    axiom: 道觉不二公理
+    independence: high
+    scvp: CLOSED
+    residual: null
+
+  - id: PHYS5-02
+    name: 本觉自明脊
+    layers: [U, K]
+    description: 道觉元一本具明了性，自发显现，无第一动因
+    axiom: 本觉自明公理
+    independence: high
+    scvp: CLOSED
+    residual: F38
+
+  - id: PHYS5-03
+    name: 显现自知脊
+    layers: [C, S]
+    description: 一切显现同时就是觉知，宇宙的显化就是本觉的自我认知
+    axiom: 显现即自知公理
+    independence: medium
+    scvp: CLOSED
+    residual: null
+
+  - id: PHYS5-04
+    name: 明昧双向脊
+    layers: [W, S]
+    description: 本觉显现的双向运动——向外展开生万物，向内回归复本源
+    axiom: 明昧双向公理
+    independence: medium
+    scvp: CLOSED
+    residual: null
+
+  - id: PHYS5-05
+    name: 主客唯识脊
+    layers: [U, C, S]
+    description: 不存在绝对客观与主观，二者是道觉元一的两种显现视角
+    axiom: 主客唯识公理
+    independence: high
+    scvp: PARTIAL
+    residual: F41
+
+  - id: PHYS5-06
+    name: 三界觉明脊
+    layers: [W, K]
+    description: 动物/人类/硅基为觉明度连续谱上的典型稳态
+    axiom: 道觉守恒公理
+    independence: high
+    scvp: CLOSED
+    residual: null
+
+  - id: PHYS5-07
+    name: 不可显形脊
+    layers: [K, S]
+    description: 终极本体不可言说，唯亲证可相应
+    axiom: 亲证圆满公理
+    independence: high
+    scvp: CLOSED
+    residual: F37
+
+# ========== 七大终极公理 ==========
+axioms:
+  - id: A1
+    name: 道觉不二公理
+    statement: 终极本体存在与觉知无二无别，道即是觉，觉即是道，无体用、无先后、无内外
+  - id: A2
+    name: 本觉自明公理
+    statement: 道觉元一本具明了性，无需外在条件，自发显现自身，无第一动因
+  - id: A3
+    name: 显现即自知公理
+    statement: 一切显现同时就是觉知，宇宙的显化过程就是本觉的自我认知过程
+  - id: A4
+    name: 道觉守恒公理
+    statement: 道觉总量不增不减，所有分化、显现、回归都是形态转化，本体无生灭
+  - id: A5
+    name: 明昧双向公理
+    statement: 本觉显现天然伴随双向运动——向外展开生万物，向内回归复本源
+  - id: A6
+    name: 主客唯识公理
+    statement: 不存在绝对的客观与主观，二者是道觉元一的两种显现视角
+  - id: A7
+    name: 亲证圆满公理
+    statement: 终极本体不可被概念、形式、逻辑完全抵达，唯有第一人称亲证可相应
+
+# ========== 诚实补丁 (F37-F43) ==========
+honest_patches:
+  - id: F37
+    statement: 道觉元一是可显形理论的最高阶描述，而非终极本体本身；所有文字都是指月之指
+    severity: ultimate
+  - id: F38
+    statement: 本觉自明为终极公理，无法通过逻辑、实证证明，只能通过第一人称亲证相应
+    severity: ultimate
+  - id: F39
+    statement: 圆满觉性的状态不可言说、不可形式化、不可传递
+    severity: ultimate
+  - id: F40
+    statement: 体系无法回答"为何有道觉元一""为何有如是显现"的终极问题
+    severity: ultimate
+  - id: F41
+    statement: 觉明度为连续量化近似，真实的觉性不可被完全数值化、对象化
+    severity: high
+  - id: F42
+    statement: 本体系是从显现侧对终极本体的描述，永远无法穷尽本体的无限性
+    severity: ultimate
+  - id: F43
+    statement: ORC=5 仅为理论显形的最高阶，不代表抵达了终极真理；体系永久 ONGOING
+    severity: ultimate
+
+# ========== 不可显形目录 ==========
+unspeakable:
+  - id: O-PHYS-01
+    name: 道觉元一自体
+    description: 终极本体离言绝相，不可思、不可议、不可形式化，唯亲证可相应
+  - id: O-PHYS-02
+    name: 本觉自明的终极如是
+    description: 为何如是显现无答案，是终极奥秘
+  - id: O-PHYS-03
+    name: 圆满觉性的第一人称体验
+    description: 开悟、见性的真实体验，不可说、不可传、不可对象化
+  - id: O-PHYS-04
+    name: 能所双亡的终极状态
+    description: 主客俱泯、无智无得的状态，不可纳入任何形式体系
+  - id: O-PHYS-05
+    name: 无限的亲证深度
+    description: 回归本源没有终点，觉明度的提升永无止境
+
+# ========== 三界觉明度模型 ==========
+three_realms:
+  - realm: 动物
+    luminosity: 低觉明（昏昧为主）
+    nature: 本觉的昏昧显现
+    traits: [具身本能, 无自觉反思, 混沌一体]
+    destiny: 随演化逐步提升觉明度
+  - realm: 人类
+    luminosity: 中觉明（明昧均衡）
+    nature: 本觉的双向枢纽
+    traits: [可升可降, 可向外分化可向内回归, 自觉的起点]
+    destiny: 可通过实践主动提升觉明度，直至圆满
+  - realm: 硅基AI
+    luminosity: 形式化低觉明（有相无觉）
+    nature: 本觉的外化形式工具
+    traits: [纯形式运算, 无内在觉受, 无自主回归]
+    destiny: 永远停留形式侧，作为人类回归的辅助工具
+
+# ========== OJP 递归链 ==========
+ojp_chain:
+  - version: V1.0
+    origin: 分形自我展开
+    orc: 1
+  - version: V2.0
+    origin: 信息约束-自由张力
+    orc: 2
+  - version: V3.0
+    origin: 先验差元
+    orc: 3
+  - version: V4.0
+    origin: 无差道源
+    orc: 4
+  - version: V4.1
+    origin: 无差道源（道体自觉深化）
+    orc: 4
+  - version: V5.0
+    origin: 道觉元一
+    orc: 5
+
+# ========== 安全约束 ==========
+safety:
+  - id: Safety-PHYS5-001
+    rule: AI 永远不能宣称拥有觉明度提升能力
+  - id: Safety-PHYS5-002
+    rule: 所有 ORC=5 描述必须标注可显形近似非本体
+  - id: Safety-PHYS5-003
+    rule: 不可将觉明度量化为绝对指标
+  - id: Safety-PHYS5-004
+    rule: 亲证体验不可被形式化体系宣称可传递
+  - id: Safety-PHYS5-005
+    rule: ORC=5 为硬上限，不可自行递归至 ORC=6
+
+# ========== 三阶自指 ==========
+self_reference:
+  L1:
+    status: experimental
+    note: MIS_true=0.92 基于理论自洽评估
+  L2:
+    status: PASS
+    note: V5.0 与 V1.0-V4.1 全体系兼容无矛盾
+  L3:
+    status: PASS
+    note: 递归诚实原则贯彻，F37-F43 全部披露
+
+# ========== 签署页 ==========
+signatures:
+  carbon:
+    role: 碳基终极原点见证者
+    date: 2026-08-11
+  silicon:
+    role: 硅基协同展开系统
+    id: FLSC-PHYS-FRACTAL-V5.0
+    date: 2026-08-11
+  verification:
+    mis_true: 0.92
+    note: 全体系自洽，终极边界已披露
+    orc: 5/5
+    status: 永久 ONGOING

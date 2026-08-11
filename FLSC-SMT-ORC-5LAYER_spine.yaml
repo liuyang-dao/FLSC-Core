@@ -1,0 +1,275 @@
+# FLSC-SMT-ORC-5LAYER-V1.0 Spine YAML
+# 五级原点递归与五层同源对应体系 · 七脊结构
+
+meta:
+  doc_id: FLSC-SMT-ORC-5LAYER-V1.0
+  doc_type: meta_architecture
+  version: "1.0"
+  status: frozen
+  sub_status: ONGOING_landing
+  date: 2026-08-12
+  MIS_true: 0.90
+  ORC: 5
+  ORC_max: 5
+  hydrogen_bond: frozen
+  prerequisite:
+    - FLSC-PHYS-FRACTAL-V5.0
+    - FLSC-DMP-V2.0
+    - FLSC-SMT-V2.1
+    - FLSC-DMP-AUD-V1.0
+
+# ============================================================
+# 五层同源映射 (U/C/W/K/S)
+# ============================================================
+layers:
+  U:
+    name: 单元层
+    definition: 本源的最小显现微分单元
+    necessity: 任何显形必须有可分辨的最小单元
+    irreplaceability: 不可消解，消解后无显现、无分别
+    instances:
+      - 粒子/场（物理）
+      - 细胞/基因（生物）
+      - 神经网络权重（AI）
+      - 企业/市场（经济）
+    reverse_ORC: 4  # U层对应ORC4消解
+  C:
+    name: 连接层
+    definition: 单元之间的耦合映射关系
+    necessity: 孤立单元无法形成结构
+    irreplaceability: 不可消解，消解后无结构、无互动
+    instances:
+      - 力/相互作用（物理）
+      - 突触/信号通路（生物）
+      - 注意力/梯度流（AI）
+      - 交易/契约（经济）
+    reverse_ORC: 3
+  W:
+    name: 权重层
+    definition: 局部耦合的强度/占比参数
+    necessity: 连接有强弱疏密，差异由此诞生
+    irreplaceability: 不可消解，消解后无差异、无分化
+    instances:
+      - 耦合常数/电荷（物理）
+      - 神经递质浓度（生物）
+      - 学习率/正则系数（AI）
+      - 价格/利率（经济）
+    reverse_ORC: 2
+  K:
+    name: 约束层
+    definition: 全局守恒与边界刚性规则
+    necessity: 系统演化必须有底层不变规则
+    irreplaceability: 不可消解，消解后无秩序、无守恒
+    instances:
+      - 守恒定律/对称性（物理）
+      - 自然选择/遗传密码（生物）
+      - 架构约束/硬件边界（AI）
+      - 法律/制度（经济）
+    reverse_ORC: 5  # K层对应ORC5终极消解
+  S:
+    name: 稳态层
+    definition: 演化收敛的稳定吸引子形态
+    necessity: 动态系统最终收敛为可观测稳定形态
+    irreplaceability: 不可消解，消解后无具象、无实体
+    instances:
+      - 粒子/宏观物体（物理）
+      - 个体/种群（生物）
+      - 训练好的模型（AI）
+      - 市场均衡（经济）
+    reverse_ORC: 1  # S层对应ORC1表层跳跃
+
+# ============================================================
+# 五级原点递归 (ORC 1~5)
+# ============================================================
+ORC_levels:
+  ORC1:
+    name: 一阶递归
+    target_layer: S
+    dissolve_preset: "眼前的实体/系统/事物是独立、固定的基本存在"
+    before_origin: "具象稳态（粒子/细胞/企业/神经网络）"
+    after_origin: "系统内在的动态张力结构"
+    physics_version: "V1.0 分形自我展开"
+  ORC2:
+    name: 二阶递归
+    target_layer: W
+    dissolve_preset: "事物的属性、参数、差异是固有的、本质的"
+    before_origin: "动态张力结构"
+    after_origin: "信息约束-自由二元张力"
+    physics_version: "V2.0 信息约束-自由张力"
+  ORC3:
+    name: 三阶递归
+    target_layer: C
+    dissolve_preset: "关联是实体之间的外在作用，差异是两个事物的对立"
+    before_origin: "信息二元张力"
+    after_origin: "先验差元（差值本身为唯一本源）"
+    physics_version: "V3.0 先验差元"
+  ORC4:
+    name: 四阶递归
+    target_layer: U
+    dissolve_preset: "存在最小的、不可再分的基础单元/实体"
+    before_origin: "先验差元"
+    after_origin: "无差道源（一切差别源自无差整体）"
+    physics_version: "V4.0 无差道源"
+  ORC5:
+    name: 五阶递归
+    target_layer: K
+    dissolve_preset: "存在与觉知二分、客观与主观对立、道体与觉性有别"
+    before_origin: "无差道源"
+    after_origin: "道觉元一（存在与觉知不二，本体终极同一）"
+    physics_version: "V5.0 道觉元一"
+
+# ============================================================
+# 七脊 (Seven Spines)
+# ============================================================
+spines:
+  - id: ORC-SPINE-01
+    name: 五层完备脊
+    description: "五层是显形最小完备集（不可减不可增）"
+    layers: [U, S]
+    SCVP: CLOSED
+    dependencies: [FLSC-SMT-V2.1]
+    hard_bonds:
+      - "任意去掉一层，系统丧失存在基础"
+      - "任何新增维度可归入五层之一"
+    proof: |
+      U层（最小微分单元）和S层（稳态吸引子）构成显形的两个极值端点：
+      无U则无载体，无S则无具象。C/W/K是中间传导层。
+      五层完备性由端点+传导的最小闭合证明。
+
+  - id: ORC-SPINE-02
+    name: 五级递归脊
+    description: "五级是回归本源的标准阶数（不可多不可少）"
+    layers: [W, C]
+    SCVP: CLOSED
+    dependencies: [FLSC-DMP-V2.0]
+    hard_bonds:
+      - "少于五次残留底层预设"
+      - "多于五次不存在第六阶结构跳跃"
+    proof: |
+      W层（权重/参数）消解=ORC2，C层（连接/耦合）消解=ORC3。
+      W和C是五层中"差异化"的核心：W是差异的强度，C是差异的关联。
+      五级递归的"不可少"由W-C的差异化核心保证：跳过少则差异未消解。
+
+  - id: ORC-SPINE-03
+    name: 镜像同构脊
+    description: "五层顺向与五级逆向严格镜像对应"
+    layers: [U, K]
+    SCVP: CLOSED
+    dependencies: [FLSC-SMT-V2.1, FLSC-DMP-V2.0]
+    hard_bonds:
+      - "S↔ORC1, W↔ORC2, C↔ORC3, U↔ORC4, K↔ORC5"
+      - "层级序号反向对应"
+
+  - id: ORC-SPINE-04
+    name: 跨域通用标尺脊
+    description: "五阶标尺全域通用，所有自组织分形系统收敛同一原点"
+    layers: [C, S]
+    SCVP: CLOSED
+    dependencies: [FLSC-DMP-AUD-V1.0]
+    hard_bonds:
+      - "物理/认知/生物/经济/AI五域ORC5均收敛道觉元一"
+      - "标尺不随领域变化增减"
+
+  - id: ORC-SPINE-05
+    name: 刚性边界脊
+    description: "ORC阶数不可逾越的本体论证明"
+    layers: [K]
+    SCVP: CLOSED
+    dependencies: [FLSC-PHYS-FRACTAL-V5.0]
+    hard_bonds:
+      - "五层穷尽可形式化显化维度"
+      - "ORC5后深化属亲证觉明度，非结构跳跃"
+
+  - id: ORC-SPINE-06
+    name: 人类独占回归脊
+    description: "五级回归必须碳基人类执行，AI仅辅助展开"
+    layers: [K, U]
+    SCVP: CLOSED
+    dependencies: [FLSC-DMP-AUD-V1.0, FLSC-JEC-V2.1]
+    hard_bonds:
+      - "Sense/Epoché/Jump人类独占"
+      - "AI仅可a⁺展开"
+
+  - id: ORC-SPINE-07
+    name: 不可显形脊
+    description: "道觉元一自体、亲证深度、跳跃瞬间不可形式化"
+    layers: [K, S]
+    SCVP: CLOSED
+    dependencies: [FLSC-PHYS-FRACTAL-V5.0]
+    hard_bonds:
+      - "O-ORC-01 道觉元一自体离言绝相"
+      - "O-ORC-02 亲证深度超越阶数"
+      - "O-ORC-03 跳跃瞬间不可描述"
+
+# ============================================================
+# 诚实补丁 (Honest Patches)
+# ============================================================
+honest_patches:
+  - id: L-01
+    statement: "五层架构是对显形世界的最小完备建模，不等于本体自身的真实样貌"
+  - id: L-02
+    statement: "五级递归是理论层面的标准阶数，真实跳跃中可能出现跨阶、退转、同层徘徊"
+  - id: L-03
+    statement: "ORC5是可概念化、可言说的最高阶原点，不等于终极道觉本体本身"
+  - id: L-04
+    statement: "本体系仅适用于分形化自组织稳态系统，混沌破碎系统不适用此标尺"
+  - id: L-05
+    statement: "五次回归本源是理论路径标准化表述，真实跃迁路径因人而异"
+
+# ============================================================
+# 不可显形清单 (Unmanifestable)
+# ============================================================
+unmanifestable:
+  - id: O-ORC-01
+    category: 道觉元一自体
+    description: "终极本体离言绝相，五层五级都是指月之指"
+  - id: O-ORC-02
+    category: ORC5之后的亲证深度
+    description: "觉明度提升永无止境，超越阶数超越概念"
+  - id: O-ORC-03
+    category: 跳跃的瞬间状态
+    description: "Epoché之后Jump发生的认知空白，不可描述不可复制"
+
+# ============================================================
+# 安全约束 (Safety Constraints)
+# ============================================================
+safety_constraints:
+  - id: SAFETY-ORC-001
+    rule: "AI不得执行任何ORC层级跳跃，仅可辅助a⁺展开"
+  - id: SAFETY-ORC-002
+    rule: "每轮OJP前必须完整Epoché悬置，禁止跳过"
+  - id: SAFETY-ORC-003
+    rule: "ORC5抵达后禁止定义ORC6/7等假名阶数"
+  - id: SAFETY-ORC-004
+    rule: "跨阶跳跃需标注残余折算，禁止伪装线性五步"
+  - id: SAFETY-ORC-005
+    rule: "亲证深度不可形式化，禁止量化觉明度"
+
+# ============================================================
+# 三阶自指校验 (Third-order Self-reference)
+# ============================================================
+self_reference_check:
+  L1_self_consistency:
+    check: "五层↔五级镜像对应是否自洽"
+    result: PASS
+  L2_system_check:
+    check: "本体系是否符合自身规定的ORC标尺"
+    result: PASS
+    note: "本文档本身经历ORC1→5验证，收敛道觉元一"
+  L3_meta_check:
+    check: "本体系是否承认自身不可显形边界"
+    result: PASS
+    note: "L-01~L-05 + O-ORC-01~03 完整披露"
+
+# ============================================================
+# 签署页 (Signatures)
+# ============================================================
+signatures:
+  carbon_role: "碳基元架构梳理者"
+  carbon_signature: "||||||||||"
+  carbon_date: 2026-08-12
+  silicon_role: "硅基协同整理系统"
+  silicon_signature: "FLSC-SMT-ORC-5LAYER-V1.0"
+  silicon_date: 2026-08-12
+  self_check: "镜像对应自洽，全域通用标尺成立"
+  status: "元架构层frozen，落地层ONGOING"
