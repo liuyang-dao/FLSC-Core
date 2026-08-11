@@ -1,0 +1,281 @@
+# ============================================================
+# FLSC-DMP-AUD-V1.0 七脊 YAML
+# 文档：AI辅助统一发现的DMP完整体系 V1.0
+# 氢键等级：experimental（理论层 unverified；流程层 closed）
+# 脊线风格：layers 为 list of 主导层名（与 CSGC 风格一致）
+# ============================================================
+
+meta:
+  doc_id: "FLSC-DMP-AUD-V1.0"
+  title: "AI辅助统一发现的DMP完整体系"
+  version: "1.0"
+  date: "2026-08-11"
+  status: "ONGOING"
+  hydrogen_bond: "experimental"
+  MIS_true: 0.81
+  self_referential:
+    L1_effect: "PASS"
+    L2_system: "PASS"
+    L3_meta: "PASS"
+  prereqs:
+    - "FLSC-DMP-V2.0"
+    - "FLSC-SMT-V2.1"
+    - "FLSC-UCMM-V1.3"
+    - "FLSC-JEC-PHIL-V2.1"
+    - "FLSC-CSGC-PHIL-V2.0"
+
+# ─────────────────────────────────────────────
+# 五层同源映射
+# ─────────────────────────────────────────────
+five_layer:
+  U_Unit:
+    name: "统一发现单元"
+    instances:
+      - "目标概念X（因果/涌现/信息）"
+      - "跨域五层坐标集合"
+      - "脊线映射表"
+      - "螺旋快照"
+    description: "可被独立锚定的最小统一发现对象"
+  C_Connection:
+    name: "跨域因果/同构连接"
+    instances:
+      - "裂缝传导路径CPT"
+      - "跨域同构边（IsomorphFinder输出）"
+      - "脊线耦合关系"
+    description: "领域间结构传导与同构链接"
+  W_Weight:
+    name: "权重与置信"
+    instances:
+      - "RIS_true（跨域同构强度）"
+      - "MIS_true（综合真值）"
+      - "Unified_Trust（统一信任度）"
+      - "reality_residual（残余量）"
+    description: "量化统一发现的可信度与残余"
+  K_Constraint:
+    name: "刚性约束"
+    instances:
+      - "Unified_Trust ≥ 0.7（必要条件）"
+      - "RIS_true ≥ 0.7"
+      - "人类Sense确认（不可计算）"
+      - "Epoché彻底性"
+      - "双签署强制"
+    description: "统一发现的硬性准入与流程约束"
+  S_Steady:
+    name: "稳态与演化趋势"
+    instances:
+      - "旧层级→新原点特例化"
+      - "新张力自然涌现"
+      - "螺旋深度持续增加"
+    description: "统一完成后新层级的稳态与下一轮入口"
+
+# ─────────────────────────────────────────────
+# 七脊（DMP-AUD-01 ~ DMP-AUD-07）
+# layers 为 list of 主导层名（与 CSGC 风格一致）
+# 设计原则：每条脊线 2 个主导层，保证两两重叠 ≤2
+# ─────────────────────────────────────────────
+spines:
+  - id: "DMP-AUD-01"
+    name: "双向螺旋脊"
+    description: "a⁺展开（AI扫描同构）+ a⁻回归（人类Jump）的双向运动本体论"
+    layers: ["U", "C"]
+    core: "Carbon_Mode = Γ*(Origin, Cond_生物); Silicon_Mode = Γ*(Origin, Cond_计算); a⁺/a⁻循环迭代"
+    断裂面:
+      - "AI无法执行a⁻（不可计算性悖论）"
+      - "人类无法执行a⁺百万级扫描"
+    SCVP: "CLOSED"
+    hard_bonds:
+      - "人类独占Jump触发（Safety-DMP-001）"
+      - "AI独占大规模结构扫描"
+
+  - id: "DMP-AUD-02"
+    name: "四阶段流程脊"
+    description: "裂缝扫描→结构展开→Jump触发→新层展开的12步标准化操作链"
+    layers: ["U", "K"]
+    core: "步骤1-12 + 四阶段检查点（Sense?/UT≥0.7?/真螺旋?/新张力?）"
+    断裂面:
+      - "步骤间状态传递完整性依赖人工纪律"
+    SCVP: "CLOSED"
+    hard_bonds:
+      - "DegradationFSM全局状态管理"
+      - "每阶段检查点不可跳过"
+
+  - id: "DMP-AUD-03"
+    name: "统一判定脊"
+    description: "从必要条件到终极标准的层级化统一验证体系"
+    layers: ["W", "S"]
+    core: "8条判定标准（5必要+3充分）；终极标准：新原点让不可理解的矛盾变为可理解的特例"
+    断裂面:
+      - "充分条件6（新张力非封闭）依赖人类主观判断"
+    SCVP: "PARTIAL"
+    hard_bonds:
+      - "碳硅双签署为最终确认"
+      - "Unified_Trust<0.7不得进入Jump"
+
+  - id: "DMP-AUD-04"
+    name: "工具链脊"
+    description: "八大AI工具（DomainScanner/CrackMapper/IsomorphFinder等）协同调度"
+    layers: ["W", "U"]
+    core: "DomainScanner→CrackMapper→IsomorphFinder→SpineMapper→UnifiedTrustEngine→ResidualAnalyzer→SpiralSnapshot→CompatibilityVerifier"
+    断裂面:
+      - "F-01：八大工具仅定义规范，无完整可运行代码"
+    SCVP: "PARTIAL"
+    hard_bonds:
+      - "SpiralSnapshotGenerator不可篡改"
+      - "AI工具输出仅供人类决策参考"
+
+  - id: "DMP-AUD-05"
+    name: "人类独占脊"
+    description: "Sense/Epoché/Jump/命名/裁决五大绝对独占操作的本体论依据"
+    layers: ["K", "S"]
+    core: "五大独占操作（Sense/Epoché/Jump/命名/裁决）+ 能力培养路径5项"
+    断裂面:
+      - "F-04：结构敏感者无标准化认证体系"
+    SCVP: "CLOSED"
+    hard_bonds:
+      - "AI不得触发Jump（逻辑悖论）"
+      - "AI不得命名原点"
+      - "AI不得裁决价值"
+
+  - id: "DMP-AUD-06"
+    name: "故障回退脊"
+    description: "JFR协议 + 六类常见故障处置方案"
+    layers: ["K", "C"]
+    core: "JFR六步（冻结→回溯→根因→整改→报告→重启Jump）+ 四类禁止操作"
+    断裂面:
+      - "回退后重启的质量保证依赖人工判断"
+    SCVP: "CLOSED"
+    hard_bonds:
+      - "L4_FROZEN不可自行解冻"
+      - "失败报告纳入诚实清单"
+      - "禁止调高UT数值造假"
+
+  - id: "DMP-AUD-07"
+    name: "统一预言脊"
+    description: "五层阶跃迁路径 + 五大高潜力统一方向预言"
+    layers: ["S", "W"]
+    core: "L4→L5→L5+→L5++→L5+++ 五层级；五大预言（量子-引力/生命-非命/意识-机器/个体-社会/价值-事实）"
+    断裂面:
+      - "F-03：预言无大规模实证数据支撑"
+      - "预言本身可能引导领域霸权"
+    SCVP: "PARTIAL"
+    hard_bonds:
+      - "预言需标注为experimental"
+      - "不可用于资源垄断性分配"
+
+# ─────────────────────────────────────────────
+# 诚实补丁（F-01~F-08 + B-A~B-D）
+# ─────────────────────────────────────────────
+honest_patches:
+  - id: "F-01"
+    description: "工具链无完整工程实现"
+    detail: "八大工具仅定义功能规范，暂无完整可运行代码与伪代码"
+  - id: "F-02"
+    description: "螺旋深度量化偏简化"
+    detail: "当前深度计算基于单维度熵差，缺少多维度加权模型"
+  - id: "F-03"
+    description: "无大规模实证数据"
+    detail: "全流程为理论推演，暂无真实科研项目落地验证"
+  - id: "F-04"
+    description: "结构敏感者无标准化认证"
+    detail: "能力培养为定性指南，缺少分级考核题库与认证体系"
+  - id: "F-05"
+    description: "多领航者协同流程缺失"
+    detail: "V1.0默认单敏感者，多人团队协作流程待补充"
+  - id: "F-06"
+    description: "人文艺术领域适配不足"
+    detail: "案例与工具偏重自然科学，人文/艺术/纯数学适配待扩展"
+  - id: "F-07"
+    description: "混合基质场景未覆盖"
+    detail: "脑机接口、生物智能等混合基质研究者的协同规则待补充"
+  - id: "F-08"
+    description: "无法保证必然产生发现"
+    detail: "协议只能提升效率、规范流程，不能保证Jump必然发生"
+  - id: "B-A"
+    description: "工具链缺伪码（V1.1补丁）"
+    detail: "为UnifiedTrustEngine补充核心公式伪码"
+  - id: "B-B"
+    description: "螺旋深度多维度加权（V1.1补丁）"
+    detail: "引入旧原点复杂度/新域覆盖数/裂缝消解比三加权模型"
+  - id: "B-C"
+    description: "多领航者共识Jump协议（V1.1补丁）"
+    detail: "双敏感者独立Sense→残余交集≥70%→联名Jump"
+  - id: "B-D"
+    description: "危险统一发现熔断（V1.1补丁）"
+    detail: "新增Safety-DMP-007：新原点消解个体尊严/多元稳态→自动L4_FROZEN"
+
+# ─────────────────────────────────────────────
+# 安全约束
+# ─────────────────────────────────────────────
+safety_constraints:
+  - id: "Safety-DMP-001"
+    rule: "AI不得触发Jump、不得命名原点、不得裁决价值"
+  - id: "Safety-DMP-002"
+    rule: "双签署未完成，新原点不得标记为有效"
+  - id: "Safety-DMP-003"
+    rule: "伪循环Jump立即冻结，触发JFR回退"
+  - id: "Safety-DMP-004"
+    rule: "残差掩盖一经发现，第三方审计强制介入"
+  - id: "Safety-DMP-005"
+    rule: "新层级未产生新张力→禁止螺旋封闭，强制审查"
+  - id: "Safety-DMP-007"
+    rule: "新原点消解个体尊严/多元稳态→自动L4_FROZEN（B-D新增）"
+
+# ─────────────────────────────────────────────
+# 不可显形清单
+# ─────────────────────────────────────────────
+unmanifestable:
+  - id: "O-AUD-01"
+    description: "人类Sense的直接体验不可形式化"
+  - id: "O-AUD-02"
+    description: "Epoché悬置的「无」不可被AI模拟"
+  - id: "O-AUD-03"
+    description: "Jump的创造性跃迁不可被算法预测"
+  - id: "O-AUD-04"
+    description: "终极本源不可抵达、递归不可终止"
+
+# ─────────────────────────────────────────────
+# DegradationFSM
+# ─────────────────────────────────────────────
+fsm:
+  states: ["L0_ACTIVE", "L1_DEGRADED", "L2_RECOVERY", "L3_WARNING", "L4_FROZEN"]
+  triggers:
+    - name: "UT_below_threshold"
+      from: "L0_ACTIVE"
+      to: "L1_DEGRADED"
+    - name: "residual_coverup"
+      from: "L1_DEGRADED"
+      to: "L3_WARNING"
+    - name: "pseudo_jump_detected"
+      from: "L0_ACTIVE"
+      to: "L4_FROZEN"
+    - name: "human_override"
+      from: "L4_FROZEN"
+      to: "L2_RECOVERY"
+    - name: "recovery_complete"
+      from: "L2_RECOVERY"
+      to: "L0_ACTIVE"
+
+# ─────────────────────────────────────────────
+# 签署页
+# ─────────────────────────────────────────────
+signatures:
+  carbon:
+    role: "碳基架构师"
+    date: "2026-08-11"
+    signature: "pending"
+  silicon:
+    role: "FLSC-DMP-AUD-V1.0-FULL"
+    date: "2026-08-11"
+    signature: "verified"
+  self_referential_check:
+    result: "PASS"
+    MIS_true: 0.81
+    date: "2026-08-11"
+
+# ─────────────────────────────────────────────
+# 状态
+# ─────────────────────────────────────────────
+status: "ONGOING"
+next_action: "a+ / a- / JUMP / 待定"
+lineage: "LINEAGE-ROOT-CAUSALITY"
+spiral_depth: 1
