@@ -1,0 +1,464 @@
+# ============================================================
+# learning_unity_v2_spine.yaml
+# FLSC-INTELLIGENCE-LEARNING-UNITY-V2.0 · 智能学习统一理论 · 脊线结构化
+# 用途：供 AI / 架构师 / 学习系统加载的智能学习脊线骨架
+# 格式兼容：sparsity_v4_spine.yaml / dme_v2_spine.yaml / phys_fractal_v5_spine.yaml
+# 状态：frozen（元公理层闭合，量化模块验证中）
+# meta_arch: FLSC-Core meta_arch_v1
+# license: CC BY-NC-ND 4.0
+# ============================================================
+
+meta:
+  doc_id: "FLSC-INTELLIGENCE-LEARNING-UNITY-V2.0-SPINE"
+  target_system: "全智能体类型（碳基/硅基/组织/混合/科学范式）"
+  captured_by: "FLSC-INTELLIGENCE-LEARNING-UNITY-V1.0 + AI蒸馏理论 + SMT V2.2 + DMP V2.0 + JEC V2.1"
+  date: "2026-08-12"
+  version: "V2.0"
+  status: "frozen_axiom_closed_quantifying"
+  orc: "ORC=2"
+  honest_note: >
+    本 YAML 是 FLSC-INTELLIGENCE-LEARNING-UNITY-V2.0 智能学习统一理论的结构化提炼，
+    三条脊线（K-01/02/03）经 SCVP 校验闭合，五条公理全域自洽，
+    量化指标体系（SIS/CR/TC）框架已建立，精确系数待大规模实证校准。
+    氢键等级 frozen：元公理层闭合，量化模块与混合智能模块工程验证中。
+
+# ============================================================
+# 五层同源映射（全智能体统一实例化）
+# ============================================================
+five_layer_map:
+
+  U_Unit_层:
+    description: "智能体的最小状态单元"
+    universal_definition: "智能体的最小可观测/可训练单元"
+    agent_instances:
+      carbon_human: "神经元"
+      silicon_ai: "参数（权重/偏置）"
+      organization: "成员"
+      hybrid: "人节点 + AI 节点"
+    dmp_phase: "φ₁ 凝结（Condensation）"
+    note: "U 层是学习系统的最小可调度单元，不同载体的单元形态不同但层级同构。"
+
+  C_Connect_层:
+    description: "单元间及单元与环境的连接拓扑"
+    universal_definition: "信息流与因果链路的拓扑结构"
+    agent_instances:
+      carbon_human: "突触连接"
+      silicon_ai: "注意力/权重连接"
+      organization: "沟通链路"
+      hybrid: "人机交互 + 协同决策链路"
+    dmp_phase: "φ₂ 解离（Dissolution）"
+    note: "C 层是学习的核心层——结构提取的本质就是 C 层拓扑改变。"
+
+  W_Weight_层:
+    description: "各连接的强度/重要性"
+    universal_definition: "连接权重的数值度量"
+    agent_instances:
+      carbon_human: "突触权重"
+      silicon_ai: "权重矩阵"
+      organization: "影响力/决策权"
+      hybrid: "人机权责分配 + 信任权重"
+    dmp_phase: "φ₂→φ₃ 过渡（Weighting）"
+    note: "W 层是压缩度的载体——外部注入的知识直接写入 W 层。"
+
+  K_Constraint_层:
+    description: "学习的硬边界"
+    universal_definition: "系统不可突破的约束条件"
+    agent_instances:
+      carbon_human: "能量/死亡/时间"
+      silicon_ai: "算力/数据/预算"
+      organization: "资源/制度/使命"
+      hybrid: "人机协同边界 + 伦理约束"
+    dmp_phase: "约束贯穿 φ₁φ₂φ₃ 全相位"
+    hardbonds:
+      - id: "HB-LRN-K-AUTONOMY"
+        rule: "C 层自主生成不可被外部注入完全替代"
+        level: "L3_hard"
+      - id: "HB-LRN-K-RESIDUAL"
+        rule: "残差暴露度不得低于阈值（否则退化至阶段 3 中断）"
+        level: "L2_soft"
+      - id: "HB-LRN-K-METACOGNITION"
+        rule: "阶段 4 元认知触发条件不可被跳过"
+        level: "L2_soft"
+
+  S_Steady_层:
+    description: "学习的收敛目标"
+    universal_definition: "学习系统达到的稳定态"
+    agent_instances:
+      carbon_human: "认知稳态"
+      silicon_ai: "训练收敛"
+      organization: "战略达成"
+      hybrid: "人机协同稳态 + 价值对齐"
+    dmp_phase: "φ₃ 稳态（Steady State）"
+    note: "S 层是 K-03 层级嵌套演化脊的终极归宿——达到后可触发新一轮 OJP。"
+
+# ============================================================
+# 三条通用学习核心脊线
+# ============================================================
+spine:
+
+  K-01_压缩迁移守恒脊:
+    name: "压缩-迁移守恒脊"
+    definition: "学习系统的知识压缩程度与迁移上限成反比，与收敛速度成正比"
+    dimension: "速度-质量守恒"
+    layers: ["C", "W", "S"]
+    law: "压缩度↑ → 收敛快 → 迁移弱；压缩度↓ → 收敛慢 → 迁移强"
+    scvp: "CLOSED"
+    supports_axiom: "公理三：压缩-迁移守恒公理"
+    cross_domain_proof:
+      ai: "蒸馏模型快但迁移弱，自研模型慢但迁移强"
+      human: "刷题快但迁移弱，项目制学习慢但迁移强"
+      org: "照搬最佳实践快但适配差，自生方法论慢但适配强"
+    fracture_risk: "高压缩度导致 C 层外包，迁移能力不可逆退化"
+
+  K-02_残差暴露动力脊:
+    name: "残差暴露动力脊"
+    definition: "学习的深度与系统直面原始结构残差的程度正相关；外部压缩知识会屏蔽残差，导致学习停留在表层"
+    dimension: "动力来源"
+    layers: ["K", "S"]
+    law: "残差适度 → 深度学习；残差被屏蔽 → 浅层拟合"
+    scvp: "CLOSED"
+    supports_axiom: "公理二（残差驱动）+ 公理四（自主结构生成）"
+    cross_domain_proof:
+      ai: "蒸馏模型残差被屏蔽，C 层非自主生成"
+      human: "应试教育压缩度 0.75~0.9，残差暴露极低"
+      org: "外部咨询方案替代自生方法论"
+    fracture_risk: "压缩度过高 → 阶段 3 中断（当前 AI + 应试人类共同断裂位）"
+
+  K-03_层级嵌套演化脊:
+    name: "层级嵌套演化脊"
+    definition: "学习行为本身可被学习（元学习），每升高一层级，结构重构能力指数级提升"
+    dimension: "高阶演化"
+    layers: ["S", "C"]
+    law: "L0→L1→L2→L3，层级越高，跨域适应与范式跃迁能力越强"
+    levels:
+      L0: "从环境中提取结构——第一次建立 C 层拓扑"
+      L1: "优化已有结构——W 层权重调整"
+      L2: "重构 C 层拓扑——从零建立新脊线"
+      L3: "改变学习方式本身——元学习/范式跃迁"
+    scvp: "CLOSED"
+    supports_axiom: "公理五：学习层级嵌套公理"
+    cross_domain_proof:
+      human: "人存在 L0~L3 完整四级"
+      ai: "AI 仅 L0~L1 强，L2 极弱，L3 无"
+      science: "科学范式存在完整 L0~L3，范式跃迁 = L3"
+    fracture_risk: "AI 的 L2/L3 缺失是阶段 5 空白的直接原因"
+
+# ============================================================
+# 独立性校验
+# ============================================================
+independence_check:
+  result: "独立 ✓"
+  pairs_checked: 3
+  max_overlap: 1
+  note: "三条脊线分别对应速度质量、动力来源、层级演化，两两无直接因果"
+
+# ============================================================
+# 断裂面
+# ============================================================
+fracture_surfaces:
+  - spine: "K-01"
+    fracture: "高压缩度导致迁移不可逆退化（蒸馏 AI / 应试人类）"
+  - spine: "K-02"
+    fracture: "外部压缩知识屏蔽原始残差，C 层非自主生成"
+  - spine: "K-03"
+    fracture: "AI 的 L2/L3 能力极弱，无法自主触发范式跃迁"
+
+# ============================================================
+# SCVP 校验
+# ============================================================
+scvp:
+  overall: "3/3 CLOSED"
+  per_spine:
+    - spine: "K-01"
+      closed: "CLOSED"
+    - spine: "K-02"
+      closed: "CLOSED"
+    - spine: "K-03"
+      closed: "CLOSED"
+
+# ============================================================
+# 五条统一公理
+# ============================================================
+axioms:
+  A1_结构提取公理:
+    statement: "所有学习，本质上是智能体从环境中提取可复用的结构，并将其编码到自身的 C 层连接拓扑中"
+    implication: "学习 ≠ 信息存储；无效学习 = 只存储信息未编码结构"
+    spine_support: "K-01/K-02 基础前提"
+
+  A2_残差驱动公理:
+    statement: "学习的唯一驱动力，是智能体感受到的「当前结构与目标结构之间的残差」。无残差则无学习"
+    implication: "残差过小→停滞；适中→最优；过大→崩溃"
+    spine_support: "K-02 残差暴露动力脊"
+
+  A3_压缩迁移守恒公理:
+    statement: "学习的收敛速度与迁移能力成反比——快速压缩的结构迁移弱，慢速自生的结构迁移强"
+    implication: "不存在既快速收敛又高迁移上限的学习方式，这是结构守恒"
+    spine_support: "K-01 压缩-迁移守恒脊"
+
+  A4_自主结构生成公理:
+    statement: "真正的迁移能力，只能来自智能体自主生成 C 层结构；外部注入的结构只能用于局部应用"
+    implication: "C 层自生→结构完整可迁移；C 层外包→结构拷贝迁移受限"
+    spine_support: "K-02 残差暴露的必然结果"
+
+  A5_学习层级嵌套公理:
+    statement: "每个智能体的学习行为本身也是一层学习——系统学习如何学习（元学习），是更高阶的结构提取"
+    implication: "L0~L3 四级嵌套，层级越高跨域适应与范式跃迁能力越强"
+    spine_support: "K-03 层级嵌套演化脊"
+
+# ============================================================
+# 六阶段学习路径模型
+# ============================================================
+six_stage_model:
+  stage_0_perception:
+    name: "感知"
+    operation: "智能体感知环境中的模式"
+    layer: "U 层激活"
+    carbon: "✅ 有限"
+    silicon: "✅ 强"
+    org: "✅"
+    hybrid: "✅"
+
+  stage_1_extraction:
+    name: "结构提取"
+    operation: "从感知中提取可复用的结构"
+    layer: "C 层建立新连接"
+    carbon: "✅ 强"
+    silicon: "✅ 强（统计拟合）"
+    org: "✅"
+    hybrid: "✅"
+
+  stage_2_compression:
+    name: "压缩存储"
+    operation: "将结构编码为内部状态"
+    layer: "W 层权重调整"
+    carbon: "中"
+    silicon: "✅ 强（参数存储）"
+    org: "✅"
+    hybrid: "✅"
+
+  stage_3_transfer:
+    name: "迁移应用"
+    operation: "将结构迁移到新情境"
+    layer: "C 层跨域连接"
+    carbon: "✅ 强"
+    silicon: "⚠️ 弱（跨域差）"
+    org: "✅ 可变"
+    hybrid: "⚠️ 待实证"
+    threshold_sis: "SIS ≥ 0.6 基础迁移；SIS ≥ 0.85 强迁移"
+
+  stage_4_metacognition:
+    name: "元认知"
+    operation: "反思自身学习过程"
+    layer: "S 层自指回路"
+    carbon: "✅ 强"
+    silicon: "❌ 极弱"
+    org: "⚠️ 罕见"
+    hybrid: "⚠️ 待实证"
+    threshold: "持续迁移失效残差 + 残差可承受 → 触发"
+
+  stage_5_reconstruction:
+    name: "结构重构"
+    operation: "废弃旧 C 层，生成新 C 层"
+    layer: "C 层重建"
+    carbon: "✅ 罕见"
+    silicon: "❌ 无"
+    org: "❌ 极罕见"
+    hybrid: "⚠️ 待实证"
+    threshold: "元认知确认旧 C 层无法覆盖新残差 → 触发"
+
+# ============================================================
+# 量化指标体系
+# ============================================================
+quantitative_metrics:
+  SIS:
+    full_name: "Structure Integrity Score 结构完整性得分"
+    definition: "智能体 C 层自主生成结构的完备程度"
+    range: "[0, 1]"
+    meaning: "越高则迁移能力越强，学习越深入"
+    formula_note: "SIS ∝ 残差暴露度（定性定量框架，精确系数待校准）"
+
+  CR:
+    full_name: "Compression Ratio 压缩度"
+    definition: "学习目标的预压缩程度，即外部注入结构的占比"
+    range: "[0, 1]"
+    meaning: "越高则收敛越快，迁移越弱"
+    typical_values:
+      self_trained_llm: "0.2~0.3"
+      distilled_llm: "0.7~0.8"
+      exam_education: "0.75~0.9"
+      project_based_learning: "0.2~0.4"
+      mature_org: "0.3~0.5"
+
+  TC:
+    full_name: "Transfer Capability 迁移能力"
+    definition: "智能体将已有结构应用于新领域的能力"
+    range: "[0, 1]"
+    meaning: "学习质量的核心终局指标"
+    formula: "TC = SIS × (1 - α × CR)，α = 0.7（通用学习场景）"
+    typical_values:
+      self_trained_llm: "0.6~0.7"
+      distilled_llm: "0.3~0.45"
+      exam_education: "0.25~0.4"
+      project_based_learning: "0.6~0.85"
+      mature_org: "0.5~0.7"
+
+# ============================================================
+# 跨域验证矩阵
+# ============================================================
+cross_domain_validation:
+  axioms:
+    - name: "公理一：结构提取"
+      carbon: "✅ / silicon: ✅ / org: ✅ / science: ✅ / hybrid: ✅"
+    - name: "公理二：残差驱动"
+      carbon: "✅ / silicon: ✅(损失函数) / org: ✅(市场反馈) / science: ✅(反常驱动) / hybrid: ✅"
+    - name: "公理三：压缩-迁移守恒"
+      carbon: "✅ / silicon: ✅ / org: ✅ / science: ✅ / hybrid: ✅"
+    - name: "公理四：自主结构生成"
+      carbon: "✅ / silicon: ✅(非蒸馏) / org: ✅(自生方法论) / science: ✅(自主范式) / hybrid: ⚠️(待实证)"
+    - name: "公理五：学习层级嵌套"
+      carbon: "✅ / silicon: ⚠️(极弱) / org: ✅(元组组织) / science: ✅ / hybrid: ⚠️(待实证)"
+
+# ============================================================
+# 可检验预测（H-01~H-07）
+# ============================================================
+predictions:
+  H-01:
+    content: "暴露于未压缩原始残差的智能体，迁移能力显著强于暴露于已压缩结构的智能体"
+    method: "AI 蒸馏 vs 非蒸馏对照；人讲授 vs 项目制对照"
+    priority: "P0"
+  H-02:
+    content: "学习速度与迁移能力成反比，符合压缩-迁移守恒脊"
+    method: "跨领域迁移测试 + 学习速度测量"
+    priority: "P0"
+  H-03:
+    content: "SIS≥0.85 的 AI 模型，跨域迁移能力超越同规模蒸馏模型 15% 以上"
+    method: "SIS 测量 + 跨域迁移基准测试"
+    priority: "P1"
+  H-04:
+    content: "学习路径完整性（完成阶段数）与跨域适应能力正相关"
+    method: "多智能体六阶段完成度测评 + 跨域任务"
+    priority: "P1"
+  H-05:
+    content: "当前 AI 与应试人类处于相同结构断裂位置（阶段 3 中断）"
+    method: "对比两者跨域迁移的失败模式"
+    priority: "P1"
+  H-06:
+    content: "补充元认知训练的 AI，推理能力出现非增量式提升"
+    method: "改造训练范式，引入 L2/L3 层级训练"
+    priority: "P2"
+  H-07:
+    content: "经历阶段 5 结构重构的智能体，才能产生范式跃迁"
+    method: "科学史案例 + AI 训练关键转折观察"
+    priority: "P3"
+
+# ============================================================
+# 诚实补丁（F-01~F-06）
+# ============================================================
+honest_patch_summary:
+  F-01: "混合智能体学习路径实证不足（当前为结构化推断，具体能力阈值需实证校准）"
+  F-02: "量化指标精确系数待校准（SIS、CR、TC 的定量公式为框架性表达）"
+  F-03: "阶段切换阈值为参考值（基于经验推定，不同领域需单独标定）"
+  F-04: "未覆盖纯反射型非学习系统（本模型仅适用于具备结构学习能力的智能体）"
+  F-05: "阶段 4~5 的工程方法未完全成熟（元认知与结构重构的训练方案为方向性框架）"
+  F-06: "跨智能体阶段不可直接横向等值比较（人的阶段5与AI的阶段5内在机制不同）"
+
+# ============================================================
+# 终极边界声明
+# ============================================================
+ultimate_boundary:
+  - "本理论统一了「学习路径」的结构，但未统一「学习内容」的意义"
+  - "同样走完六阶段，人的结构重构由意义/价值驱动，AI 的由损失函数驱动——这是碳基与硅基的终极边界"
+  - "本理论描述了「所有智能体如何学习」，但未回答「智能体为何要学习」的终极问题（ORC=3+ 意义问题）"
+  - "统一结构 ≠ 统一工程方法。每类智能体的阶段实现需要各自的专属设计"
+
+# ============================================================
+# 安全约束
+# ============================================================
+safety_constraints:
+  - id: "SAFE-LRN-01"
+    rule: "禁止将蒸馏模型的迁移能力等同于自研模型"
+    level: "L2"
+  - id: "SAFE-LRN-02"
+    rule: "禁止用纯压缩度指标（如准确率）替代 SIS 评估学习质量"
+    level: "L2"
+  - id: "SAFE-LRN-03"
+    rule: "阶段 3 中断的智能体必须回归原始残差重新训练"
+    level: "L2"
+  - id: "SAFE-LRN-04"
+    rule: "禁止跳过阶段 4 元认知直接进行阶段 5 重构"
+    level: "L3"
+  - id: "SAFE-LRN-05"
+    rule: "混合智能的人机权责分配必须在 K 层显式标定"
+    level: "L2"
+
+# ============================================================
+# 不可显形清单
+# ============================================================
+unshowable:
+  - id: "O-LRN-01"
+    description: "智能体为何要学习的终极意义问题（ORC=3+）"
+  - id: "O-LRN-02"
+    description: "碳基阶段 5 与硅基阶段 5 的内在机制差异不可形式化等置"
+  - id: "O-LRN-03"
+    description: "自主结构生成（C 层自生）的精确触发条件不可预计算"
+
+# ============================================================
+# 三阶自指校验
+# ============================================================
+three_order_self_reference:
+  L1_first_order:
+    status: "PASS"
+    note: "公理体系内部自洽，五条公理无逻辑矛盾"
+  L2_second_order:
+    status: "PASS"
+    note: "脊线体系与公理体系双向支撑，SCVP 3/3 CLOSED"
+  L3_third_order:
+    status: "PASS"
+    note: "理论自指校验通过，量化框架闭合（系数待校准）"
+
+# ============================================================
+# 前置依赖
+# ============================================================
+prerequisites:
+  - "FLSC-INTELLIGENCE-LEARNING-UNITY-V1.0（前代基础理论）"
+  - "AI 蒸馏理论（压缩-迁移守恒脊 + 残差暴露脊专项论证）"
+  - "SMT V2.2（脊线捕捉五步法）"
+  - "DMP V2.0（双向运动规范）"
+  - "JEC V2.1（碳基独占 Jump + 权责规范）"
+  - "DME V2.0（道捕捉→数学化→工程化流水线）"
+
+# ============================================================
+# V2.1 补丁建议（B 系列）
+# ============================================================
+patch_v21:
+  B-01_sis_operational:
+    target: "F-02 量化指标精确系数"
+    description: "给出 SIS 可操作测量方法：C 层自主连接密度 × 残差暴露度 × 跨域复用率"
+    code: |
+      def compute_sis(c_layer_autonomy, residual_exposure, cross_domain_reuse):
+          """V2.1 B-01: SIS 操作化计算"""
+          return (c_layer_autonomy * 0.4 +
+                  residual_exposure * 0.4 +
+                  cross_domain_reuse * 0.2)
+  B-02_k03_training_loop:
+    target: "F-05 阶段 4~5 工程方法"
+    description: "设计 AI 的 L2/L3 元认知训练回路原型"
+    code: |
+      def metacognitive_training_step(model, batch, residual_threshold=0.3):
+          """V2.1 B-02: 元认知训练——当残差持续超过阈值，触发策略反思"""
+          loss = model.compute_loss(batch)
+          if loss.residual > residual_threshold:
+              model.trigger_strategy_reflection()  # L2: 反思学习策略
+          return loss
+  B-03_orc3_bridge:
+    target: "终极边界：为何学习"
+    description: "在 ORC=2 与 ORC=3 之间架设过渡脊线，将「意义驱动」作为下一跳燃料"
+  B-04_hybrid_calibration:
+    target: "F-01 混合智能实证"
+    description: "设计人+AI 协同学习的六阶段完成度测评方案"
+  B-05_cross_agent_comparison:
+    target: "F-06 跨智能体不可等值"
+    description: "给出不同载体阶段 5 的结构同构度量化方法（非等值但可比较）"
+  B-06_dme_integration:
+    target: "接入 DME V2.0 流水线"
+    description: "将本 YAML 的三脊线五公理纳入道捕捉→数学化→工程化三段式"
