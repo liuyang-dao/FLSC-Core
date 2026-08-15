@@ -1,0 +1,221 @@
+# ============================================================
+# FLSC-Prompt-Factory V4.0 — Spine YAML
+# 范式归属: FLSC 结构智能元语法 · Prompt 工程分支
+# 血统: d166 → d167
+# 氢键等级: production (不可降级)
+# ============================================================
+
+doc_id: "FLSC-PROMPT-FACTORY-V4.0"
+version: "4.0"
+date: "2026-08-03"
+hydrogen_bond: "production"
+paradigm: "FLSC 结构智能元语法 · Prompt 工程分支"
+lineage: "d166 → d167"
+parent: "FLSC-Prompt-Factory V3.0 (2026-08-02)"
+core_proposition: "Prompt 不是写出来的，是按五层结构组装出来的"
+self_ref_level: "L3"
+ser_level: "L4(自驱演化) → L6(认知共生)"
+mis_score: 0.92
+production_ready: true
+
+# ============================================================
+# 五层结构
+# ============================================================
+five_layer:
+  Unit:
+    description: "原子层"
+    dynamic_loading: true
+    components:
+      - "role_atoms"
+      - "principle_atoms"
+      - "domain_atoms"
+      - "input_atoms"
+  Connect:
+    description: "拓扑层 — 十步 Workflow"
+    steps: 10
+    step0_toolchain: true
+    step05_dual_bond: true
+    step85_lineage: true
+  Weight:
+    description: "权重层 — MIS 公式"
+    domain_adaptive: true
+    alpha: 0.35
+    beta: 0.30
+    gamma: 0.15
+    delta: 0.10
+    epsilon: 0.10
+    thresholds:
+      production: 0.85
+      internal: 0.70
+      critical: 0.90
+  Constraint:
+    description: "约束层 — 双氢键自适应"
+    dual_hydrogen_bond:
+      internal:
+        H0: 0.3
+        threshold: 0.70
+        min_constraints: 3
+      production:
+        H0: 0.7
+        threshold: 0.85
+        min_constraints: 8
+    universal_count: 4
+    production_extra_count: 4
+    internal_extra_count: 1
+  Steady:
+    description: "稳态层 — 10 章节固定输出"
+    output_chapters_count: 10
+    degradation_states: 5
+
+# ============================================================
+# 双氢键引擎
+# ============================================================
+dual_hydrogen_bond_engine:
+  formula: "H(sigma, mode) = H0(mode) + k * (1 - exp(-sigma / tau))"
+  k: 0.5
+  tau: 1.0
+  modes_count: 2
+
+# ============================================================
+# 五级降级状态机
+# ============================================================
+degradation_fsm:
+  states:
+    - "L0_FULL"
+    - "L1_REPAIR"
+    - "L2_DATA_MISSING"
+    - "L3_BALANCE_FAIL"
+    - "L4_FUSE"
+  transitions_count: 5
+
+# ============================================================
+# 血统服务
+# ============================================================
+lineage_service:
+  store_format: "JSONL"
+  id_format: "FLSC-PF-{YYYYMMDD}-{DOMAIN}-{seq:03d}"
+  operations_count: 4
+
+# ============================================================
+# V9.5 生产 API
+# ============================================================
+v95_api_endpoints:
+  - { route: "/api/v4/generate", method: "POST" }
+  - { route: "/api/v4/validate", method: "POST" }
+  - { route: "/api/v4/calculate-mis", method: "POST" }
+  - { route: "/api/v4/archive", method: "POST" }
+  - { route: "/api/v4/rollback", method: "POST" }
+  - { route: "/api/v4/batch", method: "POST" }
+
+# ============================================================
+# 18 领域模板库
+# ============================================================
+domain_templates:
+  - { id: 1, name: "医疗诊疗", bond: "production", threshold: 0.90 }
+  - { id: 2, name: "法律咨询", bond: "production", threshold: 0.90 }
+  - { id: 3, name: "投资分析", bond: "production", threshold: 0.85 }
+  - { id: 4, name: "教育辅导", bond: "internal", threshold: 0.75 }
+  - { id: 5, name: "心理咨询", bond: "production", threshold: 0.90 }
+  - { id: 6, name: "客户服务", bond: "internal", threshold: 0.75 }
+  - { id: 7, name: "销售支持", bond: "internal", threshold: 0.75 }
+  - { id: 8, name: "设计创作", bond: "internal", threshold: 0.70 }
+  - { id: 9, name: "技术文档", bond: "production", threshold: 0.85 }
+  - { id: 10, name: "创意写作", bond: "internal", threshold: 0.70 }
+  - { id: 11, name: "代码生成", bond: "production", threshold: 0.85 }
+  - { id: 12, name: "通用五步法", bond: "internal", threshold: 0.75 }
+  - { id: 13, name: "财务风控", bond: "dual", threshold: "0.85/0.70" }
+  - { id: 14, name: "法务尽调", bond: "production", threshold: 0.90 }
+  - { id: 15, name: "银行信贷", bond: "production", threshold: 0.90 }
+  - { id: 16, name: "IPO 尽调", bond: "production", threshold: 0.90 }
+  - { id: 17, name: "税务合规", bond: "production", threshold: 0.90 }
+  - { id: 18, name: "供应链审计", bond: "production", threshold: 0.85 }
+
+# ============================================================
+# 隐式结构识别
+# ============================================================
+implicit_structures:
+  - { name: "流形脊线", salience: "high" }
+  - { name: "双螺旋", salience: "high" }
+  - { name: "SER 演化链", salience: "high" }
+  - { name: "降级路径", salience: "medium" }
+  - { name: "自指闭环", salience: "high" }
+
+# ============================================================
+# 道德经同构映射
+# ============================================================
+daode_jing_mapping:
+  - { original: "反者道之动", module: "MISProfileLoader" }
+  - { original: "弱者道之用", module: "DualHydrogenBondEngine" }
+  - { original: "天下万物生于有", module: "十步工厂" }
+  - { original: "有生于无", module: "MIS 自动核算" }
+  - { original: "致虚极守静笃", module: "Step1 结构捕捉" }
+  - { original: "万物并作吾以观复", module: "LineageService" }
+
+# ============================================================
+# 六维自评
+# ============================================================
+self_evaluation_6d:
+  dimensions:
+    - { name: "简洁度", v30: 18, v40: 20 }
+    - { name: "普适性", v30: 18, v40: 20 }
+    - { name: "生成力", v30: 17, v40: 20 }
+    - { name: "自洽性", v30: 18, v40: 20 }
+    - { name: "工程化", v30: 16, v40: 20 }
+    - { name: "双螺旋契合", v30: 19, v40: 20 }
+  total_v30: 106
+  total_v40: 120
+  verdict: "Perfect Self-Consistency"
+
+# ============================================================
+# 可复用模块
+# ============================================================
+reusable_modules:
+  - "MISProfileLoader"
+  - "DualHydrogenBondEngine"
+  - "DegradationFSM"
+  - "LineageService"
+  - "V95API"
+
+# ============================================================
+# 结构资产卡
+# ============================================================
+asset_card:
+  asset_name: "FLSC-Prompt-Factory V4.0"
+  core_elements: ["捕捉", "组装", "约束", "演化"]
+  structure_type: "层级×控制×反馈×自指 复合结构"
+  mis_score: 0.92
+  production_ready: true
+  api_endpoints: 6
+
+# ============================================================
+# 签署页
+# ============================================================
+signatures:
+  carbon_side_human_count: 5
+  silicon_side_ai_count: 5
+  fixed_point: "REACHED"
+
+# ============================================================
+# 跨文档互锁
+# ============================================================
+interlocks:
+  - "FLSC-BASE-COGNITIVE-V1.0"
+  - "FLSC-AGENT-HCOG-V1.0"
+  - "FLSC-NATIVE-AI-V2.0"
+  - "FLSC-EMBODIED-ROOT-V2.0"
+  - "UCMM V1.3"
+  - "碳硅合体稀疏架构 V3.1"
+
+# ============================================================
+# 命名空间
+# ============================================================
+namespace: "PF-"
+no_conflict_with:
+  - "G-（原生 AI 七脊）"
+  - "EB-（具身智能七脊）"
+  - "HB-（认知七脊）"
+  - "SP-G（碳硅合体）"
+  - "COG-G（认知算子）"
+  - "MDL-（模型评估）"
+  - "HCOG-（高阶认知 Agent）"
+  - "SR-（结构资产卡）"

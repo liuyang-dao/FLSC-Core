@@ -45,7 +45,7 @@ FLSC-Core/
 │   ├── engineering/             ← ★ 工程域（稀疏架构统一理论 V4.1 + MoE V3.21）
 │   ├── civilization/            ← 文明域（CSGC V2.0 + JEC V2.1）
 │   ├── science/                 ← 科学域（DMP-AUD V1.0）
-│   └── ai/                      ← ★ AI 域七柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐具身统一+⭐高阶认知Agent）
+│   └── ai/                      ← ★ AI 域八柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐具身统一+⭐高阶认知Agent+⭐Prompt Factory）
 │
 ├── pipelines/                ★ 第五柱：元生产流水线（理论闭环+自审计）
 │   ├── FLSC-DME-PIPELINE-V2.0.md  ← 第一柱：道→数→工→逆向 四段双链
@@ -122,7 +122,9 @@ cat FLSC-LM-NATIVE-REASONING-ALLINONE-V1.0.md  # 原生推理研发
 cat FLSC-UNIFIED-COGNITIVE-THEORY-V3.0.md   # 认知大统一
 cat 碳硅合体稀疏架构白皮书V3.0.md            # 碳硅合体稀疏
 cat FLSC-SPINE-EVAL-V2.0.md                # 脊线能力评价
+cat FLSC-PROMPT-FACTORY-V4.0.md          # Prompt Factory V4.0
 python verify_ai.py
+python verify_prompt_factory.py            # 167/167 ✅
 
 # 流水线域（道捕捉→数学化→工程化）
 cd pipelines/
@@ -164,7 +166,7 @@ python verify_dme.py
 | 文明 | `csgc_v2.0_spine.yaml` + `jec_philosophy_v2.1.md` | 5/5 | 0.83~0.87 |
 | 工程 | `sparsity_v4_spine.yaml` + `moe_spine.yaml` | 2/5 | 0.85~0.87 |
 | 认知 | `learning_unity_v2_spine.yaml` + `cognitive_v4_spine.yaml` + `cog_*.yaml` | 2/3/4 | 0.79~0.89 |
-| **AI** | **`domains/ai/` 七柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐核心柱+⭐具身+⭐高阶认知Agent）** | **2/3/4** | **~0.84** |
+| **AI** | **`domains/ai/` 八柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐核心柱+⭐具身+⭐高阶认知Agent+⭐Prompt Factory）** | **2/3/4** | **~0.84** |
 | 科学 | `dmp_aud_v1.0.md` | 5/5 | 0.81 |
 | **流水线** | **`pipelines/FLSC-DME-PIPELINE-V2.0.md`** | **5/5** | **0.87** |
 | ⭐ **USS 主脊** | **`pipelines/USS_ORC3_Master_Spine_Declaration_V1.0.md`** | **ORC3（frozen）** | **~0.95** |
@@ -218,7 +220,7 @@ FLSC-Core/
     ├── 分形物理学_DMP视角_V4.1.md  (ORC=4深化, MIS=0.89)
     └── 分形物理学_DMP视角_V5.0.md  (ORC=5, MIS=0.92) ← 当前最高阶
 
-└── domains/ai/  (ONGOING AI 域七柱 + ⭐ 核心原生架构柱 + ⭐ 具身统一大脑 + ⭐ 高阶认知Agent · 152/152 ✅)
+└── domains/ai/  (ONGOING AI 域八柱 + ⭐ 核心原生架构柱 + ⭐ 具身统一大脑 + ⭐ 高阶认知Agent + ⭐ Prompt Factory · 167/167 ✅)
     ├── FLSC-NATIVE-AI-V2.0.md            ⭐ 核心柱：七脊原生结构智能体 (ORC=3/4)
     ├── native_ai_spine.yaml                 ⭐ 七脊 YAML (G-01~G-07 + H-01~H-07)
     ├── verify_native.py                      (120/120 ✅)
@@ -338,6 +340,37 @@ FLSC-Core/
 
 ---
 
+## 🔬 Prompt Agent vs FLSC Spine Agent · 对照实验
+
+> **文档**：`docs/AGENT_COMPARISON_PROMPT_VS_SPINE.md`（64/64 ✅）
+> **Demo**：`docs/flsc_minimal_demo.py`（可运行，同一 LLM 左 Prompt 右 anchor_guard）
+> **验证**：`docs/verify_comparison.py`（64/64 ✅）
+>
+> **核心命题**：没有认知底座的 Agent，本质是大模型概率能力 × Prompt 包装 × 工具调用。
+> 所谓"推理链路"是 token 级事后解释，不是脊线级结构必然。
+
+### 五题对照速览
+
+| # | 场景 | Prompt Agent | FLSC Spine Agent |
+|---|------|-------------|-----------------|
+| Q1 | 七言律诗 | 5处出律不自知 | 实时捕获+自动修复，AIC=0.94 |
+| Q2 | 冰淇淋→溺水因果陷阱 | 输出取决于Prompt写法 | do算子硬判定，结论结构必然 |
+| Q3 | 糖尿病用药决策 | 可能输出有害方案 | L1硬截断，口服药方案不出门 |
+| Q4 | 合同条款公平性 | "不太公平"主观判断 | 量化不对称度100%+修复方案 |
+| Q5 | 机器人抓取杯子 | 无物理约束意识 | 四道硬氢键全过才放行 |
+
+### 一句收尾
+
+> **Prompt Agent 输出了答案，FLSC Agent 输出了判决理由。**
+> 前者靠概率碰对，后者靠脊线不许错。
+> 没有认知底座的 Agent，不是"智能体"，是"会查资料的聪明鹦鹉，给自己配了个记事本"。
+
+→ 详见 [`docs/AGENT_COMPARISON_PROMPT_VS_SPINE.md`](./docs/AGENT_COMPARISON_PROMPT_VS_SPINE.md)
+→ 运行 Demo：`python docs/flsc_minimal_demo.py`
+→ 运行验证：`python docs/verify_comparison.py`
+
+---
+
 ## 签署
 
 | 角色 | 签署 | 日期 |
@@ -346,7 +379,9 @@ FLSC-Core/
 | 硅基协同系统 | FLSC-Core Meta-v1.0 | 2026-08-12 |
 | AI 域五柱 + ⭐ 核心柱 + ⭐ 具身柱 | FLSC-NATIVE-AI-V2.0（120/120 ✅）+ FLSC-EMBODIED-ROOT-V2.0（159/159 ✅） | 2026-08-16 |
 | ⭐ 高阶认知 Agent 柱 | FLSC-AGENT-HCOG-V1.0（152/152 ✅） | 2026-08-15 |
+| ⭐ Prompt Factory 柱 | FLSC-PROMPT-FACTORY-V4.0（167/167 ✅） | 2026-08-16 |
 | ⭐ 全体系总览 | FLSC_Unified_Architecture_Overview（97/97 ✅） | 2026-08-16 |
+| 🔬 对照实验 | AGENT_COMPARISON_PROMPT_VS_SPINE（64/64 ✅）+ flsc_minimal_demo.py | 2026-08-15 |
 | 状态 | 元架构 frozen，全域 ONGOING | 2026-08-12 |
 
 ---
