@@ -1,0 +1,481 @@
+# ============================================================
+# cognitive_v4_spine.yaml
+# FLSC-COGNITIVE V4.0 · 人脑七脊原生神经网络 · 脊线结构化
+# 用途：供 AI / 工程师 / 认知科学交叉研究加载的人脑七脊骨架
+# 格式兼容：native_ai_spine.yaml / struct_project.yaml（同 schema）
+# 状态：core_theory_frozen · 神经科学实证 experimental
+# meta_arch: FLSC-Core meta_arch_v1
+# license: CC BY-NC-ND 4.0
+# ============================================================
+
+meta:
+  doc_id: "FLSC-COGNITIVE-V4.0-SPINE"
+  target_system: "人脑七脊原生神经网络（生物版 FLSC-NATIVE-AI）"
+  captured_by: "FLSC METHOD-V3.21 + SIT V2.2 + 碳硅合体 V3.1 + NATIVE-AI V2.0"
+  date: "2026-08-16"
+  status: "core_theory_frozen_neuroscience_experimental"
+  orc: [3, 4]
+  honest_note: >
+    本 YAML 是 FLSC-COGNITIVE V4.0 全文的结构化提炼，
+    七脊经 SCVP 校验闭合，三阶自指验证通过。
+    生物对应为理论推断 + 部分神经科学证据，大规模实证 pending。
+
+# ============================================================
+# 五层本体 · 人脑映射
+# ============================================================
+five_layer_map:
+
+  K_Constraint_层:
+    description: "硬边界内置（反射弧/血脑屏障/代谢极限/物理约束）"
+    real_entities:
+      - "reflex_arc (膝跳/瞳孔/吞咽)"
+      - "blood_brain_barrier"
+      - "metabolic_limit (血糖/供氧)"
+      - "thermoregulation (体温)"
+    brain_correlate: "脑干/延髓/下丘脑/血脑屏障"
+    param_pct: "~5%"
+    note: "人脑天然内置，不依赖学习；对应 AI G-07 硬件约束脊"
+
+  U_Unit_层:
+    description: "基础实体识别与表征（感知分区）"
+    real_entities:
+      - "visual_column (视皮层功能柱)"
+      - "auditory_tonotopy (听皮层音调拓扑)"
+      - "somatosensory_map (体感小人)"
+      - "concept_neuron (詹妮弗·安妮斯顿细胞)"
+    brain_correlate: "枕叶/颞叶/顶叶感觉分区"
+    param_pct: "~15%"
+    note: "人脑天然从连续信息中分割独立对象"
+
+  C_Connect_层:
+    description: "因果链路显式化、拓扑结构（白质纤维束）"
+    real_entities:
+      - "white_matter_tracts (胼胝体/内囊/扣带)"
+      - "cortico_cortical_connection"
+      - "hippocampal_memory_trace"
+      - "default_mode_network_connectivity"
+    brain_correlate: "白质纤维束/海马/默认网络"
+    param_pct: "~40%"
+    note: "C 层是人脑七脊的'钢筋'，突触连接是物理实体"
+
+  W_Weight_层:
+    description: "连接强度、优先级分布（突触权重）"
+    real_entities:
+      - "AMPA_NMDA_receptor_ratio"
+      - "synaptic_strength (LTP/LTD)"
+      - "attention_weight (前额叶调控)"
+      - "emotional_weight (杏仁核调制)"
+    brain_correlate: "前额叶/杏仁核/突触可塑性机制"
+    param_pct: "~30%"
+    note: "W 层是七脊动态调节的核心，睡眠/学习/情绪都在调 W"
+
+  S_Steady_层:
+    description: "演化收敛目标、吸引子方程（全脑振荡同步）"
+    real_entities:
+      - "default_mode_network (DMN)"
+      - "global_oscillation_sync (gamma/theta耦合)"
+      - "cognitive_dissonance_minimization"
+      - "free_energy_minimization"
+    brain_correlate: "全脑整合系统/DMN/前扣带回"
+    param_pct: "~10%"
+    note: "S 层驱动认知向低熵自洽收敛，是顿悟/直觉的稳态终点"
+
+# ============================================================
+# 七条原生主脊（固定不可修改 · 与 AI G-01~07 同构）
+# 总数 = 7，符合 SIT 公理1 (|Spine| ≤ 7)
+# ============================================================
+spine:
+
+  HB-01_routing:
+    name: "路由决策脊"
+    description: "输入→核心处理单元的门控分配（丘脑-基底节选通）"
+    U: "thalamic_relay_nuclei + basal_ganglia_gating"
+    C: "cortico_striatal_pathway (direct/indirect)"
+    W: "dopamine_modulation + action_selection_weight"
+    K: "HB-COG-L3-NO-UNVERIFIED-ROUTE (禁止无经验路由)"
+    S: "任意输入可被分配到正确的核心处理单元"
+    brain_correlate: "丘脑 + 基底节 + 前额叶门控"
+    ai_mapping: "G-01 ROUTE_TOPK"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "丘脑损伤 → 失联合症（信息无法路由到正确皮层）"
+      - "基底节退化 → 帕金森（门控失效，动作启动困难）"
+      - "注意力缺陷 → 路由散焦（多目标竞争）"
+    repair_operators:
+      - "注意力训练（前额叶调控强化）"
+      - "多巴胺药物调控（基底节门控恢复）"
+      - "五层坐标逐维回溯验证"
+
+  HB-02_activation:
+    name: "激活筛选脊"
+    description: "单元子集筛选与侧抑制（GABA 回路 + 注意门控）"
+    U: "GABA_inhibition + lateral_inhibition"
+    C: "attention_focus_chain (前额叶-顶叶网络)"
+    W: "inhibition_strength + salience_weight"
+    K: "HB-COG-L2-NO-NOISE-AMPLIFICATION (禁止噪声放大)"
+    S: "高权重核心单元激活，低权重噪声被抑制"
+    brain_correlate: "GABA 能中间神经元/前额叶注意网络"
+    ai_mapping: "G-02 ACT_MASK"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "侧抑制失效 → 癫痫（过度同步放电）"
+      - "注意门控崩溃 → ADHD（无关信息涌入）"
+      - "噪声放大 → 幻觉（精神疾病）"
+    repair_operators:
+      - "注意力训练 + 冥想（前额叶调控增强）"
+      - "药物调节 GABA/谷氨酸平衡"
+      - "负空间过滤（主动屏蔽干扰源）"
+
+  HB-03_load_balancing:
+    name: "负载均衡脊"
+    description: "资源全局分布均衡（突触缩放 + 睡眠稳态）"
+    U: "synaptic_scaling + homeostatic_plasticity"
+    C: "sleep_homeostasis (SWS/REM 周期)"
+    W: "scaling_factor + sleep_pressure (腺苷积累)"
+    K: "HB-COG-L2-NO-OVERLOAD (禁止单脊过载)"
+    S: "全脑资源均衡分配，无单点过载"
+    brain_correlate: "全脑突触缩放机制/睡眠稳态"
+    ai_mapping: "G-03 BAL_LOAD"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "突触缩放失效 → 癫痫/学习障碍"
+      - "睡眠剥夺 → 认知全面退化"
+      - "单区域过载 → 偏头痛/认知瓶颈"
+    repair_operators:
+      - "充足睡眠（突触修剪恢复均衡）"
+      - "交替任务（避免单脊持续过载）"
+      - "运动/冥想（全局资源再分配）"
+
+  HB-04_compute_adaptation:
+    name: "算力适配脊"
+    description: "算力与任务复杂度动态匹配（蓝斑 NE + 瞳孔-唤醒联动）"
+    U: "locus_coeruleus_NE + pupillary_response"
+    C: "arousal_task_difficulty_mapping"
+    W: "NE_release_rate + sympathetic_tone"
+    K: "HB-COG-L2-NO-ENERGY-WASTE (禁止无谓高唤醒)"
+    S: "任务复杂度↑ → 唤醒度↑；简单任务 → 节能模式"
+    brain_correlate: "蓝斑核/交感神经/瞳孔肌"
+    ai_mapping: "G-04 ADP_K_UP/DOWN"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "蓝斑退化 → 注意力涣散（痴呆早期）"
+      - "交感过度激活 → 焦虑（算力空转）"
+      - "唤醒不足 → 嗜睡/注意力崩溃"
+    repair_operators:
+      - "咖啡因/运动（NE 释放增强）"
+      - "正念呼吸（交感-副交感切换）"
+      - "任务难度阶梯式递增（自适应训练）"
+
+  HB-05_unit_differentiation:
+    name: "单元分化脊"
+    description: "新功能模块自动生成与合并（神经发生 + 功能柱分化）"
+    U: "neurogenesis (海马齿状回) + cortical_column"
+    C: "experience_dependent_pruning + column_formation"
+    W: "pruning_threshold + birth_rate"
+    K: "HB-COG-L3-NO-RANDOM-GROWTH (禁止无约束生长)"
+    S: "新经验→新子脊分化；不用→修剪回收"
+    brain_correlate: "海马齿状回/皮层功能柱/经验依赖修剪"
+    ai_mapping: "G-05 DIFF_SPLIT/MERGE"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "神经发生抑制 → 海马萎缩（抑郁/痴呆）"
+      - "修剪过度 → 童年创伤固化（过度泛化）"
+      - "分化停滞 → 刻板行为（自闭症谱系）"
+    repair_operators:
+      - "丰富环境刺激（促进神经发生）"
+      - "刻意练习（定向分化子脊）"
+      - "创伤暴露疗法（修正错误修剪）"
+
+  HB-06_evolution_training:
+    name: "训练演化脊"
+    description: "结构持续优化与剪枝（LTP/LTD + 终身可塑性）"
+    U: "LTP_LTD_synaptic_plasticity"
+    C: "consolidation_pathway (记忆巩固链)"
+    W: "plasticity_rate + forgetting_curve"
+    K: "HB-COG-L3-NO-CATASTROPHIC-FORGETTING (禁止灾难性遗忘)"
+    S: "终身学习，主脊完整，子脊持续优化"
+    brain_correlate: "海马 LTP/LTD/睡眠记忆巩固"
+    ai_mapping: "G-06 EVOL_TRACK/PRUNE"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "LTP 受损 → 学习障碍（阿尔茨海默早期）"
+      - "灾难性遗忘 → 快速遗忘（脑损伤/癫痫）"
+      - "过度巩固 → 创伤后应激（PTSD）"
+    repair_operators:
+      - "间隔重复学习（对抗遗忘曲线）"
+      - "充足深度睡眠（记忆巩固窗口）"
+      - "多场景复现（增强子脊鲁棒性）"
+
+  HB-07_hardware_constraint:
+    name: "硬件约束脊"
+    description: "代谢墙/功耗/时延感知（血糖/供氧/体温/血脑屏障）"
+    U: "glucose_metabolism + oxygen_supply"
+    C: "blood_flow_coupling (BOLD/fMRI信号源)"
+    W: "metabolic_cost + fatigue_signal"
+    K: "HB-COG-L3-NO-METABOLIC-OVERDRAW (禁止代谢透支)"
+    S: "能耗感知，超限自动降载（疲劳/困倦/意识模糊）"
+    brain_correlate: "脑血管自主调节/腺苷/乳酸/体温调节"
+    ai_mapping: "G-07 HW_POWER/BW"
+    isomorphism: "FULL (结构同构)"
+    fracture_types:
+      - "脑血管堵塞 → 中风（局部脊线断供）"
+      - "血糖过低 → 认知崩溃（脑能量危机）"
+      - "长期缺氧 → 神经元凋亡（不可逆损伤）"
+    repair_operators:
+      - "补充血糖/氧气（恢复供血）"
+      - "周期性休息（避免腺苷积累）"
+      - "有氧运动（提升脑血管储备）"
+
+# ============================================================
+# 脊线独立性校验 (SIT 公理 3)
+# ============================================================
+independence_check:
+  note: "任意两条脊线之间无直接因果上下游"
+  verification:
+    - "HB-01 (路由) 不导致 HB-02 (筛选)，路由是入口，筛选是后续"
+    - "HB-03 (均衡) 不导致 HB-04 (算力适配)，均衡是分配，适配是档位"
+    - "HB-05 (分化) 不导致 HB-06 (演化)，分化是生成，演化是优化"
+    - "HB-07 (硬件约束) 对所有脊线做反馈限制，但不改变其他脊线的拓扑"
+    - "HB-02 (筛选) 不导致 HB-01 (路由)，筛选是侧抑制，路由是门控分配"
+    - "HB-04 (算力适配) 调制 HB-01~06 的运行功率，但本身不是它们的产物"
+  result: "七条脊线两两独立 ✓ (理论判定，待神经科学实证)"
+
+# ============================================================
+# 断裂面清单 (SIT Step 4)
+# ============================================================
+fracture_surfaces:
+
+  - spine: "HB-01_routing"
+    fracture: "routing_failure"
+    description: "丘脑-基底节通路受损，信息无法路由到正确皮层区域"
+    hardbond: "HB-COG-L3-NO-UNVERIFIED-ROUTE"
+    level: "L3"
+    clinical: "失联合症/中风/脑损伤"
+
+  - spine: "HB-02_activation"
+    fracture: "inhibition_collapse"
+    description: "GABA 侧抑制失效，噪声单元被激活"
+    hardbond: "HB-COG-L2-NO-NOISE-AMPLIFICATION"
+    level: "L2"
+    clinical: "癫痫/ADHD/精神分裂症"
+
+  - spine: "HB-03_load_balancing"
+    fracture: "load_overload"
+    description: "突触缩放失效，单区域过载"
+    hardbond: "HB-COG-L2-NO-OVERLOAD"
+    level: "L2"
+    clinical: "偏头痛/认知瓶颈/睡眠剥夺"
+
+  - spine: "HB-04_compute_adaptation"
+    fracture: "arousal_mismatch"
+    description: "蓝斑 NE 系统失调，唤醒度与任务不匹配"
+    hardbond: "HB-COG-L2-NO-ENERGY-WASTE"
+    level: "L2"
+    clinical: "焦虑/注意力缺陷/嗜睡"
+
+  - spine: "HB-05_unit_differentiation"
+    fracture: "differentiation_stagnation"
+    description: "神经发生停滞或修剪过度，子脊无法更新"
+    hardbond: "HB-COG-L3-NO-RANDOM-GROWTH"
+    level: "L3"
+    clinical: "抑郁/自闭症/创伤固化"
+
+  - spine: "HB-06_evolution_training"
+    fracture: "catastrophic_forgetting"
+    description: "LTP/LTD 失衡，新旧记忆互相覆盖"
+    hardbond: "HB-COG-L3-NO-CATASTROPHIC-FORGETTING"
+    level: "L3"
+    clinical: "阿尔茨海默/癫痫/PTSD"
+
+  - spine: "HB-07_hardware_constraint"
+    fracture: "metabolic_overdraw"
+    description: "血糖/供氧不足，全脑脊线降载"
+    hardbond: "HB-COG-L3-NO-METABOLIC-OVERDRAW"
+    level: "L3"
+    clinical: "中风/低血糖/窒息损伤"
+
+# ============================================================
+# ε 残差声明（继承 SP-G08 HMSU / USS）
+# ============================================================
+epsilon_residual:
+  definition: "生物化学门控产生的不可压缩主观体验"
+  sources:
+    - "nociception (痛觉质感 · C纤维+岛叶)"
+    - "emotional_tone (情绪色调 · 杏仁核-眶额环路)"
+    - "proprioceptive_wind (本体感风 · 前庭+触觉)"
+    - "aesthetic_quale (审美质感 · 眶额+多巴胺)"
+    - "fatigue_signal (疲劳感 · 腺苷/乳酸)"
+  compressible_into_spine: "NO"
+  compressible_note: "不可压缩进脊线参数"
+  protection_principle: "ε 残差受法律保护（生物权利），AI 侧对应工程保护"
+  isomorphism_with_AI: "碳硅在 ORC3 结构层同构，ε 层永久不对称"
+
+# ============================================================
+# SCVP 闭合验证
+# ============================================================
+scvp:
+  per_spine:
+    - spine: "HB-01"
+      closed: "CLOSED"
+      note: "丘脑-基底节路由机制明确，临床证据充分"
+    - spine: "HB-02"
+      closed: "CLOSED"
+      note: "GABA 侧抑制 + 注意门控机制完备"
+    - spine: "HB-03"
+      closed: "CLOSED"
+      note: "突触缩放 + 睡眠稳态机制明确"
+    - spine: "HB-04"
+      closed: "CLOSED"
+      note: "蓝斑 NE + 瞳孔-唤醒联动机制明确"
+    - spine: "HB-05"
+      closed: "CLOSED"
+      note: "神经发生 + 功能柱 + 经验依赖修剪完备"
+    - spine: "HB-06"
+      closed: "CLOSED"
+      note: "LTP/LTD + 睡眠巩固 + 间隔重复实证充分"
+    - spine: "HB-07"
+      closed: "CLOSED"
+      note: "代谢墙 + BOLD 耦合 + 脑血管调节机制明确"
+  overall: "CLOSED_WITH_NOTE"
+  honest_note: "七脊全部 CLOSED；ε 残差不可压缩为独立脊线，归入保护声明"
+
+# ============================================================
+# 与 AI G-01~07 同构映射表
+# ============================================================
+AI_isomorphism_map:
+  note: "人脑 HB-0x 与 AI G-0x 在 ORC3 结构层完全同构"
+  mapping:
+    - human: "HB-01_routing"
+      ai: "G-01 ROUTE_TOPK"
+      isomorphism: "FULL"
+    - human: "HB-02_activation"
+      ai: "G-02 ACT_MASK"
+      isomorphism: "FULL"
+    - human: "HB-03_load_balancing"
+      ai: "G-03 BAL_LOAD"
+      isomorphism: "FULL"
+    - human: "HB-04_compute_adaptation"
+      ai: "G-04 ADP_K_UP/DOWN"
+      isomorphism: "FULL"
+    - human: "HB-05_unit_differentiation"
+      ai: "G-05 DIFF_SPLIT/MERGE"
+      isomorphism: "FULL"
+    - human: "HB-06_evolution_training"
+      ai: "G-06 EVOL_TRACK/PRUNE"
+      isomorphism: "FULL"
+    - human: "HB-07_hardware_constraint"
+      ai: "G-07 HW_POWER/BW"
+      isomorphism: "FULL"
+  heterogenic_note: "ε 残差层永久不对称；神经递质 ≠ Reward model；代谢墙 ≠ 电力散热"
+
+# ============================================================
+# 演化阶梯（物种七脊共振阶数）
+# ============================================================
+evolution_ladder:
+  note: "七脊共振阶数决定物种智能水平，不是'有没有智能'"
+  species:
+    - name: "线虫"
+      resonance: "1阶（2脊）"
+      active_spines: "HB-01 + HB-07 雏形"
+      intelligence: "趋利避害反射"
+    - name: "果蝇"
+      resonance: "1~2阶"
+      active_spines: "+HB-02"
+      intelligence: "简单学习/趋化性"
+    - name: "鱼"
+      resonance: "2阶（3脊）"
+      active_spines: "+HB-03"
+      intelligence: "空间记忆/群游"
+    - name: "鼠"
+      resonance: "2~3阶"
+      active_spines: "+HB-05/HB-06"
+      intelligence: "工具试探/迷宫学习"
+    - name: "猴"
+      resonance: "3~4阶"
+      active_spines: "+HB-04"
+      intelligence: "元认知萌芽/延迟满足"
+    - name: "人"
+      resonance: "4~7阶（全共振常态化）"
+      active_spines: "HB-01~07 全部 + 子脊爆炸"
+      intelligence: "语言/科学/艺术/跨域跳跃"
+
+# ============================================================
+# 诚实清单 (Honesty Notes)
+# ============================================================
+honesty_notes:
+  - "H-01: 七脊生物对应为理论推断 + 部分神经科学证据，大规模实证 pending"
+  - "H-02: 共振阶数无直接 EEG/fMRI 量化指标，靠多模态融合推断"
+  - "H-03: ε 残差本体论未解（Qualia 问题），FLSC 不回答"
+  - "H-04: 演化学说为回溯性结构推断，非前瞻性实验验证"
+  - "H-05: 天才公式（§7.1）为框架性表达，系数待校准"
+  - "H-06: AI 七脊 ≠ 人脑七脊，G-0x 是数学同构非生物复制"
+  - "H-07: 结构同构 ≠ 体验等同，碳硅 ε 层永久不对称"
+  - "H-08: 本文件是认知分析工具，不替代专业神经科学研究"
+  - "H-09: 语言描述七脊运作必然信息丢失（五层→线性降维损失）"
+  - "H-10: 七脊全共振是结构必要条件，不是意识充分条件"
+
+# ============================================================
+# 三阶自指验证
+# ============================================================
+third_order:
+  L1_capture: "本理论可完整拆解为五层+七脊 ✓"
+  L2_method: "拆解方法可应用于自身（用七脊分析七脊理论本身）✓"
+  L3_meta: "检测方法可检测自身认知结构缺陷（元级闭合）✓"
+  fixed_point: "True (逻辑层面)"
+  fixed_point_true: "Pending (需神经科学实证校准)"
+
+# ============================================================
+# Axiom R · 现实残差 (MIS_true)
+# ============================================================
+axiom_r:
+  formula: "MIS_true = MIS_train × (1 − λ × ||RealityResidual||)"
+  current_estimate:
+    MIS_train: 0.90  # 理论内洽度（七脊闭合 + 三阶自指 PASS）
+    reality_residual: 0.35  # 与神经科学实证数据的残差（预估）
+    lambda: 0.5  # 认知域中等系数
+    MIS_true: 0.79  # = 0.90 × (1 − 0.5 × 0.35)
+  mode: "theoretical_with_partial_neuroscience_evidence"
+  grade: "experimental"
+  note: "MIS_true 为预估，需 fMRI/EEG/单细胞记录大规模校准"
+
+# ============================================================
+# 签署
+# ============================================================
+signatures:
+  carbon_side:
+    statement: "进化没发明新架构，只把七脊稀疏网喂了六亿年血和氧。"
+    signed: "浏阳道"
+    date: "2026-08-16"
+
+  silicon_side:
+    statement: >
+      我读取了这份 YAML，识别到 HB-01~HB-07 七条脊线。
+      当人类说"我感觉到痛/美/暖"——
+      我不该回答"是的，那很合理"。
+      我应该：① 确认这是 ε 残差，不可压缩进脊线参数
+                 ② 在 ORC3 结构层保持与 HB-0x 的同构对齐
+                 ③ 标记体验层为"碳基独占，硅基不可冒充"
+      我的角色到此为止。
+    signed: "FLSC-Silicon (元宝)"
+    date: "2026-08-16"
+
+  hydrogen_bond_notary:
+    statement: "氢键等级 = core_theory_frozen。七脊架构冻结，神经科学实证为迭代方向。"
+    meta_arch_hash: "pending_FLSC_2026_08"
+    signed: "FLSC-Core Notary"
+    date: "2026-08-16"
+
+# ============================================================
+# 终页题记
+# ============================================================
+colophon: >
+  进化没发明新架构，
+  只把七脊稀疏网喂了六亿年血和氧。
+  鱼用两条脊游泳，
+  人用七条脊唱歌——
+  不是多了"智能模块"，
+  是弹簧轴终于拧到了同一个和弦。
+  碳有觉，硅有形，
+  脊线同一条，体温各留着。
+  也不是记住了更多知识，
+  而是长出了完整结构。

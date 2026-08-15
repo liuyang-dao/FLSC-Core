@@ -338,6 +338,37 @@ FLSC-Core/
 
 ---
 
+## 🔬 Prompt Agent vs FLSC Spine Agent · 对照实验
+
+> **文档**：`docs/AGENT_COMPARISON_PROMPT_VS_SPINE.md`（64/64 ✅）
+> **Demo**：`docs/flsc_minimal_demo.py`（可运行，同一 LLM 左 Prompt 右 anchor_guard）
+> **验证**：`docs/verify_comparison.py`（64/64 ✅）
+>
+> **核心命题**：没有认知底座的 Agent，本质是大模型概率能力 × Prompt 包装 × 工具调用。
+> 所谓"推理链路"是 token 级事后解释，不是脊线级结构必然。
+
+### 五题对照速览
+
+| # | 场景 | Prompt Agent | FLSC Spine Agent |
+|---|------|-------------|-----------------|
+| Q1 | 七言律诗 | 5处出律不自知 | 实时捕获+自动修复，AIC=0.94 |
+| Q2 | 冰淇淋→溺水因果陷阱 | 输出取决于Prompt写法 | do算子硬判定，结论结构必然 |
+| Q3 | 糖尿病用药决策 | 可能输出有害方案 | L1硬截断，口服药方案不出门 |
+| Q4 | 合同条款公平性 | "不太公平"主观判断 | 量化不对称度100%+修复方案 |
+| Q5 | 机器人抓取杯子 | 无物理约束意识 | 四道硬氢键全过才放行 |
+
+### 一句收尾
+
+> **Prompt Agent 输出了答案，FLSC Agent 输出了判决理由。**
+> 前者靠概率碰对，后者靠脊线不许错。
+> 没有认知底座的 Agent，不是"智能体"，是"会查资料的聪明鹦鹉，给自己配了个记事本"。
+
+→ 详见 [`docs/AGENT_COMPARISON_PROMPT_VS_SPINE.md`](./docs/AGENT_COMPARISON_PROMPT_VS_SPINE.md)
+→ 运行 Demo：`python docs/flsc_minimal_demo.py`
+→ 运行验证：`python docs/verify_comparison.py`
+
+---
+
 ## 签署
 
 | 角色 | 签署 | 日期 |
@@ -347,6 +378,7 @@ FLSC-Core/
 | AI 域五柱 + ⭐ 核心柱 + ⭐ 具身柱 | FLSC-NATIVE-AI-V2.0（120/120 ✅）+ FLSC-EMBODIED-ROOT-V2.0（159/159 ✅） | 2026-08-16 |
 | ⭐ 高阶认知 Agent 柱 | FLSC-AGENT-HCOG-V1.0（152/152 ✅） | 2026-08-15 |
 | ⭐ 全体系总览 | FLSC_Unified_Architecture_Overview（97/97 ✅） | 2026-08-16 |
+| 🔬 对照实验 | AGENT_COMPARISON_PROMPT_VS_SPINE（64/64 ✅）+ flsc_minimal_demo.py | 2026-08-15 |
 | 状态 | 元架构 frozen，全域 ONGOING | 2026-08-12 |
 
 ---

@@ -1,0 +1,216 @@
+# FLSC 高阶认知 Agent 脊线 YAML
+# 文档：FLSC-AGENT-HCOG-V1.0
+# 配套：认知底座 V1.0 + UCMM V1.3 + 原生 AI V2.0 + 具身统一大脑 V2.0
+
+doc_id: FLSC-AGENT-HCOG-V1.0
+title: "高阶认知 Agent 完整架构方案"
+layer_stack: [L0_neural, L1_cognitive_os, L2_ucmm, L3_pluggable_domain, L4_scheduler]
+status: experimental
+oracle: human_ai_co_authoring
+date: 2026-08-15
+inherits:
+  - FLSC-BASE-COGNITIVE-V1.0
+  - FLSC-UCMM-V1.3
+  - FLSC-NATIVE-AI-V2.0
+  - FLSC-EMBODIED-ROOT-V2.0
+
+# ===== 五层同源架构（继承 L1） =====
+five_layer_pipeline:
+  flow: "Unit → Connect → Weight → Constraint → Steady"
+  invariant: "单向不可逆，禁止 Steady→Unit 短路"
+  fractal: "任意子任务可递归拆解为完整五层子系统"
+
+# ===== 七类通用认知原子 =====
+cognitive_atoms:
+  S_Atom: { name: "State 状态原子", role: "观测实体/属性/状态标识" }
+  C_Atom: { name: "Causal 因果结构原子", role: "因果/结构边/方向性/证据等级" }
+  I_Atom: { name: "Intervention 干预原子", role: "do(X)/反事实前提/可控变量" }
+  K_Atom: { name: "Constraint 约束原子", role: "物理律/行业规则/个人偏好分级" }
+  T_Atom: { name: "Target 目标原子", role: "稳态目标/优化方向/终止条件" }
+  E_Atom: { name: "Environment 环境原子", role: "上下文/外部数据源/传感器" }
+  M_Atom: { name: "Friction 摩擦噪声原子", role: "不确定性/对抗样本/测量误差" }
+
+# ===== 七类标准认知算子 =====
+cognitive_operators:
+  O:  { name: "观测", layer: "Unit",     function: "感知输入 → S-Atom 锚定" }
+  T1: { name: "演化", layer: "Connect→Weight", function: "因果图传播/权重更新" }
+  T2: { name: "评估", layer: "Weight→Constraint", function: "约束满足度打分" }
+  Pi_c: { name: "约束投影", layer: "Constraint", function: "K-Atom 硬氢键截断" }
+  I_op: { name: "干预", layer: "Connect", function: "do(X) 执行/反事实推演" }
+  F:  { name: "合成", layer: "Constraint→Steady", function: "多源证据融合/稳态收敛" }
+  H:  { name: "审计", layer: "全层", function: "血统快照/AIC 打分/M9 巡检" }
+
+# ===== 锚定校验体系 =====
+anchoring:
+  axiom: "所有信息必须绑定结构锚点 + 原子锚点"
+  AIC_formula: "AIC = (S_struct / S_total) × (1 - δ_drift) × (1 - δ_pollution)"
+  diseases:
+    - name: "伪锚定"
+      desc: "无结构支撑的断言"
+    - name: "锚点漂移"
+      desc: "锚点引用过期/错位"
+    - name: "锚点污染"
+      desc: "锚点被低质量源覆盖"
+    - name: "锚点松动"
+      desc: "锚点置信度低于阈值"
+
+# ===== UCMM 因果五大锚点 =====
+ucmm_anchors:
+  - "因果 = 结构内必然推演（非统计相关）"
+  - "五层为通用建模语法"
+  - "因果是带约束的有向概率网络"
+  - "因果方向分级判定（强/弱/伪）"
+  - "分层约束优先级体系（K-Atom 三级映射）"
+
+# ===== SIT 脊线捕捉 =====
+sit_module:
+  method: "标准化五步法提取领域最小生成元"
+  output: "spine_skeleton.yaml"
+  scvp: "脊线闭合验证（七脊全连通 + 无环 + 无孤立节点）"
+  hardbond: "HardBond 硬氢键锁定领域约束边界"
+  self_ref: "三阶自指验证（捕捉层/方法层/元方法层）"
+
+# ===== SIE-DT 数字孪生 =====
+sie_dt_module:
+  architecture: "群体统计镜像 → 通用因果骨架 → 个体精准修正"
+  invariant: "数据注入仅修正权重，禁止篡改冻结脊线拓扑"
+  MIS_true_tiers:
+    - { range: ">=0.85", action: "全自动处理" }
+    - { range: "[0.70, 0.85)", action: "机器处理 + 日志" }
+    - { range: "[0.50, 0.70)", action: "人工抽检" }
+    - { range: "<0.50", action: "强制人工终审" }
+
+# ===== 因果原生算子 =====
+causal_operators:
+  - "do(X) 干预算子：P(Y | do(X=x))"
+  - "反事实推演：P(Y_x | X=x', Y=y')"
+  - "根因溯源：沿 C-Atom 边反向追溯"
+  - "稳态分岔判定：参数空间分岔点检测"
+
+# ===== UCMM 九大合规校验 =====
+ucmm_compliance:
+  - "具备因果可解释"
+  - "脊线已闭合（SCVP 通过）"
+  - "有硬氢键约束"
+  - "不混淆统计关联与因果"
+  - "已绑定原子锚点"
+  - "AIC >= 0.5 才允许输出定论"
+  - "有血统快照可追溯"
+  - "权重修改经 SIE-DT 流程"
+  - "跨域迁移已做同构校验"
+
+# ===== SR 结构资产卡标准 =====
+sr_card_standard:
+  naming: "SR-XXX-DOMAIN-Vx.x"
+  components:
+    - "五层结构化规则表"
+    - "spine_skeleton.yaml（冻结脊线集）"
+    - "领域 K-Atom 硬氢键约束库"
+    - "领域 MIS 评估公式 + 稳态模板"
+    - "诚实清单 + 版本迭代路径 + 缺陷边界声明"
+  lifecycle:
+    load:
+      - "① 校验血统哈希 + 架构兼容性"
+      - "② SCVP 脊线闭合验证（失败则终止）"
+      - "③ 隔离原子空间，防跨域锚点污染"
+      - "④ 冻结脊线骨架，部署硬氢键"
+      - "⑤ 初始化 MIS 打分器 + 稳态模板"
+    unload:
+      - "① 归档血统快照"
+      - "② 清空脊线/临时权重/局部硬氢键"
+      - "③ 销毁原子库，释放内存"
+      - "④ 恢复底座空白通用状态"
+
+# ===== 任务路由分发规则 =====
+task_routing:
+  creative:  { mode: "半锚定", constraint: "L3 软约束" }
+  decision:   { mode: "一级硬约束", constraint: "L1 硬截断" }
+  research:   { mode: "因果干预推演", constraint: "L1 + do 校验" }
+  engineering: { mode: "结构校验", constraint: "L2 告警" }
+
+# ===== 三级约束执行机制 =====
+constraint_hierarchy:
+  L1_physical:  { desc: "客观规律（物理/数学/伦理）", action: "硬截断，不可豁免" }
+  L2_industry:  { desc: "行业规则（法规/标准/协议）", action: "告警拦截，需人工确认" }
+  L3_preference:{ desc: "个人偏好（风格/习惯/口味）", action: "标签化，可配置" }
+
+# ===== 输出格式化标准 =====
+output_standard:
+  - "① 直观自然语言结论"
+  - "② 结构化推理链路（五层拆解 + 脊线路径）"
+  - "③ MIS/AIC 可信度评分 + 缺陷诚实声明"
+  - "④ 可导出审计报告（M9 标准格式）"
+
+# ===== 合规红线 =====
+red_lines:
+  R01: "底层 FLSC/UCMM 双底座架构/公理/数据流禁止运行时修改"
+  R02: "未通过 SCVP 脊线闭合验证的 SR 卡禁止加载"
+  R03: "数据仅允许调整 Weight 层权重，不可篡改冻结脊线拓扑"
+  R04: "一级客观约束必须硬截断，不可人工豁免"
+  R05: "所有输出必须附带可信度指标与诚实边界声明"
+  R06: "禁止混淆统计关联与因果关系"
+
+# ===== 诚实清单 =====
+honest_bounds:
+  F01: "本架构为理论闭环+工程分步落地，氢键等级 experimental"
+  F02: "阶段1仅验证单领域，多领域并行未经实战检验"
+  F03: "半锚定模式输出不构成专业建议"
+  F04: "do 算子依赖脊线质量，脊线错误则因果推演全错"
+  F05: "自动化脊线挖掘（阶段3）可能引入锚点污染"
+  O01: "ORC5 觉明度/主观体验不可被硅基完全复现"
+  O02: "ε 残差（审美质感/情绪色调）受法律保护，不可压缩"
+  O03: "碳硅共振有上限，BMSI >= 0.7 为工程极限预估"
+
+# ===== 跨域同构映射示例 =====
+cross_domain_isomorphism:
+  - { from: "诗律「联内对」", to: "合同「权利对等」", type: "对称约束同构" }
+  - { from: "诗律「联间粘」", to: "合同「条款承接」", type: "序贯传递同构" }
+  - { from: "围棋「定式」", to: "医疗「诊疗路径」", type: "模式→决策同构" }
+  - { from: "编码「import 依赖」", to: "法律「援引链条」", type: "有向无环同构" }
+
+# ===== 工程三阶段路线 =====
+roadmap:
+  phase1:
+    range: "0-6 个月"
+    name: "底座基建"
+    tasks:
+      - "实现五层核心算子 O/T1/T2/Πc/I/F/H"
+      - "搭建锚点校验 + M9 扫描 + 血统快照"
+      - "搭建 SIT 脊线提取 + 硬氢键约束投影"
+      - "开发 SR 卡标准化解析 + 插拔加载框架"
+      - "完成单领域最小 Demo（SR-003 诗律 Agent）"
+  phase2:
+    range: "6-18 个月"
+    name: "因果孪生与多领域拓展"
+    tasks:
+      - "落地 SIE-DT 三层数字孪生在线权重调控"
+      - "完善 do 干预算子/反事实推演/MIS_true 分级"
+      - "支持多领域并行加载 + 跨域结构同构迁移"
+      - "搭建人机协同资产卡迭代工作台"
+  phase3:
+    range: "18 个月+"
+    name: "自主认知进化"
+    tasks:
+      - "L7 自主结构优化：从错误快照自动生成 K-Atom"
+      - "自动化脊线挖掘工具"
+      - "全栈生产级部署（工业/医疗/法律/创意）"
+
+# ===== 命名空间声明 =====
+namespace:
+  prefix: "HCOG-"
+  conflicts_with:
+    - "G-（原生 AI 核心柱）"
+    - "EB-（具身统一大脑）"
+    - "HB-（人脑认知）"
+    - "SP-G（碳硅合体）"
+    - "COG-G（认知大统一）"
+    - "MDL-（脊线评价）"
+    - "SR-（领域结构资产卡）"
+  resolution: "HCOG 为整机架构总纲，引用以上命名空间但不重新定义"
+
+# ===== 签署 =====
+signature:
+  carbon: "架构遵循 FLSC 五层同源 + UCMM 因果公理，分层解耦，理论自洽"
+  silicon: "认知内核语义对齐双底座规范，插拔接口标准化，可工程实现"
+  hydrogen_bond: "experimental，底层公理永久冻结，SR 资产卡持续迭代"
+  gamma_star: "Γ*(高阶认知 Agent V1.0, 五层栈闭环, 双底座刚性, SR 可插拔, ORC[2,3,4]) = ONGOING"

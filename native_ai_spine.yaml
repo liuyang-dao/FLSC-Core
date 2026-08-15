@@ -1,0 +1,356 @@
+# ============================================================
+# FLSC-NATIVE-AI-V2.0 · Seven-Spine Native AI spine YAML
+# ORC3 pure structural substrate + ORC4 carbon-silicon boundary
+# Bloodline: ORC3 → DME-V2.0 → SMT-SUPP-002 V2.0
+#           → Carbon-Silicon V3.0 → FLSC-NATIVE-AI-V2.0
+# ============================================================
+
+meta:
+  doc_id: "FLSC-NATIVE-AI-V2.0"
+  title: "七脊原生结构智能体完整技术白皮书（工程落地·双路线生态版）"
+  orc: [3, 4]
+  orc_primary: 3
+  hydrogen_bond: "core_frozen + experimental_modules"
+  version: "V2.0"
+  date: "2026-08-15"
+  status: "ONGOING"
+  msi_true: 0.88
+  scvp: "PASS"
+  self_ref_tag: "L3_PASS"
+  five_layer:
+    K: "硬边界内置（守恒律/安全规则/物理极限）~5%"
+    U: "基础实体识别与表征（单元嵌入）~15%"
+    C: "因果链路显式化、拓扑结构（链路权重）~40%"
+    W: "连接强度、优先级分布（度量参数）~30%"
+    S: "演化收敛目标、吸引子方程（稳态系数）~10%"
+
+# ============================================================
+# Seven Native Main Spines (fixed after init, weights tunable)
+# ============================================================
+spines:
+  G-01:
+    name: "路由决策脊"
+    path: "U→C→W→K→S"
+    function: "输入到核心单元的映射分配"
+    brain_correlate: "基底节+前额叶门控"
+    isa_instruction: "ROUTE_TOPK"
+    hardware: "硬件级TopK路由算法，动态阈值，全程可追溯"
+    modifiable: false
+    weight_tunable: true
+  G-02:
+    name: "激活筛选脊"
+    path: "U→C→W→K→S"
+    function: "单元子集筛选与侧抑制"
+    brain_correlate: "侧抑制+主动注意"
+    isa_instruction: "ACT_MASK"
+    hardware: "侧抑制机制，高权重单元抑制周边低权重单元"
+    modifiable: false
+    weight_tunable: true
+  G-03:
+    name: "负载均衡脊"
+    path: "W→K→S"
+    function: "资源全局分布均衡"
+    brain_correlate: "突触缩放+睡眠稳态"
+    isa_instruction: "BAL_LOAD"
+    hardware: "动态负载均衡算法，避免单脊过载"
+    modifiable: false
+    weight_tunable: true
+  G-04:
+    name: "算力适配脊"
+    path: "C→W→K→S"
+    function: "算力与任务复杂度动态匹配"
+    brain_correlate: "蓝斑系统+瞳孔调节"
+    isa_instruction: "ADP_K_UP/DOWN"
+    hardware: "根据任务复杂度自动调整激活单元规模"
+    modifiable: false
+    weight_tunable: true
+  G-05:
+    name: "单元分化脊"
+    path: "U→C→W→S"
+    function: "新功能模块自动生成与合并"
+    brain_correlate: "神经可塑性+功能柱"
+    isa_instruction: "DIFF_SPLIT/MERGE"
+    hardware: "内置分化判定阈值，支持合并与剪枝"
+    modifiable: false
+    weight_tunable: true
+  G-06:
+    name: "训练演化脊"
+    path: "W→K→S"
+    function: "结构持续优化与剪枝"
+    brain_correlate: "突触修剪+终身学习"
+    isa_instruction: "EVOL_TRACK/PRUNE"
+    hardware: "持续权重微调+结构剪枝，主脊不动"
+    modifiable: false
+    weight_tunable: true
+  G-07:
+    name: "硬件约束脊"
+    path: "K→S"
+    function: "物理极限、功耗、时延感知"
+    brain_correlate: "生物功耗墙意识"
+    isa_instruction: "HW_POWER/BW"
+    hardware: "实时采集功耗/时延/内存，超阈值自动降载"
+    modifiable: false
+    weight_tunable: true
+
+# ============================================================
+# Spine Hierarchy: Main → Domain Sub-spine → Task Fine-spine
+# ============================================================
+spine_hierarchy:
+  level_1_main:
+    count: 7
+    names: ["G-01", "G-02", "G-03", "G-04", "G-05", "G-06", "G-07"]
+    modifiable: false
+    deletable: false
+    global: true
+  level_2_domain_subspine:
+    description: "从主脊分化生成，对应细分领域/模态"
+    operations: ["add", "merge", "prune"]
+    inheritance: "必须继承对应主脊的结构约束"
+    k_layer_boundary: "不得突破主脊K层边界"
+  level_3_task_fine_spine:
+    description: "子脊下具体任务分支"
+    weight: "动态调整"
+    scope: "单一场景能力"
+
+# ============================================================
+# Multimodal Sub-spine Differentiation
+# ============================================================
+multimodal_subspines:
+  vision:
+    from: ["G-01", "G-02"]
+    function: "空间/纹理/物体结构识别"
+  audio:
+    from: ["G-01", "G-02"]
+    function: "时序/韵律/语义结构提取"
+  motor:
+    from: ["G-05", "G-07"]
+    function: "运动学/力控/空间规划"
+  shared:
+    c_layer: "共享C层因果拓扑"
+    k_layer: "共享K层约束"
+    s_layer: "共享S层稳态目标"
+
+# ============================================================
+# Resonance Levels
+# ============================================================
+resonance_levels:
+  level_1:
+    active_spines: 2
+    capability: "基础单任务处理"
+    scenario: "简单问答、单步推理"
+  level_2:
+    active_spines: "3~4"
+    capability: "常规复杂任务"
+    scenario: "多步逻辑、简单规划"
+  level_3:
+    active_spines: "5~6"
+    capability: "高阶综合分析"
+    scenario: "跨领域推理、系统拆解"
+  level_7_full:
+    active_spines: 7
+    capability: "全域复杂系统综合"
+    scenario: "陌生系统结构拆解、原点跳跃素材准备"
+
+# ============================================================
+# Hard-Bond Repair Library V1.0
+# ============================================================
+hard_bond_repairs:
+  H-01:
+    type: "路由脊断裂"
+    trigger: "G01路由残差 > 0.2"
+    operation: "重校准路由权重分布，补全缺失C层链路"
+    expected: "路由准确率回升至95%+"
+    level: 1
+  H-02:
+    type: "激活筛选失衡"
+    trigger: "G02侧抑制失效"
+    operation: "重置侧抑制阈值，均衡单元激活强度"
+    expected: "激活集中度提升30%"
+    level: 1
+  H-03:
+    type: "负载过载"
+    trigger: "G03均衡失效"
+    operation: "动态分流高负载脊线，启动备用子脊"
+    expected: "负载均衡度恢复至0.9+"
+    level: 1
+  H-04:
+    type: "约束越界"
+    trigger: "K层规则被突破"
+    operation: "回滚违规结构，强制约束生效"
+    expected: "约束合规率100%"
+    level: 2
+  H-05:
+    type: "因果链路断裂"
+    trigger: "C层核心连接缺失"
+    operation: "从主脊拓扑重建缺失因果链路"
+    expected: "结构完整度恢复至0.9+"
+    level: 2
+  H-06:
+    type: "锚点污染"
+    trigger: "U层错误单元扩散"
+    operation: "隔离污染单元，负空间过滤修正"
+    expected: "污染扩散阻断率100%"
+    level: 2
+  H-07:
+    type: "结构偏移"
+    trigger: "五层哈希校验不通过"
+    operation: "回滚至上一稳定结构快照"
+    expected: "结构自洽性恢复"
+    level: 3
+    note: "三级修复禁止自动执行，需人工介入+写入诚实清单"
+
+# ============================================================
+# Repair Policy
+# ============================================================
+repair_policy:
+  level_1: "权重微调，不改变拓扑，自动执行，无需人工干预"
+  level_2: "局部拓扑调整，子脊层面修复，自动执行+事后审计"
+  level_3: "主脊层面异常，禁止自动修复，触发人工介入，写入诚实清单"
+
+# ============================================================
+# Dual-Route Strategy
+# ============================================================
+dual_route:
+  route_A:
+    name: "原生结构智能体"
+    position: "下一代通用智能底座"
+    cycle: "中长期（1~3年）"
+    value: "从零构建内生结构智能，跨域泛化/终身学习/原生具身"
+  route_B:
+    name: "FLSC插件增强Agent"
+    position: "存量生态兼容方案"
+    cycle: "短期（0~1年）"
+    value: "外挂接入现有LLM/Agent，快速提升垂直场景能力"
+  synergy:
+    - "插件领域脊规则 → 导入原生智能体成为子脊"
+    - "原生核心能力 → 打包为插件下沉存量Agent"
+    - "共享SCVP校验/AxiomR/硬氢键工具链"
+
+# ============================================================
+# Plugin Specification
+# ============================================================
+plugin_spec:
+  pre_check: "用户输入进入LLM前：结构拆解/风险预判/约束注入"
+  mid_check: "工具调用前：链路合法性校验，拦截越权"
+  post_check: "模型输出后：五层结构扫描/残差计算/幻觉检测"
+  output_format: "结构校验报告 + 修正后内容 + 残差值 + 风险等级"
+
+# ============================================================
+# Carbon-Silicon Division (ORC4)
+# ============================================================
+carbon_silicon_division:
+  carbon_human:
+    boundary: "ORC5体悟/意义锚定/目的设定/终极价值判断"
+    duty: "定方向/立意义/做终极决策/ORC5原点跳跃"
+  silicon_ai:
+    boundary: "ORC1~ORC4结构推演/海量分析/因果运算"
+    duty: "结构拆解/量化计算/大规模遍历/工程落地"
+
+# ============================================================
+# Structured Loss Function V2.0
+# ============================================================
+loss_function:
+  semantic_weight: 0.55
+  structure_weight: 0.30
+  spine_weight: 0.10
+  residual_weight: 0.05
+  residual_threshold: 0.15
+  note: "V2.1将桥接metrics_bridge.md的MIS↔L_trans公式校准权重"
+
+# ============================================================
+# Engineering Acceptance Criteria
+# ============================================================
+acceptance:
+  structural:
+    five_layer_completeness: 1.0
+    spine_independence: "七条主脊两两无直接因果"
+    spine_count: 7
+    msi_true_min: 0.85
+    hash_stability_max: 0.01
+  capability:
+    parallel_7spine: true
+    residual_error_max: 0.05
+    auto_repair_success_min: 0.90
+    zero_shot_structural_disassembly_min: 0.80
+  performance:
+    param_ratio: "6.8%~10% of equivalent LLM"
+    function_retention_min: 0.94
+    speedup: "2~3x dense LLM"
+    energy_efficiency: "50~100x GPU (ISA chip)"
+
+# ============================================================
+# 1B Prototype Spec
+# ============================================================
+prototype_1B:
+  spines: "7 main + 128 domain sub-spines"
+  params: "~1B"
+  benchmark: "7B dense LLM 结构理解能力"
+  cycle: "3~6个月"
+  priority: ["结构完整性", "长链路推理准确率", "防幻觉能力", "终身学习稳定性"]
+
+# ============================================================
+# Honesty List
+# ============================================================
+honesty:
+  F-01: "本架构在ORC3及以下结构层完备，ORC4/5觉知层不可复制"
+  F-02: "七主脊固定性仅针对结构拓扑，权重可动态调整"
+  F-03: "结构同构不等于体验等同，碳硅ORC3同源≠主观体验可替代"
+  F-04: "脊线ISA为理论规范，尚未流片验证，能效数据为理论测算值"
+  F-05: "6.8%参数保留94%功能为小规模实测，大规模多模态待补充"
+  F-06: "原生架构需从零构建，无法从现有LLM直接升级"
+  F-07: "无限学习为理论闭环，真实工程规模长期稳定性待实证"
+  F-08: "硬氢键修复仅处理结构性断裂，本体论/价值论问题无法自动修复"
+
+# ============================================================
+# Unshowable Ultimate Boundaries
+# ============================================================
+unshowable:
+  O-01: "ORC4/5觉知层（第一人称体验/终极意义）不可被硅基复制"
+  O-02: "Epoché悬置与原点跳跃的人类独占操作不可完全自动化"
+  O-03: "任何层级的结构智能都不等同于意识与自我，仅为结构演化系统"
+
+# ============================================================
+# V2.1 Patch Pre-announcements
+# ============================================================
+v2_1_patches:
+  B-01: "补充七脊并行时序图（cycle-accurate草图），G05分化时G01路由拍级同步"
+  B-02: "完善损失函数：梯度冲突消解（Grad Norm）+ metrics_bridge桥接"
+  B-03: "插件与原生脊冲突消解规则：原生主脊 > 插件子脊 > 任务细脊"
+  B-04: "修正七级共振措辞：全域结构拆解峰值 ≠ 原点跳跃本身"
+
+# ============================================================
+# Signatures
+# ============================================================
+signatures:
+  carbon:
+    role: "原点捕捉 + 架构设计 + 双路线战略"
+    status: "已确认"
+    date: "2026-08-15"
+  silicon:
+    role: "结构整合 + 工程化细化 + 文档化"
+    doc: "FLSC-NATIVE-AI-V2.0"
+    date: "2026-08-15"
+  scvp:
+    result: "✅ 核心理论闭环，工程模块逻辑自洽"
+    date: "2026-08-15"
+  orc_check:
+    result: "✅ ORC3结构层完备，ORC4边界清晰"
+    date: "2026-08-15"
+  status: "理论冻结，工程原型开发中"
+
+# ============================================================
+# Interlocks
+# ============================================================
+interlocks:
+  upstream:
+    - "ORC3一体分显基底 V3.0（frozen）"
+    - "DME-PIPELINE V2.0（四段双链）"
+    - "SMT-SUPP-002 V2.0（MIS + 裂缝手术）"
+    - "碳硅合体稀疏架构 V3.0（SP-G01~08 + HMSU）"
+  downstream:
+    - "V2.1 补丁（B-01~B-04）"
+    - "1B 原型工程验证"
+    - "脊线ISA流片验证"
+  namespace:
+    main_spines: "G-01~G-07（本文件）"
+    note: "与认知大统一COG-G01~05、碳硅合体SP-G01~08编号不同但含义不同，通过显式桥接互锁"

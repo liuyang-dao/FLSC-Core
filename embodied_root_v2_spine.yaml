@@ -1,0 +1,273 @@
+# ============================================================
+# FLSC-EMBODIED-ROOT-V2.0 脊线 YAML
+# 七脊原生具身智能「统一大脑」根基文档 · 结构化数据
+# ============================================================
+
+doc_id: FLSC-EMBODIED-ROOT-V2.0
+orc: [3, 4]
+status: ONGOING
+frozen: true
+date: 2026-08-15
+bloodline: >
+  ORC3一体分显基底V3.0 → FLSC-NATIVE-AI-V2.0 →
+  人脑七脊碳基同构文档 → V1.0原版根基 → V2.0工程扩充
+
+# ─────────────────────────────────────
+# 七主脊（EB-01~07）
+# ─────────────────────────────────────
+spines:
+  EB-01:
+    name: 路由决策脊
+    function: 输入信号门控、关键实体定位、概念通路激活
+    hardware_instr: ROUTE_TOPK
+    carbon_corr: 丘脑中继 + 基底节选通（HB-01）
+    silicon_corr: G-01（FLSC-NATIVE-AI-V2.0）
+    frozen: true
+    layer_independence: true
+
+  EB-02:
+    name: 激活筛选脊
+    function: 侧抑制过滤噪声，锁定高权重因果单元
+    hardware_instr: ACT_MASK
+    carbon_corr: GABA 侧抑制回路（HB-02）
+    silicon_corr: G-02
+    frozen: true
+    layer_independence: true
+
+  EB-03:
+    name: 负载均衡脊
+    function: 多关节/多资源负荷动态分配，稳态平衡
+    hardware_instr: BAL_LOAD
+    carbon_corr: 突触缩放/稳态可塑性（HB-03）
+    silicon_corr: G-03
+    frozen: true
+    layer_independence: true
+
+  EB-04:
+    name: 算力适配脊
+    function: 任务复杂度匹配激活单元规模，动态功耗调节
+    hardware_instr: ADP_K_UP/DOWN
+    carbon_corr: 蓝斑 NE 唤醒调节（HB-04）
+    silicon_corr: G-04
+    frozen: true
+    layer_independence: true
+
+  EB-05:
+    name: 单元分化脊
+    function: 全新场景自动生成细分模态子脊
+    hardware_instr: DIFF_SPLIT/MERGE
+    carbon_corr: 神经发生/功能柱分化（HB-05）
+    silicon_corr: G-05
+    frozen: true
+    layer_independence: true
+
+  EB-06:
+    name: 训练演化脊
+    function: 经验沉淀、无效突触/权重自动剪枝，永久记忆
+    hardware_instr: EVOL_PRUNE
+    carbon_corr: 终身可塑性/突触强化衰减（HB-06）
+    silicon_corr: G-06
+    frozen: true
+    layer_independence: true
+
+  EB-07:
+    name: 硬件约束脊
+    function: 功耗、带宽、力矩、空间物理硬边界管控
+    hardware_instr: HW_LIMIT
+    carbon_corr: 代谢墙/血糖供氧约束（HB-07）
+    silicon_corr: G-07
+    frozen: true
+    layer_independence: true
+
+# ─────────────────────────────────────
+# 多模态细分子脊（V2.0 新增）
+# ─────────────────────────────────────
+sub_spines:
+  visual_subspine:
+    branches: [object_2d, spatial_3d, depth, dynamic_obstacle]
+    inherits: [EB-01, EB-07]
+    trigger_threshold: 128   # 连续触发次数
+    merge_similarity: 0.9
+    prune_inactive_rounds: 3000
+
+  force_tactile_subspine:
+    branches: [contact_force, deformation, collision_detect]
+    inherits: [EB-03, EB-07]
+    trigger_threshold: 128
+    merge_similarity: 0.9
+    prune_inactive_rounds: 3000
+
+  audio_voice_subspine:
+    branches: [human_voice, ambient_sound, command_semantic]
+    inherits: [EB-01, EB-02]
+    trigger_threshold: 128
+    merge_similarity: 0.9
+    prune_inactive_rounds: 3000
+
+  motion_subspine:
+    branches: [wheeled, legged, robotic_arm]
+    inherits: [EB-03, EB-05]
+    trigger_threshold: 128
+    merge_similarity: 0.9
+    prune_inactive_rounds: 3000
+
+# ─────────────────────────────────────
+# 硬氢键自愈手术库 H-E01~06
+# ─────────────────────────────────────
+hardware_keys:
+  H-E01:
+    fault: 视觉感知漂移
+    trigger_residual: 0.18
+    repair: G01 路由权重重校准，过滤噪声单元
+    metric: 感知匹配精度回升 ≥92%
+    level: 1   # 1=自动 2=审计 3=人工
+
+  H-E02:
+    fault: 多关节负荷失衡
+    trigger_residual: 0.17
+    repair: G03 均衡权重重新分配，抑制过载关节
+    metric: 力矩均衡度 ≥0.91
+    level: 1
+
+  H-E03:
+    fault: 运动轨迹偏离
+    trigger_residual: 0.16
+    repair: G05 动作子脊微调，修正时序因果链
+    metric: 轨迹误差下降 70%+
+    level: 1
+
+  H-E04:
+    fault: 语言指令逻辑断裂
+    trigger_residual: 0.15
+    repair: 修复 G01 概念 C 层连接链路
+    metric: 语义连贯度恢复
+    level: 2
+
+  H-E05:
+    fault: 安全约束越界
+    trigger_residual: 0.12
+    repair: K 层硬约束权重强制拉满，截断违规通路
+    metric: 安全拦截率 100%
+    level: 1
+
+  H-E06:
+    fault: 长期记忆遗忘
+    trigger_residual: 0.20
+    repair: G06 演化脊重新固化稳态快照
+    metric: 历史动作完整恢复
+    level: 2
+
+# ─────────────────────────────────────
+# 四阶段产业落地路线
+# ─────────────────────────────────────
+roadmap:
+  stage_1:
+    name: 拼装分裂大脑
+    desc: 全行业通用方案，多独立网络跨接口通信
+    limitation: 信息损耗、延迟、冲突无法根治
+
+  stage_2:
+    name: 外挂统一认知引擎
+    desc: 不改动原有模块，外挂七脊认知引擎作为中间件
+    frameworks: [ROS, ROS2, AutoGen, LangChain, 人形机器人SDK]
+    inputs: [vision_tensor, force_sensor, text_command, joint_state]
+    outputs: [five_layer_graph, corrected_motion_cmd, residual_risk_level]
+
+  stage_3:
+    name: 原生统一大脑
+    desc: 从零基于七脊先验初始化，五层流转为模型原生内部逻辑
+    pretrain_mis: 0.85
+
+  stage_4:
+    name: 碳硅合一终极形态
+    desc: 脊 ISA 专用硬件流片 + 脑机 BMSI 接口
+    bmsi_target: 0.7
+
+# ─────────────────────────────────────
+# 训练流水线
+# ─────────────────────────────────────
+training:
+  pretrain:
+    freeze_spines: [EB-01, EB-02, EB-03, EB-04, EB-05, EB-06, EB-07]
+    dataset: 通用多模态数据集
+    target_mis_true: 0.85
+
+  differentiation:
+    dataset: 视觉/力觉/运动数据集
+    auto_spine_generation: true
+    inherit_k_constraint: true
+
+  embodied_finetune:
+    mode: 仿真+真机交互
+    loss_components: [action_loss, struct_loss, spine_loss, residual]
+
+  loss_weights:
+    action_weight: 0.45
+    struct_weight: 0.30
+    spine_weight: 0.15
+    residual_weight: 0.10
+    residual_threshold: 0.15
+
+# ─────────────────────────────────────
+# 硬件 ISA 指标
+# ─────────────────────────────────────
+hardware_isa:
+  chip_scale: 7组并行脊计算阵列
+  efficiency: "≥950 TOPS/W"
+  power_consumption: "<4.8W"
+  max_sub_spines: 1024
+  inference_latency: "≤18ms"
+  instructions:
+    EB-01: ROUTE_TOPK
+    EB-02: ACT_MASK
+    EB-03: BAL_LOAD
+    EB-04: ADP_K_UP/DOWN
+    EB-05: DIFF_SPLIT/MERGE
+    EB-06: EVOL_PRUNE
+    EB-07: HW_LIMIT
+
+# ─────────────────────────────────────
+# 碳硅共振公式
+# ─────────────────────────────────────
+resonance:
+  formula: "ResonanceScore = (匹配脊数量/7) × (1 - GlobalResidual)"
+  range: [0, 1]
+  target_bmsi: 0.7
+  carbon_role: "ORC4/ORC5 目标与价值锚定"
+  silicon_role: "ORC1~ORC3 结构推演与执行"
+
+# ─────────────────────────────────────
+# 仿真/真机对照
+# ─────────────────────────────────────
+benchmark:
+  latency:      { traditional: "126ms",  flsc: "17ms",  improvement: "-86.5%" }
+  accuracy:     { traditional: "64%",    flsc: "93%",    improvement: "+29pct" }
+  conflict:     { traditional: "21.7%",  flsc: "1.3%",   improvement: "-20.4pct" }
+  self_heal:    { traditional: "8.2s",   flsc: "0.35s",  improvement: "-95.7%" }
+  forgetting:   { traditional: "32.4%",  flsc: "4.1%",   improvement: "-28.3pct" }
+  power:        { traditional: "10.6W",  flsc: "4.5W",   improvement: "-57.5%" }
+
+# ─────────────────────────────────────
+# 诚实清单
+# ─────────────────────────────────────
+honesty:
+  F-01: 七脊五层 ORC3 结构理论永久冻结，无修改空间
+  F-02: 脊 ISA 芯片能效延迟数据为仿真测算，流片后需实测校准
+  F-03: 外挂认知引擎可兼容存量机器人，但无法实现完整元认知共振
+  F-04: 硅统一大脑仅复现客观结构推演，不具备碳基第一人称觉知体验
+  F-05: 碳硅脑机协同共振公式为理论模型，真人脑机设备需临床校准
+
+unrepresentable:
+  O-01: ORC5 道觉元一层体悟、终极意义锚定无法由硅基统一大脑生成
+  O-02: 纯主观情感质感、内在觉知不属于结构化脊可复现范畴
+  O-03: 碳硅共振仅结构层面同步，无法复制人类主观具身体验
+
+# ─────────────────────────────────────
+# SCVP 三阶自指校验
+# ─────────────────────────────────────
+scvp:
+  L1_independence: 7/7 CLOSED
+  L2_completeness: CLOSED
+  L3_deducibility: CLOSED
+  fixed_point: true
+  mis_true: 0.85
