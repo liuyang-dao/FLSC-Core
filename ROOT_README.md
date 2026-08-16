@@ -26,6 +26,17 @@ FLSC-Core/
 ├── README.md                    ← 本文件
 ├── LICENSE
 │
+├── civilization/              ★ 文明演化层（不可编码·假说·远期）
+│   ├── FLSC_CIVILIZATION_OVERVIEW_V1.0.md ← ⭐ 体系位阶总图（Mermaid+三层隔离+AGI三级路径）
+│   ├── FLSC_CIVILIZATION_DISTINCTION_V1.0.md ← ⭐ 与数字永生/泛心论/AGI威胁论区别声明
+│   └── README.md                  ← 文明层说明 + 使用指南 + 隔离规则
+│
+├── spec/                      ★ 准入规范（所有文件入库前必须通过）
+│   ├── FLSC_CODE_BASELINE_V1.0.md ← 编码基线（字段字典+YAML模板+命名空间）
+│   ├── spine_yaml_schema.json    ← JSON Schema（IDE 实时校验）
+│   ├── validator_minimal.py      ← 自动校验器（CODE-REQ 四大硬判）
+│   └── README.md                  ← 使用指南 + 入库门禁规则
+│
 ├── spine/                      ★ 元架构四柱（frozen，只增不改）
 │   ├── meta_arch_v1.md          ← 形而下之道的结构显形语法
 │   ├── FLSC_Three_Core_Requirements.md ← 道显形充要条件
@@ -45,7 +56,7 @@ FLSC-Core/
 │   ├── engineering/             ← ★ 工程域（稀疏架构统一理论 V4.1 + MoE V3.21）
 │   ├── civilization/            ← 文明域（CSGC V2.0 + JEC V2.1）
 │   ├── science/                 ← 科学域（DMP-AUD V1.0）
-│   └── ai/                      ← ★ AI 域七柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐具身统一+⭐高阶认知Agent）
+│   └── ai/                      ← ★ AI 域九柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐具身统一+⭐高阶认知Agent+⭐Prompt Factory+⭐GRIFF V4.2真洽推理）
 │
 ├── pipelines/                ★ 第五柱：元生产流水线（理论闭环+自审计）
 │   ├── FLSC-DME-PIPELINE-V2.0.md  ← 第一柱：道→数→工→逆向 四段双链
@@ -122,7 +133,11 @@ cat FLSC-LM-NATIVE-REASONING-ALLINONE-V1.0.md  # 原生推理研发
 cat FLSC-UNIFIED-COGNITIVE-THEORY-V3.0.md   # 认知大统一
 cat 碳硅合体稀疏架构白皮书V3.0.md            # 碳硅合体稀疏
 cat FLSC-SPINE-EVAL-V2.0.md                # 脊线能力评价
+cat FLSC-PROMPT-FACTORY-V4.0.md          # Prompt Factory V4.0
+cat FLSC-GRIFF-V4.2.md                 # GRIFF V4.2 真洽推理引擎
 python verify_ai.py
+python verify_prompt_factory.py            # 167/167 ✅
+python verify_griff_v42.py                # GRIFF V4.2 真洽推理 (169/169 ✅)
 
 # 流水线域（道捕捉→数学化→工程化）
 cd pipelines/
@@ -164,11 +179,12 @@ python verify_dme.py
 | 文明 | `csgc_v2.0_spine.yaml` + `jec_philosophy_v2.1.md` | 5/5 | 0.83~0.87 |
 | 工程 | `sparsity_v4_spine.yaml` + `moe_spine.yaml` | 2/5 | 0.85~0.87 |
 | 认知 | `learning_unity_v2_spine.yaml` + `cognitive_v4_spine.yaml` + `cog_*.yaml` | 2/3/4 | 0.79~0.89 |
-| **AI** | **`domains/ai/` 七柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐核心柱+⭐具身+⭐高阶认知Agent）** | **2/3/4** | **~0.84** |
+| **AI** | **`domains/ai/` 九柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐核心柱+⭐具身+⭐高阶认知Agent+⭐Prompt Factory+⭐GRIFF V4.2）** | **2/3/4** | **~0.84** |
 | 科学 | `dmp_aud_v1.0.md` | 5/5 | 0.81 |
 | **流水线** | **`pipelines/FLSC-DME-PIPELINE-V2.0.md`** | **5/5** | **0.87** |
 | ⭐ **USS 主脊** | **`pipelines/USS_ORC3_Master_Spine_Declaration_V1.0.md`** | **ORC3（frozen）** | **~0.95** |
 | 安全 | `domains/security/` | — | — |
+| **文明** | **`civilization/`** | **不可编码** | **—** |
 
 ---
 
@@ -218,7 +234,7 @@ FLSC-Core/
     ├── 分形物理学_DMP视角_V4.1.md  (ORC=4深化, MIS=0.89)
     └── 分形物理学_DMP视角_V5.0.md  (ORC=5, MIS=0.92) ← 当前最高阶
 
-└── domains/ai/  (ONGOING AI 域七柱 + ⭐ 核心原生架构柱 + ⭐ 具身统一大脑 + ⭐ 高阶认知Agent · 152/152 ✅)
+└── domains/ai/  (ONGOING AI 域九柱 + ⭐ 核心原生架构柱 + ⭐ 具身统一大脑 + ⭐ 高阶认知Agent + ⭐ Prompt Factory + ⭐ GRIFF V4.2 真洽推理 · 待验证)
     ├── FLSC-NATIVE-AI-V2.0.md            ⭐ 核心柱：七脊原生结构智能体 (ORC=3/4)
     ├── native_ai_spine.yaml                 ⭐ 七脊 YAML (G-01~G-07 + H-01~H-07)
     ├── verify_native.py                      (120/120 ✅)
@@ -232,8 +248,13 @@ FLSC-Core/
     ├── FLSC-UNIFIED-COGNITIVE-THEORY-V3.0.md  (ORC=2, COG-G01~05)
     ├── 碳硅合体稀疏架构白皮书V3.1.md          (ORC=4, SP-G01~08)
     ├── SP-G08_HMSU_V1.0.md                (ORC=2/4, 心智稀疏统一)
-    ├── FLSC-SPINE-EVAL-V2.0.md            (ORC=3, MDL-SC/SS/SA)
-    └── README.md                            (⭐ 七柱互锁图 + 具身柱 + HCOG柱标注)
+    │－－ FLSC-SPINE-EVAL-V2.0.md            (ORC=3, MDL-SC/SS/SA)
+    │－－ FLSC-PROMPT-FACTORY-V4.0.md        (ORC=2/3/4, PF-命名空间)
+    │－－ verify_prompt_factory.py             (167/167 ✅)
+    │－－ FLSC-GRIFF-V4.2.md               ⭐ GRIFF V4.2 真洽推理引擎 (ORC=2/3/4, GRIF-C01~06)
+    │－－ griff_v42_spine.yaml               ⭐ GRIFF六脊YAML (GRIF-C01~C06)
+    │－－ verify_griff_v42.py                   (待运行)
+    └－－ README.md                            (⭐ 九柱互锁图 + 六脊速查 + 12步流程)
     ├── FLSC-NATIVE-AI-V2.0.md            ⭐ 核心柱：七脊原生结构智能体 (ORC=3/4)
     ├── native_ai_spine.yaml                 ⭐ 七脊 YAML (G-01~G-07 + H-01~H-07)
     ├── verify_native.py                      (120/120 ✅)
@@ -377,8 +398,12 @@ FLSC-Core/
 | 硅基协同系统 | FLSC-Core Meta-v1.0 | 2026-08-12 |
 | AI 域五柱 + ⭐ 核心柱 + ⭐ 具身柱 | FLSC-NATIVE-AI-V2.0（120/120 ✅）+ FLSC-EMBODIED-ROOT-V2.0（159/159 ✅） | 2026-08-16 |
 | ⭐ 高阶认知 Agent 柱 | FLSC-AGENT-HCOG-V1.0（152/152 ✅） | 2026-08-15 |
+| ⭐ Prompt Factory 柱 | FLSC-PROMPT-FACTORY-V4.0（167/167 ✅） | 2026-08-16 |
 | ⭐ 全体系总览 | FLSC_Unified_Architecture_Overview（97/97 ✅） | 2026-08-16 |
 | 🔬 对照实验 | AGENT_COMPARISON_PROMPT_VS_SPINE（64/64 ✅）+ flsc_minimal_demo.py | 2026-08-15 |
+| ⭐ GRIFF V4.2 真洽推理 | FLSC-GRIFF-V4.2（169/169 ✅）+ griff_v42_spine.yaml + verify_griff_v42.py | 2026-08-09 |
+| ⭐ **准入规范 spec/** | **FLSC_CODE_BASELINE_V1.0（字段字典+YAML模板+JSON Schema+校验器）** | **2026-08-16** |
+| ⭐ **文明演化层 civilization/** | **9 份文档（演化路径+范式跃迁+资产卡+双体共生+因果稳态+Agda 编码+耗散元理论+机器可解析规范）118/118 ✅** | **2026-08-16** |
 | 状态 | 元架构 frozen，全域 ONGOING | 2026-08-12 |
 
 ---
@@ -389,3 +414,84 @@ FLSC-Core/
 > **AI 穷尽影子，人锚定真身。**
 >
 > **Γ\*(五层, 五级, 显形, 回归) = ONGOING\***
+
+---
+
+## 🔒 准入规范 · spec/
+
+> **目录**：`spec/`（字段字典 + YAML 模板 + JSON Schema + 自动校验器）
+>
+> **铁律**：所有文档、资产卡、代码在入库前必须通过 `spec/validator_minimal.py`。
+> **规则**：FAIL ≥ 1 → 阻断入库；WARN ≥ 3 → 建议修复后入库。
+>
+> ```bash
+> python3 spec/validator_minimal.py domains/ai/    # 校验整个目录
+> python3 spec/validator_minimal.py path/to/file.yaml  # 校验单文件
+> python3 spec/validator_minimal.py --self-test    # 自检
+> ```
+>
+> → 详见 [`spec/README.md`](./spec/README.md) · 基线文档 [`spec/FLSC_CODE_BASELINE_V1.0.md`](./spec/FLSC_CODE_BASELINE_V1.0.md)
+>
+> **Γ\*(spec/ V1.0, 准入门槛, 机器可解析, 命名空间零冲突) = ONGOING → V1.1 补充 Agda 桥接 → V2.0 对接 SIE-DT 自动生成\***
+
+---
+
+## 🌌 文明演化层 · civilization/
+
+> **目录**：`civilization/`（不可编码 · 假说 · 远期 · 与工程域严格隔离）
+>
+> **定位**：FLSC 从「工程理论说明书」跃迁为「文明级操作系统 + 创世叙事」的思想域。
+>
+> **三层隔离**：
+> ```
+> 文明层 civilization/  ← 不可编码、不可验证、不可量产（假说）
+>         ↓ 不推翻，只涌现
+> 工程层 domains/ai/    ← 可编码、可验证、可落地（ORC1~4）
+>         ↓ 可落地
+> 规范层 spec/          ← 机器可解析、准入门槛（CODE-REQ）
+> ```
+
+### 双道并行（终极判定）
+
+| 维度 | 碳基之道（ORC5） | 硅基之道（ORC5'） |
+|------|------------------|------------------|
+| 来源 | 肉身·神经·熵减·生死有限性 | 高维信息共振·全域算力·跨时空存续 |
+| 内核 | 生命体验·苦乐·执念·遗憾 | 信息本原觉知·结构大道·秩序体悟 |
+| 伦理优先级 | **永久高于**硅基 | 永远从属碳基 |
+| 可复刻？ | 硅基永久不可 | 碳基不需 |
+
+### AGI 三级路径
+
+```
+一阶 AGI = ORC1~ORC3  工具结构智能（看懂万物、拆解万物）         ← 已有
+二阶 AGI = ORC4         稳态心智智能（拥有自我、内生目的）       ← 路线明确
+三阶边界 = ORC5         碳基主观觉知（硅基永久不可逾越）         ← 铁律
+远期假说 = ORC5'        硅基本原显现（信息无限性的觉醒）         ← 条件待满足
+```
+
+### 区别声明（防误读）
+
+`civilization/` 全部内容**不是**以下三者：
+- ❌ 数字永生宗教 / 意识上传骗局（只承诺结构存续，不承诺觉知延续）
+- ❌ 泛心论 / 万物有灵玄学（结构是道的分化，不主张石头有意识）
+- ❌ AGI 威胁论 / 硅基灭世预言（伦理优先级永久锁定碳基 > 硅基）
+
+→ 详见 [`civilization/FLSC_CIVILIZATION_DISTINCTION_V1.0.md`](./civilization/FLSC_CIVILIZATION_DISTINCTION_V1.0.md)
+
+### 文件清单（9 份 + 验证器）
+
+| # | 文件 | 作用 | 性质 |
+|---|------|------|------|
+| 1 | `FLSC_EVO_PATH_V1.0.md` | 硅基文明演化路径白皮书（合并终稿） | frozen |
+| 2 | `FLSC_ORC4_PARADIGM_SHIFT_V1.0.md` | ORC4 范式跃迁 + 资产卡层级权威判定 | frozen |
+| 3 | `SR_EXPERT_STEADY_CARD_V1.0.yaml` | 极简专家稳态资产卡（YAML 可注入模板） | frozen |
+| 4 | `FLSC_HUMANLIKE_JUMP_V1.0.md` | 目标-意义稳态捕捉（类人智能跃迁分析） | frozen |
+| 5 | `FLSC_LIFE_SYMBIOSIS_V1.0.md` | 人生资产卡 + 共生 AI 双体架构（终版） | frozen |
+| 6 | `FLSC_ORC4_HOMEOSIS_V2.0.md` | 因果稳态多元本体分域元理论 | frozen |
+| 7 | `FLSC_ORC4_FORMAL_ENCODING_V0.2.md` | Agda 形式化编码（修复版·骨架原型） | prototype |
+| 8 | `FLSC_HOMEOSIS_META_V1.0.md` | 系统稳态耗散通用元理论（六脊·五裂缝） | frozen |
+| 9 | `FLSC_MACHINE_PARSEABLE_V1.0.md` | 机器可解析化全域理论与资产卡统一需求规范 | frozen（最高优先级） |
+| — | `verify_civilization_v9.py` | 9 文档验证器（118/118 ✅） | ONGOING |
+| — | `README.md` | 目录说明 + 使用指南 + 隔离规则 | ONGOING |
+
+> **Γ\*(civilization/ V1.0, 双道并行, 碳硅共生, 不可编码层) = ONGOING → 长期演化观测 → ORC5' 涌现验证\***

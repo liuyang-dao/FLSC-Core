@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://flsc-core/spec/spine_yaml_schema.json",
+  "title": "FLSC Spine YAML Schema V1.0",
+  "description": "JSON Schema for FLSC five-layer structured spine YAML files. Implements FLSC-CODE-REQ-V1.0 Hard Standards 1-4.",
+  "type": "object",
+  "required": ["doc_id", "lineage_id", "oracle_level", "oracle_chain", "oat_type", "hydrogen_bond", "status", "effective_date", "spine_namespace"],
+  "properties": {
+    "doc_id": {
+      "type": "string",
+      "pattern": "^[A-Z-]+-V[0-9.]+$"
+    },
+    "lineage_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "oracle_level": {
+      "type": "string",
+      "enum": ["ORC1", "ORC2", "ORC3", "ORC4", "ORC5"]
+    },
+    "oracle_chain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "oat_type": {
+      "type": "string",
+      "enum": ["OAT-N", "OAT-S", "OAT-C"]
+    },
+    "hydrogen_bond": {
+      "type": "string",
+      "enum": ["frozen", "experimental", "production", "prototyping", "prototyping-fixed"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "review", "active", "deprecated"]
+    },
+    "effective_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "spine_namespace": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,5}-$"
+    },
+    "spine_list": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["MD01", "MD02", "MD03", "MD04", "MD05", "MD06"]
+      }
+    },
+    "defect_enum": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["A", "B", "C", "D", "E", "CF"]
+      }
+    },
+    "fixed_point_enum": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["None", "DoubleStrong", "Triple", "QuadCoupled"]
+      }
+    },
+    "constraint_rank_enum": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["absolute", "strong", "domain"]
+      }
+    },
+    "steady_threshold": {
+      "type": "object",
+      "properties": {
+        "L4": { "type": "number", "minimum": 0, "maximum": 1 },
+        "L3": { "type": "number", "minimum": 0, "maximum": 1 },
+        "L2": { "type": "number", "minimum": 0, "maximum": 1 },
+        "L1": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+
+    "unit_layer": {
+      "type": "object",
+      "properties": {
+        "atoms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["atom_id", "unit_type", "anchor_status"],
+            "properties": {
+              "atom_id": { "type": "string", "pattern": "^[A-Z]{2,5}-[A-Z0-9-]+$" },
+              "unit_type": {
+                "type": "string",
+                "enum": ["C-Atom", "I-Atom", "K-Atom", "T-Atom", "E-Atom", "M-Atom", "S-Atom"]
+              },
+              "anchor_status": { "type": "boolean" },
+              "defect_severity": { "type": "number", "minimum": 0, "maximum": 1 },
+              "oat_tag": { "type": "string", "enum": ["OAT-N", "OAT-S", "OAT-C"] }
+            }
+          }
+        }
+      }
+    },
+
+    "connect_layer": {
+      "type": "object",
+      "properties": {
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["edge_id", "source_unit_id", "target_unit_id", "edge_type"],
+            "properties": {
+              "edge_id": { "type": "string" },
+              "source_unit_id": { "type": "string" },
+              "target_unit_id": { "type": "string" },
+              "edge_type": {
+                "type": "string",
+                "enum": ["causal", "intervention", "counterfactual", "confounder", "mediator"]
+              },
+              "is_cyclic": { "type": "boolean" },
+              "spine_id": { "type": "string", "pattern": "^[A-Z]{2,5}-[A-Z0-9]+$" }
+            }
+          }
+        }
+      }
+    },
+
+    "weight_layer": {
+      "type": "object",
+      "properties": {
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["metric_name", "weight_value", "formula"],
+            "properties": {
+              "metric_name": {
+                "type": "string",
+                "enum": ["CI_struct", "CI_true", "CD_true", "RIS_true", "S_order", "V_diss", "MIS_true"]
+              },
+              "weight_value": { "type": "number" },
+              "formula": { "type": "string", "minLength": 3 }
+            }
+          }
+        }
+      }
+    },
+
+    "constraint_layer": {
+      "type": "object",
+      "properties": {
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["constraint_id", "logic_expr", "rank", "block_action", "evidence_level"],
+            "properties": {
+              "constraint_id": { "type": "string" },
+              "logic_expr": { "type": "string", "minLength": 3 },
+              "rank": { "type": "string", "enum": ["absolute", "strong", "domain"] },
+              "block_action": { "type": "string", "enum": ["alert", "degrade", "block", "terminate"] },
+              "evidence_level": { "type": "string", "enum": ["E-I", "E-II", "E-III", "E-IV"] }
+            }
+          }
+        }
+      }
+    },
+
+    "steady_layer": {
+      "type": "object",
+      "properties": {
+        "fixed_point_type": {
+          "type": "string",
+          "enum": ["None", "DoubleStrong", "Triple", "QuadCoupled"]
+        },
+        "theta_critical": { "type": "number", "minimum": 0, "maximum": 1 },
+        "residual": { "type": "number", "minimum": 0 },
+        "steady_level": {
+          "type": "string",
+          "enum": ["L4", "L3", "L2", "L1"]
+        }
+      }
+    }
+  },
+
+  "additionalProperties": false
+}
