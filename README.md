@@ -58,6 +58,16 @@ FLSC-Core/
 │   ├── science/                 ← 科学域（DMP-AUD V1.0）
 │   ├── ai/                      ← ★ AI 域九柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐具身统一+⭐高阶认知Agent+⭐Prompt Factory+⭐GRIFF V4.2真洽推理）
 │   └── asset_cards/            ← ⭐ 结构资产卡全集（MASTER索引+SR-002/003/004+ORC2疾病+自序+全本+验证器163/163✅）
+│       ├── SR-CODE-PYTHON-V1.1.yaml    ← ⭐ Python编码领域卡（12 atoms·4 spines·MIS=0.86）
+│       ├── SR-EXPERT-WANG-ARCH-V1.0.yaml ← ⭐ 编码专家稳态卡·老王（8 atoms·3 spines·MIS=0.83）
+│       ├── SR-EXPERT-HUMOR-V1.0.yaml  ← ⭐ 幽默情感叠加卡（8 atoms·3 spines·MIS=0.78）
+│       ├── SR-AI-STAFF-PMS-V1.0.yaml ← ⭐ AI员工记忆脊线卡（12 atoms·5 spines·MIS=0.84）
+│       ├── demo_flsc_coder_agent.py   ← ⭐ 双卡编码Agent Demo（110/110✅）
+│       ├── demo_flsc_humor_agent.py   ← ⭐ 三卡叠加幽默Agent Demo（66/66✅）
+│       ├── integrated_demo.py         ← ⭐ 四卡+PMS集成Demo（5场景全跑通）
+│       ├── verify_coder_agent.py      ← 双卡验证器（110/110✅）
+│       ├── verify_humor_card.py       ← 三卡验证器（66/66✅）
+│       └── verify_integrated_agent.py ← ⭐ 四卡+PMS验证器（100+✅）
 │
 ├── pipelines/                ★ 第五柱：元生产流水线（理论闭环+自审计）
 │   ├── FLSC-DME-PIPELINE-V2.0.md  ← 第一柱：道→数→工→逆向 四段双链
@@ -405,8 +415,9 @@ FLSC-Core/
 | ⭐ GRIFF V4.2 真洽推理 | FLSC-GRIFF-V4.2（169/169 ✅）+ griff_v42_spine.yaml + verify_griff_v42.py | 2026-08-09 |
 | ⭐ **准入规范 spec/** | **FLSC_CODE_BASELINE_V1.0（字段字典+YAML模板+JSON Schema+校验器）** | **2026-08-16** |
 | ⭐ **文明演化层 civilization/** | **9 份文档（演化路径+范式跃迁+资产卡+双体共生+因果稳态+Agda 编码+耗散元理论+机器可解析规范）118/118 ✅** | **2026-08-16** |
-| ⭐ **结构资产卡 asset_cards/** | **9 份（MASTER 索引+SR-002 围棋+SR-003 诗律+SR-004 因果 V2.0+ORC2 疾病+自序+全本）163/163 ✅** | **2026-08-17** |
+| ⭐ **结构资产卡 asset_cards/** | **12 份（MASTER 索引+SR-002 围棋+SR-003 诗律+SR-004 因果 V2.0+ORC2 疾病+自序+全本+SR-CODE+SR-EXPERT-WANG+SR-HUMOR+SR-AI-STAFF-PMS）** | **2026-08-17** |
 | 🔪 **两刀法操作手册 asset_cards/** | **FLSC_SIT_CAPTURE_GUIDE_V1.0（第一刀捉结构+第二刀捉脊线+正反例+速查卡）46/46 ✅** | **2026-08-17** |
+| 🤖 **四卡叠加 + PMS 运行时 asset_cards/** | **SR-CODE-PYTHON-V1.1（12 atoms·4 spines）+ SR-EXPERT-WANG-ARCH-V1.0（8 atoms·3 spines）+ SR-EXPERT-HUMOR-V1.0（8 atoms·3 spines）+ SR-AI-STAFF-PMS-V1.0（12 atoms·5 spines）+ integrated_demo.py（四卡+PMS·5场景全跑通）+ verify_integrated_agent.py（100+✅）** | **2026-08-17** |
 | 状态 | 元架构 frozen，全域 ONGOING | 2026-08-12 |
 
 ---
