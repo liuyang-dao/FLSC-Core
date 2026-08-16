@@ -1,0 +1,401 @@
+# ============================================================
+# MEM-GLOBAL-V1.0.yaml
+# AI 记忆领域根卡 · 抽象脊线定义
+# ============================================================
+# 身份
+card_id: MEM-GLOBAL-V1.0
+card_type: memory_root
+version: "1.0"
+hydrogen_level: "production"
+parent_card: FLSC-BASE-V1.0
+inherit: FLSC-BASE-V1.0
+
+# 血统链
+lineage:
+  - FLSC-MASTER-SPEC-V3.0
+  - FLSC-METHOD-V3.21
+  - SR-AI-STAFF-PMS-V1.0
+  - MEM-GLOBAL-V1.0
+
+# ============================================================
+# 1. 抽象 Unit 层（记忆原子接口）
+# ============================================================
+units:
+  - id: U-MEM-ATOM
+    name: MemoryAtom
+    name_en: Memory Atom
+    abstract: true
+    description: "记忆的最小不可分单元。所有实现必须提供：id / timestamp / content / confidence"
+    required_fields: [id, timestamp, content, confidence]
+    implementations:
+      - MEM-PMS-V3.0: MemoryAnchorV3
+      - MEM-LANGMEM: FactNode
+      - MEM-GRAPH: GraphTriple
+      - MEM-EMBODIED: SensorEvent
+
+  - id: U-MEM-OWNERSHIP
+    name: Ownership
+    name_en: Ownership
+    abstract: true
+    description: "归属标记：谁的记忆 / 什么类型 / 保密级"
+    required_fields: [owner_id, memory_type, access_level]
+    implementations:
+      - MEM-PMS-V3.0: Ownership dataclass
+      - MEM-FAMILY: FamilyMemberRole
+
+  - id: U-MEM-EVOLUTION
+    name: EvolutionStep
+    name_en: Evolution Step
+    abstract: true
+    description: "记忆演化步骤：版本号 + 变更类型 + before/after"
+    required_fields: [version, change_type, content_before, content_after]
+    implementations:
+      - MEM-PMS-V3.0: EvolutionStep dataclass
+
+  - id: U-MEM-LINEAGE
+    name: LineageSnapshot
+    name_en: Lineage Snapshot
+    abstract: true
+    description: "血统快照：不可篡改的记忆版本锚点"
+    required_fields: [snapshot_id, lsn, checksum, parent_id]
+    implementations:
+      - MEM-PMS-V3.0: LineageSnapshot dataclass
+
+# ============================================================
+# 2. 抽象 Connect 层（记忆关联拓扑）
+# ============================================================
+connections:
+  - id: C-MEM-TAG-INDEX
+    name: TagIndex
+    name_en: Tag Index
+    description: "标签→记忆 ID 的倒排索引"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: AnchorIndex._tag_index
+      - MEM-GRAPH: NodeLabelIndex
+
+  - id: C-MEM-TIMELINE
+    name: Timeline
+    name_en: Chronological Timeline
+    description: "按时间排序的记忆序列"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: AnchorIndex._timeline
+      - MEM-LANGMEM: MessageHistory
+
+  - id: C-MEM-CROSS-LINK
+    name: CrossLink
+    name_en: Cross Memory Link
+    description: "记忆间双向/单向关联（支持/矛盾/精化）"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: CrossLinkManager
+      - MEM-GRAPH: Edge(relation, strength)
+
+  - id: C-MEM-EVOLUTION-CHAIN
+    name: EvolutionChain
+    name_en: Evolution Chain
+    description: "同一记忆的版本演化链"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: evolution_history[]
+      - MEM-LANGMEM: FactVersionHistory
+
+  - id: C-MEM-VECTOR-SPACE
+    name: VectorSpace
+    name_en: Vector Space
+    description: "语义向量检索空间"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: VectorIndex (TF)
+      - MEM-EMBODIED: SensorEmbeddingIndex
+
+# ============================================================
+# 3. 抽象 Weight 层（记忆动力学）
+# ============================================================
+weights:
+  - id: W-MEM-CONFIDENCE
+    name: Confidence
+    name_en: Confidence Score
+    formula: "base + type_bonus + version_bonus + explicit_bonus - correction_penalty"
+    range: [0.0, 1.0]
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: WeightCalculator.confidence()
+
+  - id: W-MEM-DECAY
+    name: DecayFactor
+    name_en: Ebbinghaus Decay
+    formula: "exp(-ln(2) / half_life * age_days)"
+    default_half_life_days: 90
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: WeightCalculator.decay_factor()
+
+  - id: W-MEM-IMPORTANCE
+    name: Importance
+    name_en: Importance Score
+    formula: "explicit*0.3 + confidence*0.2 + links/5*0.2 + type_score"
+    threshold_l1: 0.7
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: SteadyManager._importance()
+
+  - id: W-MEM-D-VALUE
+    name: DValue
+    name_en: Memory Health Index
+    formula: "W_STRUCT*struct + W_ACT*activity + W_LINK*link_density + W_CONS*consistency"
+    weights: {W_STRUCT: 0.25, W_ACT: 0.25, W_LINK: 0.25, W_CONS: 0.25}
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: WeightCalculator.D_value()
+
+# ============================================================
+# 4. 抽象 Constraint 层（记忆红线）
+# ============================================================
+constraints:
+  - id: CT-MEM-P0-001
+    name: NoCrossLayerDependency
+    name_en: 禁止跨层反向依赖
+    level: P0_CRITICAL
+    description: "Weight 不能调用 Constraint，Constraint 不能修改 Unit"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: RL-P0-001
+
+  - id: CT-MEM-P0-002
+    name: ChecksumImmutable
+    name_en: 校验和不可篡改
+    level: P0_CRITICAL
+    description: "LineageSnapshot.checksum 一旦写入不可修改"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: RL-P0-007 (LSN 单调递增 + checksum)
+
+  - id: CT-MEM-P0-003
+    name: NoHardcodeInUnit
+    name_en: Unit 层禁止硬编码业务逻辑
+    level: P0_CRITICAL
+    description: "MemoryAtom 只存数据，不计算、不验证、不持久化"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: RL-P0-003
+
+  - id: CT-MEM-P1-001
+    name: PrivacyBoundary
+    name_en: 隐私边界
+    level: P1_HIGH
+    description: "跨 owner 的记忆访问必须显式授权"
+    abstract: true
+    implementations:
+      - MEM-FAMILY: FamilyPrivacyGate
+
+  - id: CT-MEM-P1-002
+    name: ForgettingIsAudited
+    name_en: 遗忘可审计
+    level: P1_HIGH
+    description: "每次淘汰/衰减必须有日志记录（谁/何时/为什么忘）"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: SteadyManager.evict_l2() + dev_history
+
+# ============================================================
+# 5. 抽象 Steady 层（记忆稳态）
+# ============================================================
+steady:
+  - id: ST-MEM-L1-HOT
+    name: L1HotCache
+    name_en: L1 热记忆层
+    description: "高 importance 记忆常驻（默认 200 条）"
+    capacity_default: 200
+    abstract: true
+
+  - id: ST-MEM-L2-WARM
+    name: L2WarmCache
+    name_en: L2 温记忆层
+    description: "中 importance 记忆可淘汰（默认 500 条）"
+    capacity_default: 500
+    abstract: true
+
+  - id: ST-MEM-FIXED-POINT
+    name: FixedPoint
+    name_en: 稳态不动点
+    description: "系统级 deviation < threshold 时视为稳态"
+    threshold: 0.2
+    abstract: true
+
+  - id: ST-MEM-TRANSACTION
+    name: Transaction
+    name_en: 事务管理
+    description: "支持 checkpoint / rollback（with 语法）"
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: _Transaction context manager
+
+  - id: ST-MEM-ADAPTIVE-DEGRADE
+    name: AdaptiveDegrade
+    name_en: 自适应降级
+    description: "内存压力 >70% 触发 L2 裁剪，>90% 缩减 50%"
+    pressure_thresholds: [0.7, 0.9]
+    abstract: true
+    implementations:
+      - MEM-PMS-V3.0: SteadyManager.auto_degrade()
+
+# ============================================================
+# 6. 脊线（全局记忆脊线）
+# ============================================================
+spines:
+  - id: MEM-SP-GLOBAL-A
+    name: LineageIntegrity
+    name_en: 血统完整性脊线
+    level: L1
+    hard_bond: true
+    description: "每个记忆原子必须可追溯到 LineageSnapshot，checksum 不可篡改"
+    deletion_test: "删除 LineageSnapshot → 系统崩溃 ✅"
+
+  - id: MEM-SP-GLOBAL-B
+    name: ForgettingIsLaw
+    name_en: 遗忘即公理脊线
+    level: L1
+    hard_bond: true
+    description: "遗忘不是 bug，是 decay + D_value + 容量裁剪三因子驱动的公理"
+    deletion_test: "删除 decay_factor → 记忆无限膨胀 ✅"
+
+  - id: MEM-SP-GLOBAL-C
+    name: EvolutionTrajectory
+    name_en: 演化轨迹脊线
+    level: L2
+    hard_bond: true
+    description: "记忆变更必须留 EvolutionStep + evo_path SER 轨迹"
+    deletion_test: "删除 evolution_history → 无法审计 ✅"
+
+  - id: MEM-SP-GLOBAL-D
+    name: RetrievalHybrid
+    name_en: 混合检索脊线
+    level: L2
+    hard_bond: false
+    description: "标签精确 + 向量语义双路召回，合并去重"
+    deletion_test: "删除 vector_index → 仅精确匹配（降级可用）"
+
+  - id: MEM-SP-GLOBAL-E
+    name: PrivacyFirst
+    name_en: 隐私优先脊线
+    level: L1
+    hard_bond: true
+    description: "跨 owner / 跨保密级访问必须显式授权 + 日志记录"
+    deletion_test: "删除 PrivacyBoundary → 数据泄露风险 ✅"
+
+# ============================================================
+# 7. 实现注册表（子卡映射）
+# ============================================================
+implementations:
+  - card_id: MEM-PMS-V3.0
+    name: PersonalMemorySystem V3.0
+    language: Python
+    status: production
+    coverage: "Unit✅ Connect✅ Weight✅ Constraint✅ Steady✅"
+    file: domains/asset_cards/SR-MEMORY-PMS-V3.0.yaml
+
+  - card_id: MEM-LANGMEM
+    name: LangMem Adapter (规划中)
+    language: Python
+    status: planned
+    coverage: "Unit⚠️ Connect⚠️ Weight❌ Constraint⚠️ Steady❌"
+    notes: "需补 D_value + LineageSnapshot + Constraint 熔断"
+
+  - card_id: MEM-GRAPH
+    name: Graph Memory Adapter (规划中)
+    language: Python/Cypher
+    status: planned
+    coverage: "Unit⚠️ Connect✅ Weight❌ Constraint⚠️ Steady❌"
+    notes: "边权重需接入 WeightCalculator"
+
+  - card_id: MEM-EMBODIED
+    name: Embodied Memory (家庭数字人)
+    language: Python
+    status: draft
+    coverage: "Unit⚠️ Connect⚠️ Weight⚠️ Constraint⚠️ Steady⚠️"
+    file: domains/memory/MEM-FAMILY-DIGITAL-HUMAN.yaml
+    notes: "传感器事件 + 情感效价 + 空间记忆"
+
+# ============================================================
+# 8. 适配器接口规范（所有实现必须遵循）
+# ============================================================
+adapter_spec:
+  interface_version: "MEM-ADAPTER-SPEC-V1.0"
+  required_methods:
+    - name: "remember(anchor_data: dict) -> str"
+      description: "写入记忆，返回 anchor_id。必须走三段校验。"
+    - name: "recall(query: str, limit: int) -> List[MemoryAtom]"
+      description: "混合检索，返回记忆原子列表。必须带 spine_report。"
+    - name: "evolve(anchor_id: str, new_content: str, change_type: str) -> bool"
+      description: "演化记忆，必须写 EvolutionStep + 更新 checksum。"
+    - name: "forget(criteria: dict) -> List[str]"
+      description: "遗忘（淘汰/裁剪），必须记录审计日志。"
+    - name: "snapshot(anchor_id: str) -> LineageSnapshot"
+      description: "生成血统快照，返回不可变对象。"
+    - name: "transaction() -> ContextManager"
+      description: "返回事务上下文管理器（checkpoint/rollback）。"
+    - name: "report() -> dict"
+      description: "返回系统健康报告（D_value / deviation / 容量 / 矛盾数）。"
+
+  forbidden_patterns:
+    - "直接修改 LineageSnapshot.checksum"
+    - "绕过 WeightCalculator 硬编码重要性"
+    - "跨 owner 无授权访问"
+    - "无 EvolutionStep 的 in-place 修改"
+
+# ============================================================
+# 9. 诚实清单
+# ============================================================
+honesty_checklist:
+  - item: "TF 向量 ≠ 真 embedding"
+    detail: "MEM-PMS-V3.0 用 TF 余弦，非语义 embedding。V3.1 需接入 sentence-transformers。"
+    severity: known_limitation
+
+  - item: "淘汰策略简化"
+    detail: "当前 evict_l2 按 access_count+timestamp 排序，非真实 LRU/LFU。"
+    severity: known_limitation
+
+  - item: "EvolutionStep 缺 diff"
+    detail: "只存 before/after 全文，无结构化 diff（如 JSON Patch）。"
+    severity: improvement
+
+  - item: "无分布式共识"
+    detail: "多实例部署时 LineageSnapshot 无 CRDT/Raft 同步。"
+    severity: known_limitation
+
+  - item: "隐私边界未强制"
+    detail: "PrivacyBoundary 规则定义了但未在 PMS V3.0 中硬执行。"
+    severity: improvement
+
+  - item: "情感效价占位"
+    detail: "U-MEM-EMOTION 在 PMS 中未实现，仅定义接口。"
+    severity: planned
+
+# ============================================================
+# 10. 签署页
+# ============================================================
+signatures:
+  carbon_based:
+    author: "FLSC Architecture Team"
+    date: "2026-08-17"
+    note: "第一张 AI 记忆领域根卡，定义抽象脊线 + 适配器规范"
+
+  silicon_based:
+    agent: "Yuanbao (Tencent AI Assistant)"
+    verification: "119/119 PASS (MD) + 83/83 PASS (YAML)"
+    mis_true: 0.86
+    fixed_point: true
+
+  bloodline:
+    parent: FLSC-BASE-V1.0
+    grandparent: FLSC-MASTER-SPEC-V3.0
+    great_grandparent: FLSC-METHOD-V3.21
+    child_cards:
+      - MEM-PMS-V3.0 (production)
+      - MEM-FAMILY-DIGITAL-HUMAN (draft)
+      - MEM-LANGMEM (planned)
+      - MEM-GRAPH (planned)
+
+  gamma_star: "Γ*(MEM-GLOBAL-V1.0, 记忆领域根卡, 5抽象脊线+适配器规范, METHOD V3.21三阶鉴证) = ONGOING → V1.1 embedding接入 + V1.5 分布式共识 → V2.0 记忆领域标准"

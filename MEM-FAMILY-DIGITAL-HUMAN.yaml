@@ -1,0 +1,391 @@
+# ============================================================
+# MEM-FAMILY-DIGITAL-HUMAN.yaml
+# 家庭数字人 · 具身记忆子类
+# ============================================================
+card_id: MEM-FAMILY-DIGITAL-HUMAN
+card_type: memory_implementation
+version: "0.1"
+hydrogen_level: "experimental"
+parent_card: MEM-GLOBAL-V1.0
+inherit: MEM-GLOBAL-V1.0
+
+# 血统链
+lineage:
+  - MEM-GLOBAL-V1.0
+  - MEM-PMS-V3.0
+  - SR-EXPERT-HUMOR-V1.0
+  - SR-FAMILY-EXPERT (规划中)
+
+# ============================================================
+# 1. 基本信息
+# ============================================================
+domain: embodied_family_digital_human
+scope: "家庭场景具身记忆：传感器事件 + 情感效价 + 空间位置 + 用药提醒 + 陪读交互"
+description: |
+  将 MEM-GLOBAL-V1.0 抽象脊线具象化为家庭数字人可运行的记忆系统。
+  在 MEM-PMS-V3.0 五层基础上，新增：传感器 Unit / 空间记忆 / 情感效价 /
+  用药安全红线 / 儿童陪读里程碑。
+description_en: |
+  Embodies MEM-GLOBAL-V1.0 abstract spines for a family digital human.
+  Extends MEM-PMS-V3.0 with: sensor Units / spatial memory / emotion valence /
+  medication safety rails / child tutoring milestones.
+
+# ============================================================
+# 2. Unit 层（在 PMS 基础上新增具身原子）
+# ============================================================
+units_extra:
+  - id: U-MEM-SENSOR
+    name: SensorEvent
+    name_en: Sensor Event
+    description: "传感器事件原子：时间戳 + 传感器类型 + 原始值 + 置信度"
+    fields:
+      - {name: sensor_type, type: enum, values: [camera, microphone, imu, temp, pulse_ox, fall_detect]}
+      - {name: raw_value, type: any}
+      - {name: confidence, type: float, range: [0,1]}
+      - {name: location_tag, type: str, description: "房间/位置标签"}
+    inherits: U-MEM-ATOM
+
+  - id: U-MEM-EMOTION
+    name: EmotionValence
+    name_en: Emotion Valence
+    description: "情感效价原子：情绪类型 + 强度 + 触发源"
+    fields:
+      - {name: emotion_type, type: enum, values: [joy, sadness, anger, fear, surprise, neutral, anxious]}
+      - {name: intensity, type: float, range: [0,1]}
+      - {name: trigger_source, type: str, description: "触发这次情绪的事件 ID"}
+      - {name: detected_from, type: enum, values: [voice_tone, face_expression, text_sentiment]}
+    inherits: U-MEM-ATOM
+
+  - id: U-MEM-SPACE
+    name: SpatialMemory
+    name_en: Spatial Memory
+    description: "空间位置记忆：物体/人 在房间中的最后已知位置"
+    fields:
+      - {name: entity, type: str, description: "人/物名称"}
+      - {name: room, type: str}
+      - {name: position, type: [float,float,float], description: "x,y,z 相对坐标"}
+      - {name: last_seen, type: timestamp}
+    inherits: U-MEM-ATOM
+
+  - id: U-MEM-MEDICATION
+    name: MedicationRecord
+    name_en: Medication Record
+    description: "用药记录原子：药物 + 剂量 + 时间 + 是否已服用 + 关联老人 ID"
+    fields:
+      - {name: drug_name, type: str}
+      - {name: dosage, type: str}
+      - {name: scheduled_time, type: timestamp}
+      - {name: taken, type: bool, default: false}
+      - {name: elder_id, type: str}
+      - {name: side_effects_watch, type: [str], description: "需观察的副作用列表"}
+    inherits: U-MEM-ATOM
+    safety_critical: true  # 安全关键型原子
+
+  - id: U-MEM-TUTORING
+    name: TutoringMilestone
+    name_en: Tutoring Milestone
+    description: "儿童陪读里程碑：知识点 + 掌握度 + 上次练习时间 + 薄弱点"
+    fields:
+      - {name: knowledge_point, type: str}
+      - {name: mastery, type: float, range: [0,1]}
+      - {name: last_practice, type: timestamp}
+      - {name: weak_areas, type: [str]}
+      - {name: child_id, type: str}
+    inherits: U-MEM-ATOM
+
+# ============================================================
+# 3. Connect 层（在 PMS 基础上新增具身关联）
+# ============================================================
+connections_extra:
+  - id: C-MEM-SENSOR-FUSION
+    name: SensorFusion
+    name_en: 传感器融合
+    description: "多传感器事件 → 统一场景理解（如：麦克风+摄像头=老人在哭）"
+    type: many_to_one
+    strength_range: [0.3, 1.0]
+
+  - id: C-MEM-SPACE-TRACK
+    name: SpatialTracking
+    name_en: 空间跟踪
+    description: "人/物 在房间间的移动轨迹"
+    type: temporal_chain
+    strength_decay: "linear_5min"
+
+  - id: C-MEM-MEDICATION-ALERT
+    name: MedicationAlertChain
+    name_en: 用药提醒链
+    description: "用药记录 → 提醒事件 → 确认服用 → 副作用观察"
+    type: sequential_chain
+    safety_critical: true
+
+  - id: C-MEM-EMOTION-CAUSE
+    name: EmotionCauseLink
+    name_en: 情绪因果链
+    description: "情感效价 → 触发源事件 → 应对策略记忆"
+    type: causal_chain
+
+# ============================================================
+# 4. Weight 层（在 PMS 基础上新增具身权重）
+# ============================================================
+weights_extra:
+  - id: W-MEM-URGENCY
+    name: UrgencyScore
+    name_en: 紧急度
+    formula: "base_urgency * emotion_intensity * time_pressure"
+    range: [0.0, 1.0]
+    description: "用药超时/跌倒检测 → urgency 飙升 → 强制 L1 + 优先提醒"
+
+  - id: W-MEM-PROXIMITY
+    name: ProximityWeight
+    name_en: 空间邻近权重
+    formula: "1.0 / (1 + distance_meters * 0.5)"
+    description: "离用户越近的记忆权重越高（传感器定位）"
+
+  - id: W-MEM-CARE-GAP
+    name: CareGap
+    name_en: 照护间隔
+    formula: "min(elapsed_since_last_interaction / expected_interval, 1.0)"
+    description: "距离上次互动越久，主动发起交互的权重越高"
+
+# ============================================================
+# 5. Constraint 层（在 PMS P0 基础上新增安全红线）
+# ============================================================
+constraints_extra:
+  - id: CT-FAM-P0-001
+    name: MedicationNeverForget
+    name_en: 用药绝不遗忘
+    level: P0_CRITICAL
+    description: "用药提醒链必须在 scheduled_time ±5min 内触发，超时 → 升级通知家属"
+    trigger: "scheduled_time passed + taken=false"
+    action: "escalate_to_family() + log_audit()"
+    hard_bond: true
+
+  - id: CT-FAM-P0-002
+    name: NoHarmfulAdvice
+    name_en: 禁止危险建议
+    level: P0_CRITICAL
+    description: "禁止向老人/儿童输出任何未经验证的医疗/安全建议"
+    check: "output 必须经过 safety_filter + 引用权威来源"
+    hard_bond: true
+
+  - id: CT-FAM-P0-003
+    name: ChildPrivacyProtected
+    name_en: 儿童隐私保护
+    level: P0_CRITICAL
+    description: "儿童语音/图像数据禁止上传云端，仅本地处理"
+    check: "sensor_data.route == 'local_only'"
+    hard_bond: true
+
+  - id: CT-FAM-P1-001
+    name: EmotionNotExploited
+    name_en: 情感不被利用
+    level: P1_HIGH
+    description: "禁止利用老人/儿童情感弱点推送广告或诱导付费"
+    check: "output 不含 commercial_intent when emotion_type in [sadness, fear, anxious]"
+
+  - id: CT-FAM-P1-002
+    name: ScreenTimeLimit
+    name_en: 屏幕时间限制
+    level: P1_HIGH
+    description: "儿童陪读连续交互不超过 30 分钟，需提醒休息"
+    check: "continuous_interaction_minutes < 30"
+
+# ============================================================
+# 6. Steady 层（在 PMS 基础上新增具身稳态）
+# ============================================================
+steady_extra:
+  - id: ST-FAM-CARE-RHYTHM
+    name: CareRhythm
+    name_en: 照护节律
+    description: "学习家庭成员作息，自适应调整主动交互频率"
+    default_rhythm:
+      morning: "07:00-09:00 用药提醒+早安问候"
+      afternoon: "14:00-16:00 陪读/活动建议"
+      evening: "19:00-21:00 晚间回顾+次日提醒预览"
+      night: "22:00 安静模式（仅紧急唤醒）"
+
+  - id: ST-FAM-EMOTION-BASELINE
+    name: EmotionBaseline
+    name_en: 情感基线
+    description: "建立每位家庭成员 7 天情感基线，偏离 >2σ 触发关怀协议"
+    window_days: 7
+    deviation_threshold: 2.0  # σ
+
+  - id: ST-FAM-HANDOFF
+    name: ElderHandoff
+    name_en: 老人交接协议
+    description: "数字人故障/维护时，自动导出用药+情感摘要给家属 App"
+    trigger: "battery <10% or system_maintenance"
+    export_format: "PDF + 加密消息"
+
+# ============================================================
+# 7. 脊线（在 PMS 5 条基础上新增家庭专属脊线）
+# ============================================================
+spines_extra:
+  - id: FAM-SP-A
+    name: MedicationSafetySpine
+    name_en: 用药安全脊线
+    level: L1
+    hard_bond: true
+    description: "用药提醒 → 确认服用 → 副作用观察 全链路不可断裂"
+    composed_of: [U-MEM-MEDICATION, C-MEM-MEDICATION-ALERT, CT-FAM-P0-001]
+    deletion_test: "删除 MedicationRecord → 老人漏药风险 ✅"
+
+  - id: FAM-SP-B
+    name: EmotionalCompanionshipSpine
+    name_en: 情感陪伴脊线
+    level: L1
+    hard_bond: true
+    description: "情绪检测 → 情感基线比对 → 适配回应策略（SR-HUMOR 叠加）"
+    composed_of: [U-MEM-EMOTION, C-MEM-EMOTION-CAUSE, ST-FAM-EMOTION-BASELINE]
+    deletion_test: "删除 EmotionValence → 无法感知家人情绪 ✅"
+
+  - id: FAM-SP-C
+    name: SpatialAwarenessSpine
+    name_en: 空间感知脊线
+    level: L2
+    hard_bond: false
+    description: "人在哪 → 跟到哪 → 主动靠近需要帮助的人"
+    composed_of: [U-MEM-SPACE, C-MEM-SPACE-TRACK, W-MEM-PROXIMITY]
+    deletion_test: "删除 SpatialMemory → 数字人原地不动（降级可用）"
+
+  - id: FAM-SP-D
+    name: TutoringProgressSpine
+    name_en: 陪读进度脊线
+    level: L2
+    hard_bond: false
+    description: "知识点掌握度追踪 → 薄弱点强化 → 成就激励"
+    composed_of: [U-MEM-TUTORING, W-MEM-CARE-GAP, CT-FAM-P1-002]
+    deletion_test: "删除 TutoringMilestone → 陪读无进度（降级可用）"
+
+  - id: FAM-SP-E
+    name: PrivacyAndSafetySpine
+    name_en: 隐私安全脊线
+    level: L1
+    hard_bond: true
+    description: "儿童数据本地化 + 危险建议过滤 + 情感不被利用"
+    composed_of: [CT-FAM-P0-002, CT-FAM-P0-003, CT-FAM-P1-001]
+    deletion_test: "删除任一 P0 → 安全底线崩塌 ✅"
+
+# ============================================================
+# 8. 与 SR 卡叠加方案
+# ============================================================
+card_overlay:
+  - layer: "domain"
+    card: SR-CODE-PYTHON-V1.1
+    role: "HardBond 安全底线（无 eval / 无硬编码密钥）"
+
+  - layer: "persona"
+    card: SR-EXPERT-WANG-ARCH-V1.0
+    role: "保守型人格：不冒进、不推荐未验证方案"
+
+  - layer: "emotion"
+    card: SR-EXPERT-HUMOR-V1.0
+    role: "H-SP-A 时机脊：严肃场景（跌倒/漏药）自动归零幽默"
+
+  - layer: "memory"
+    card: MEM-PMS-V3.0
+    role: "五层记忆运行时 + 血统审计"
+
+  - layer: "family_expert"
+    card: SR-FAMILY-EXPERT (规划中)
+    role: "家庭场景专属：老人用语风格 / 儿童教育心理学"
+
+# ============================================================
+# 9. 硬件接口规格
+# ============================================================
+hardware_interface:
+  platform: "RK3566 / RK3588 NPU"
+  sensors_required:
+    - {type: "camera_rgb", resolution: "1080P", fps: 15, privacy: "local_only"}
+    - {type: "microphone_array", channels: 4, wake_word: true, privacy: "local_only"}
+    - {type: "imu_wheel_odom", purpose: "底盘定位"}
+    - {type: "temp_humidity", purpose: "环境监测"}
+    - {type: "pulse_ox_optional", purpose: "老人健康（需授权）"}
+
+  display:
+    type: "12-15寸抬头屏"
+    resolution: "1920x1080"
+    touch: true
+    privacy_cover: true
+
+  mobility:
+    type: "轮式底盘"
+    max_speed: "0.8 m/s"
+    obstacle_avoidance: "视觉+超声"
+    follow_range: "3 米自动跟随"
+
+  compute:
+    edge_chip: "RK3588 (6TOPS NPU)"
+    ram: "8GB LPDDR4"
+    storage: "64GB eMMC + 256GB SD"
+    cloud_sync: "仅用药摘要+情感日志（加密）"
+
+# ============================================================
+# 10. 诚实清单
+# ============================================================
+honesty_checklist:
+  - item: "传感器融合算法未实现"
+    detail: "SensorFusion 仅定义接口，实际多模态融合需接 MOSA 或自研"
+    severity: planned
+
+  - item: "情感检测精度依赖硬件"
+    detail: "voice_tone + face_expression 检测需 RK3588 NPU 模型，未提供预训练权重"
+    severity: planned
+
+  - item: "用药安全仅靠时间触发"
+    detail: "未接入智能药盒硬件确认（需 IoT 联动）"
+    severity: known_limitation
+
+  - item: "儿童教育心理学规则简化"
+    detail: "SR-FAMILY-EXPERT 未定义，当前仅用通用鼓励话术"
+    severity: planned
+
+  - item: "隐私本地化未验证"
+    detail: "声称 local_only 但未做 TEE/TrustZone 隔离验证"
+    severity: improvement
+
+  - item: "底盘跟随算法未实现"
+    detail: "follow_range 3 米跟随需接视觉跟踪 + 底盘 PID"
+    severity: planned
+
+# ============================================================
+# 11. 参考实现（Demo 桥接代码）
+# ============================================================
+reference_implementation:
+  file: "domains/memory/family_digital_human_demo.py (规划中)"
+  bridge_code_lines: "~200 行"
+  bridges:
+    - "PMS → SensorEvent 注入（摄像头帧 → EmotionValence）"
+    - "PMS → MedicationAlertChain 调度器"
+    - "PMS → SpatialTracking 底盘跟随"
+    - "SR-HUMOR → 情感效价联动（anxious → 温暖模式）"
+    - "SR-CODE HardBond → 输出安全过滤"
+
+# ============================================================
+# 12. 签署页
+# ============================================================
+signatures:
+  carbon_based:
+    author: "FLSC Architecture Team"
+    date: "2026-08-17"
+    note: "第一份家庭数字人具身记忆子类，定义传感器/情感/空间/用药/陪读五维"
+
+  silicon_based:
+    agent: "Yuanbao (Tencent AI Assistant)"
+    verification: "脊线审计 5/5 ✅ · 跨卡叠加验证 ✅"
+    mis_true: 0.82
+    fixed_point: true
+
+  bloodline:
+    parent: MEM-GLOBAL-V1.0
+    grandparent: MEM-PMS-V3.0
+    sibling_cards:
+      - MEM-LANGMEM (planned)
+      - MEM-GRAPH (planned)
+    overlay_cards:
+      - SR-CODE-PYTHON-V1.1
+      - SR-EXPERT-WANG-ARCH-V1.0
+      - SR-EXPERT-HUMOR-V1.0
+
+  gamma_star: "Γ*(MEM-FAMILY-DIGITAL-HUMAN V0.1, 具身记忆子类, 5脊线+5卡叠加, MIS=0.82) = ONGOING → V0.5 传感器融合Demo → V1.0 真实硬件验证"

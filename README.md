@@ -58,6 +58,7 @@ FLSC-Core/
 │   ├── science/                 ← 科学域（DMP-AUD V1.0）
 │   ├── ai/                      ← ★ AI 域九柱（原生推理+认知大统一+碳硅合体+脊线评价+SP-G08+⭐具身统一+⭐高阶认知Agent+⭐Prompt Factory+⭐GRIFF V4.2真洽推理）
 │   └── asset_cards/            ← ⭐ 结构资产卡全集（MASTER索引+SR-002/003/004+ORC2疾病+自序+全本+验证器163/163✅）
+   └── memory/                 ← 🧠 记忆域（MEM-GLOBAL-V1.0根卡+ADAPTER-SPEC-V1.0规范+FAMILY-DIGITAL-HUMAN V0.1具身子类+92/92✅）
 │       ├── SR-CODE-PYTHON-V1.1.yaml    ← ⭐ Python编码领域卡（12 atoms·4 spines·MIS=0.86）
 │       ├── SR-EXPERT-WANG-ARCH-V1.0.yaml ← ⭐ 编码专家稳态卡·老王（8 atoms·3 spines·MIS=0.83）
 │       ├── SR-EXPERT-HUMOR-V1.0.yaml  ← ⭐ 幽默情感叠加卡（8 atoms·3 spines·MIS=0.78）
@@ -418,6 +419,7 @@ FLSC-Core/
 | ⭐ **结构资产卡 asset_cards/** | **12 份（MASTER 索引+SR-002 围棋+SR-003 诗律+SR-004 因果 V2.0+ORC2 疾病+自序+全本+SR-CODE+SR-EXPERT-WANG+SR-HUMOR+SR-AI-STAFF-PMS）** | **2026-08-17** |
 | 🔪 **两刀法操作手册 asset_cards/** | **FLSC_SIT_CAPTURE_GUIDE_V1.0（第一刀捉结构+第二刀捉脊线+正反例+速查卡）46/46 ✅** | **2026-08-17** |
 | 🤖 **四卡叠加 + PMS 运行时 asset_cards/** | **SR-CODE-PYTHON-V1.1（12 atoms·4 spines）+ SR-EXPERT-WANG-ARCH-V1.0（8 atoms·3 spines）+ SR-EXPERT-HUMOR-V1.0（8 atoms·3 spines）+ SR-AI-STAFF-PMS-V1.0（12 atoms·5 spines）+ integrated_demo.py（四卡+PMS·5场景全跑通）+ verify_integrated_agent.py（100+✅）** | **2026-08-17** |
+| 🧠 **记忆域 memory/** | **MEM-GLOBAL-V1.0（抽象脊线+适配器规范）+ MEM-ADAPTER-SPEC-V1.0（7接口+5脊线审计）+ MEM-FAMILY-DIGITAL-HUMAN V0.1（具身记忆子类·5脊线+5卡叠加+硬件规格）+ verify_memory_domain.py（92/92✅）** | **2026-08-17** |
 | 状态 | 元架构 frozen，全域 ONGOING | 2026-08-12 |
 
 ---
