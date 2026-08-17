@@ -1,0 +1,74 @@
+%% Transformer vs SNA-2.0 架构图集合
+%% 对应 TRANSFORMER_VS_SNA2.0.md 文档
+
+%% ============================================================
+%% 图1: 数据流咬合图 (Data Flow)
+%% ============================================================
+flowchart LR
+    User["用户一句话"] --> Spine["SNA-2.0 脊线核心层 ORC3"]
+    Spine --> G01["G-01 路由决策<br/>判断: 老人问药/闲聊/危险"]
+    Spine --> G07["G-07 硬件约束<br/>看温度/电量"]
+    G01 --> Vector["输出 7dim 状态向量<br/>只读 mmap"]
+    Vector --> Plug["任务外挂层 ORC2<br/>加载 family_medicine.so"]
+    Plug --> Unit["Unit: 药名/剂量/禁忌<br/>Connect: 爷爷→高血压→禁XX药"]
+    Unit --> Call["调用 Transformer API<br/>仅给 3 候选 token window"]
+    Call --> Check["SNA 外挂内 H-审计<br/>碰 HardBond 直接拒"]
+    Check --> Out["屏上说话/递药/写 PMS"]
+
+%% ============================================================
+%% 图2: 宿主嵌套关系图 (Host Nesting)
+%% ============================================================
+flowchart TB
+    subgraph SNA["SNA-2.0 认知宿主 (永远清醒)"]
+        Core["脊线核心层 ORC3<br/>7dim 状态向量<br/>运行时锁死"]
+        subgraph Plugs["任务外挂层 ORC2 (热插拔)"]
+            P1["family_medicine.so"]
+            P2["code_review.so"]
+            P3["legal_advice.so"]
+        end
+        Core -->|"7dim 只读"| Plugs
+    end
+    subgraph TF["Transformer (被调度的执行器)"]
+        LLM["GPT/Claude/Llama<br/>权重=统计规律<br/>无路由主权"]
+    end
+    Plugs -->|"受限 API 调用"| LLM
+    LLM -.->|"不知道 SNA 存在"| Plugs
+
+%% ============================================================
+%% 图3: 降级利用映射图 (Degrade & Leverage)
+%% ============================================================
+flowchart LR
+    subgraph Problems["Transformer 原罪"]
+        P1["幻觉<br/>Hallucination"]
+        P2["慢/贵<br/>Slow & Expensive"]
+        P3["记不住<br/>No Memory"]
+        P4["不安全<br/>Unsafe"]
+    end
+    subgraph Solutions["SNA-2.0 解法"]
+        S1["HardBond 截断<br/>+ 领域子脊约束"]
+        S2["G-07 算力适配<br/>简单问题→规则引擎"]
+        S3["PMS 管记忆<br/>Transformer=一次性嘴"]
+        S4["P0 熔断级<br/>硬件约束禁止"]
+    end
+    P1 --> S1
+    P2 --> S2
+    P3 --> S3
+    P4 --> S4
+
+%% ============================================================
+%% 图4: 未来三阶段路线图 (Roadmap)
+%% ============================================================
+timeline
+    title Transformer 与 SNA-2.0 融合路线图
+    2024-2028 : 阶段1 软件 Daemon
+              : SNA-2.0 + Transformer API 调用
+              : flscd 常驻进程, 外挂 dlopen 加载
+              : 现状: 仓库 integrated_demo.py
+    2028-2032 : 阶段2 稀疏脊线门控
+              : Transformer Decoder 改造
+              : FFN 换成脊线门控单元
+              : RISC-V XV-FLSC 扩展落地
+    2032+     : 阶段3 类脑融合
+              : Transformer 退成感觉皮层残片
+              : BMSI 脑机接口 + 存算一体脊线片
+              : 碳硅合体 V3.0 预言实现

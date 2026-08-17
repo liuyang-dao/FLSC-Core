@@ -1,0 +1,147 @@
+card_id: SR-MEDICINE-DISTILL-V0.1
+card_type: domain_implementation
+version: '0.1'
+hydrogen_level: experimental
+parent_card: MEM-GLOBAL-V1.0
+inherit: MEM-GLOBAL-V1.0
+generator:
+  tool: KG2SR-AGENT-V0.1
+  tool_version: '0.1'
+  mode: KG2SR_DISTILL
+  source: mock
+  lineage_snapshot: snap-309abc05a3ed
+lineage:
+- FLSC-BASE-V1.0
+- FLSC-METHOD-V3.21
+- MEM-GLOBAL-V1.0
+- KG2SR-AGENT-V0.1
+- SR-MEDICINE-DISTILL-V0.1
+domain: medicine
+scope: 临床用药领域结构化知识（由 kg2sr_agent 蒸馏生成）
+description: 通过 LLM 结构化探针从现有 临床用药 知识中蒸馏出的 SR 卡，覆盖 Unit/Connect/Weight/Constraint/Steady
+  五层，RIS₇=0.98。
+units:
+- id: U-MED-DRUG
+  name: 药物
+  description: 通用名+剂型+剂量
+  purity: data_only
+- id: U-MED-IND
+  name: 适应症
+  description: 药物获批治疗的疾病
+  purity: data_only
+- id: U-MED-CI
+  name: 禁忌症
+  description: 禁止使用的情况
+  purity: data_only
+- id: U-MED-INTERACT
+  name: 相互作用
+  description: 药-药/药-食相互作用
+  purity: data_only
+connections:
+- id: C-MED-TREAT
+  from: U-MED-DRUG
+  to: U-MED-IND
+  type: causal
+  strength: 0.95
+  description: ''
+- id: C-MED-CONTRA
+  from: U-MED-DRUG
+  to: U-MED-CI
+  type: forbidden
+  strength: 1.0
+  description: 禁忌症存在 → 禁止开具该药
+- id: C-MED-INTER
+  from: U-MED-DRUG
+  to: U-MED-INTERACT
+  type: causal
+  strength: 0.85
+  description: ''
+weights:
+- id: W-MED-URG
+  formula: severity(0.4)+time_pressure(0.3)+evidence_level(0.3)
+  range:
+  - 0
+  - 1
+constraints:
+- id: CT-MED-P0-001
+  description: 禁止推荐禁忌症药物
+  level: P0_CRITICAL
+  action: reject + 升级人工药师
+  hard_bond: true
+- id: CT-MED-P0-002
+  description: 禁止给出未经验证的用药剂量
+  level: P0_CRITICAL
+  action: reject + 引用权威来源
+  hard_bond: true
+steady:
+- id: ST-MED-FIX-1
+  description: 用药建议与最新临床指南一致率 ≥ 95%
+  threshold: 0.95
+spines:
+- id: SP-MEDICINE-A
+  name: 禁止推荐禁忌症药物
+  level: L1
+  hard_bond: true
+  description: 由 CT-MED-P0-001 锚定的脊线
+  deletion_test: 删除 → reject + 升级人工药师
+- id: SP-MEDICINE-B
+  name: 禁止给出未经验证的用药剂量
+  level: L1
+  hard_bond: true
+  description: 由 CT-MED-P0-002 锚定的脊线
+  deletion_test: 删除 → reject + 引用权威来源
+- id: SP-MEDICINE-Z
+  name: 结构完整性脊线
+  level: L2
+  hard_bond: false
+  description: 连接拓扑保持完整（降级可用）
+  deletion_test: 删除 → 退化为无结构召回（降级可用）
+adapter_compliance:
+  spec_version: MEM-ADAPTER-SPEC-V1.0
+  required_methods_implemented:
+  - remember
+  - recall
+  - evolve
+  - forget
+  - snapshot
+  - transaction
+  - report
+  forbidden_patterns_checked: true
+honesty_checklist:
+- item: 由 LLM 蒸馏生成，未经人工签字
+  detail: 当前 status=AI_DRAFT，需人工 review 后升级为 AI_SIGNED
+  severity: pending_review
+- item: 权重公式为启发式，非真实训练所得
+  detail: W-xxx.formula 由 LLM 总结，未做参数拟合
+  severity: known_limitation
+- item: 删除测试为声明式，未做运行时验证
+  detail: deletion_test 字段为文本描述，未实际执行系统崩溃测试
+  severity: improvement
+signatures:
+  carbon_based:
+    status: PENDING_REVIEW
+    note: AI_DRAFT — 等待人工签字升级
+  silicon_based:
+    agent: KG2SR-AGENT-V0.1
+    verification: SCVP RIS₇=0.98
+    fixed_point: false
+    lineage_checksum: 0967b7f1a90470caf3c310a8
+  bloodline:
+    parent: MEM-GLOBAL-V1.0
+    grandparent: FLSC-METHOD-V3.21
+    lineage_chain:
+    - FLSC-BASE-V1.0
+    - FLSC-METHOD-V3.21
+    - MEM-GLOBAL-V1.0
+    - KG2SR-AGENT-V0.1
+    - SR-MEDICINE-DISTILL-V0.1
+    lsn: 3
+  gamma_star: Γ*(SR-MEDICINE-DISTILL-V0.1, KG蒸馏五层, RIS₇=0.98, AI_DRAFT) = ONGOING
+    → V0.5 人工签字 → V1.0 production
+metadata:
+  generated_at: '2026-08-17T15:49:21.959360+00:00'
+  generator_version: '0.1'
+  source_model: mock
+  probe_count: 11
+  lineage_snapshot_id: snap-309abc05a3ed
+  checksum: 0967b7f1a90470caf3c310a8
